@@ -5,7 +5,7 @@ const Home: FC = () => {
   return (
     <Layout title="Home" description="Home">
       <main>
-
+        <div>Home</div>
       </main>
     </Layout>
   )

@@ -4,10 +4,11 @@ import Header from "./header/Header"
 import { IMeta } from "../seo/meta.interface"
 import Meta from "../seo/Meta"
 
-import style from "./Layout.module.scss"
+import "./Layout.module.scss"
 
 import localFont from '@next/font/local' // импортим пакет
 import Footer from "./footer/Footer"
+
 const myFontFors = localFont({ src: [
   {
     path: '../../../public/fonts/Fors/ForsLight.ttf',
@@ -33,12 +34,11 @@ const myFontRamillas = localFont({ src: [
 const Layout: FC<PropsWithChildren<IMeta>> = ({ children, title, description }) => {
   return (
     <Meta title={title} description={description}>
-      <Header />
-      <main>
-        {/* <div className={ `${myFontRamillas.className}  ${style.font_500}` } >Test</div> */}
-        {children}
-      </main>
-      <Footer />
+      <body >
+        <Header />
+          {children}
+        <Footer />
+      </body>
     </Meta>
   )
 }

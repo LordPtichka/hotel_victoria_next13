@@ -1,4 +1,6 @@
 .footer_top {
+    display: flex;
+
     .footer_link_block {
         font-family: 'Ramillas', sans-serif;
         display: flex;
@@ -8,11 +10,17 @@
     .footer_nav_title {
         letter-spacing: 0.03em;
         line-height: 28px;
+        height: 28px;
     }
 
     .footer_link {
         font-size: 16px;
         line-height: 22px;
         color: #B06101
+    }
+
+
+    .block_line {
+
     }
 }
