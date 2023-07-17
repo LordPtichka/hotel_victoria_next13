@@ -1,0 +1,43 @@
+
+.nav_wrap {
+    background: #fff;
+    max-width: 900px;
+    border-radius: 20px;
+    margin: auto;
+    box-shadow: 0 2px 10px #00000020;
+    
+    .nav_block {
+        padding: 20px ;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        > .nav_link {
+            font-size: 16px;
+            text-transform: uppercase;
+            color: #262626;
+            transition: 500ms ease;
+    
+            &:hover {
+                color: #B06101;
+                transition: 500ms ease;
+            }
+
+        }
+        > .btn_border {
+            padding: 15px 10px;
+            color: #262626;
+            transition: 300ms;
+            border: 1px solid #B06101;
+            border-radius: 10px;
+
+            &:hover {
+                display: block;
+                background-color: #B06101;
+                color: white;
+            }
+        }
+     
+    }
+}

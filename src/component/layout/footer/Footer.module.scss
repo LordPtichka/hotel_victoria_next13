@@ -1,0 +1,18 @@
+.footer_top {
+    .footer_link_block {
+        font-family: 'Ramillas', sans-serif;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer_nav_title {
+        letter-spacing: 0.03em;
+        line-height: 28px;
+    }
+
+    .footer_link {
+        font-size: 16px;
+        line-height: 22px;
+        color: #B06101
+    }
+}
