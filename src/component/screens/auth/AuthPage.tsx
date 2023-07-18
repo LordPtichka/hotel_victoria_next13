@@ -21,15 +21,19 @@ dataUser()
 
 const AuthPage: FC<IUserData> = ({dataUser}) => {
 
+  const test = async () => {
+    'use server'
+    console.log("click")
+  }
 
   return (
     <Layout title="Home" description="Home">
       <div>AuthPage</div>
-      <form action="">
+      {/* <form action={test} >
         <input type="text" />
         <input type="text" />
-        <button>sign in</button>
-      </form>
+        <button type='submit'>sign in</button>
+      </form> */}
   </Layout>
   )
 }

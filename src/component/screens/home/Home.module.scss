@@ -1,0 +1,87 @@
+.section_number_room {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 700px;
+    border-radius: 20px;
+    background: url(http://localhost:4200/room-dlx.webp);
+    background-size: cover;
+    background-position: center;    
+}
+.block_number_room {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: auto 100px;
+    padding: 40px;
+    width: 400px;
+    height: 600px;
+    border-radius: 20px;
+    background: #fff;
+}
+.number_room_title {
+    margin: 7% 0;
+    font-size: 39px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 28px;
+}
+
+.number_room_text {
+    text-align: justify;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 18px;
+    padding: 3% 0;
+}
+
+.wrap_btn {
+    display: flex;
+    flex-direction: column;
+
+    .number_room_title_btn {
+        font-weight: 300;
+        margin: 20px 0;
+        padding: 5% 10%;
+        background: transparent;
+        color: #000;
+
+        border: 1px solid #B06101;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: 400ms;
+
+        &:hover {
+            color: #fff ;
+            background: #B06101;
+        }
+    }
+
+}
+
+
+// ===================
+.restaurant {
+    display: flex;
+    padding: 7% 0;
+    border-top: 1px solid #59595933;
+
+
+    .left_block {
+        width: 600px;
+        height: 400px;
+        margin-right: 20px;
+        border-radius: 20px;
+        background-image: url(http://localhost:4200/Vkys_bar.webp);
+        background-size: cover;
+        background-position: center;
+    }
+
+    .right_block {
+        margin: auto;
+        max-width: 410px;
+        max-height: 400px;
+    }
+}
