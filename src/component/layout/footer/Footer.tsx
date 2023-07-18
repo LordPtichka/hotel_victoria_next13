@@ -1,9 +1,10 @@
 import { FC } from "react"
 import style from "./Footer.module.scss"
 import Link from "next/link"
+import Image from "next/image"
 const Footer: FC = () => {
   return (
-    <footer>
+    <footer className={style.footer} > 
       <section className={style.footer_top}>
 
         <div className={style.footer_nav_block}>
@@ -49,8 +50,11 @@ const Footer: FC = () => {
         
       </section>
 
-      <section>
-        <div className={style.block_line} ></div>
+      <section className={style.footer_two}>
+        <div>© Victoria business hotel 2009 - 2023</div>
+        <Image className="logo_svg" src="../logo_in_footer.svg" alt="" width={80} height={75}/>
+        <div>Правовая информация</div>
+      
       </section>
     </footer>
   )
