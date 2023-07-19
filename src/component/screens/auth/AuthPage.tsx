@@ -1,8 +1,8 @@
 import { GetStaticProps } from 'next'
 import style from "./AuthPage.module.scss"
 import Layout from '@/component/layout/Layout'
-import { AuthService } from '@/component/services/auth.service'
-import { IUser, IUserData } from '@/component/interface/user.interface'
+import { AuthService } from '@/services/auth.service'
+import { IUser, IUserData } from '@/interface/user.interface'
 import { FC } from 'react'
 
 
@@ -19,21 +19,25 @@ dataUser()
 // =====================================================
 // =====================================================
 
-const AuthPage: FC<IUserData> = ({dataUser}) => {
+const AuthPage: FC<IUserData> = ({user}) => {
 
-  const test = async () => {
-    'use server'
-    console.log("click")
-  }
+  const handleClick = () => {
+    console.log("click");
+  };
+
 
   return (
     <Layout title="Home" description="Home">
       <div>AuthPage</div>
-      {/* <form action={test} >
-        <input type="text" />
-        <input type="text" />
+      <form  >
+        <input type="text" className={style.input}/>
+        <input type="text" className={style.input}/>
         <button type='submit'>sign in</button>
-      </form> */}
+      </form>
+
+      <button onClick={handleClick}> click </button>
+
+
   </Layout>
   )
 }

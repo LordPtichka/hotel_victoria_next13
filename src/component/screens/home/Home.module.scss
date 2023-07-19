@@ -1,71 +1,90 @@
+// =============================
+.btn {
+    font-weight: 300;
+    margin: 15px 0;
+    padding: 10px 25px;
+    background: transparent;
+    color: #000;
+
+    border: 1px solid #B06101;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: 400ms;
+
+    &:hover {
+        color: #fff ;
+        background: #B06101;
+    }
+}
+
+.section {
+    padding: 7% 0;
+    border-top: 1px solid rgba(89, 89, 89, 0.2);
+    // display: flex;
+
+}
+// =============================
 .section_number_room {
+    height: 700px;
+
+    margin: 25px 0;
     display: flex;
     justify-content: end;
     align-items: center;
-    height: 700px;
     border-radius: 20px;
     background: url(http://localhost:4200/room-dlx.webp);
     background-size: cover;
     background-position: center;    
-}
-.block_number_room {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    margin: auto 100px;
-    padding: 40px;
-    width: 400px;
-    height: 600px;
-    border-radius: 20px;
-    background: #fff;
-}
-.number_room_title {
-    margin: 7% 0;
-    font-size: 39px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    line-height: 28px;
-}
+    
+    .block_number_room {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        margin: auto 100px;
+        padding: 40px;
+        width: 400px;
+        height: 600px;
+        border-radius: 20px;
+        background: #fff;
+    
+        .number_room_title {
+            margin: 7% 0;
+            font-size: 39px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            line-height: 28px;
+        }
+        
+        .number_room_text {
+            text-align: justify;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 18px;
+            padding: 3% 0;
+        }
+        
+        .wrap_btn {
+            display: flex;
+            flex-direction: column;    
 
-.number_room_text {
-    text-align: justify;
-    font-weight: 300;
-    font-size: 13px;
-    line-height: 18px;
-    padding: 3% 0;
-}
-
-.wrap_btn {
-    display: flex;
-    flex-direction: column;
-
-    .number_room_title_btn {
-        font-weight: 300;
-        margin: 20px 0;
-        padding: 5% 10%;
-        background: transparent;
-        color: #000;
-
-        border: 1px solid #B06101;
-        border-radius: 10px;
-        text-align: center;
-        cursor: pointer;
-        transition: 400ms;
-
-        &:hover {
-            color: #fff ;
-            background: #B06101;
+            .btn {
+                padding: 15px 20px;
+            }
+            
         }
     }
-
+    
 }
+
 
 
 // ===================
 .restaurant {
     display: flex;
     padding: 7% 0;
+    margin-top: 7%;
     border-top: 1px solid #59595933;
 
 
@@ -83,5 +102,75 @@
         margin: auto;
         max-width: 410px;
         max-height: 400px;
+
+        .wrap_block {
+            margin-top: 5%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .restaurant_title {
+            margin: 7% 0;
+            font-size: 39px;
+            font-weight: 500;
+            text-transform: uppercase;
+            display: flex;
+            gap: 10px;
+
+            .mark_color {
+                color: #B06101;
+            }
+        }
+        
+        
+    }
+    
+}
+
+.service {
+    .title_block {
+        margin: 7% 0;
+        font-size: 39px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+    
+    .service_wrap {
+        display: grid;
+        grid-auto-rows: 320px;
+        grid-template-columns: repeat(2, 500px);
+        justify-content: space-between;
+        row-gap: 30px;
+        
+        .service_block_one {
+        
+            .block_img {
+                width: 100%;
+                padding: 100px 0;
+                border-radius: 20px;
+                background: url(http://localhost:4200/service/spa_service.webp);
+                background-color: #CFCFCF;
+                background-size: cover;
+                background-position: center;
+            }
+            .block_service_info {
+                font-family: 'Fors', sans-serif;
+                font-weight: 300
+            }
+            .service_title {
+                font-family: 'Ramillas', sans-serif;
+                letter-spacing: 0.03em;
+                line-height: 28px;
+                margin: 20px 0px 5px 0;
+            }
+            .block_info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .service_info {
+                    margin-right: 10px;
+                }
+            }
+        }
     }
 }

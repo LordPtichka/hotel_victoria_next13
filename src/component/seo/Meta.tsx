@@ -6,7 +6,7 @@ const Meta: FC<PropsWithChildren<IMeta>> = ({ title, description, children }) =>
   return (
     <>
       <Head>
-        <title>lol</title>
+        <title>Victoria - официальный сайт отеля</title>
       </Head>
       {children}
     </>

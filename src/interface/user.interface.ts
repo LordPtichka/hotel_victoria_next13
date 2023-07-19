@@ -4,5 +4,5 @@ export interface IUser {
 }
 
 export interface IUserData {
-    dataUser: IUser[]
+    user: IUser[]
 }
