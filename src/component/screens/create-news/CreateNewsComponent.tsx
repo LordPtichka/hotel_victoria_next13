@@ -5,19 +5,7 @@ import { FC, MouseEvent, useState } from 'react'
 
 const CreateNews: FC<INewsData> = ({ newsAll }) => {
 
-
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [image, setImage] = useState('')
-
-  // const createNews = e => { // было так
-  const createNews = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => { // исправление от vs code
-    e.preventDefault()
-
-    console.log({ title, description, image })
-
-    setNews(prev => [{id: prev.length + 1, title, description, image, }, ...prev])
-  }
+  
 
   return (
     <Layout title={"create"}>
