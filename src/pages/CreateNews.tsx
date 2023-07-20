@@ -1,4 +1,3 @@
-import Layout from '@/component/layout/Layout'
 import CreateNews from '@/component/screens/create-news/CreateNewsComponent'
 import { INewsData } from '@/interface/news.interface'
 import { NewsService } from '@/services/news.service'
@@ -10,7 +9,7 @@ const CreateNewsPage: NextPage<INewsData> = ({newsAll}) => {
 
 // ===================================
 // получение данных с внешнего сервера и их прокидка на клиента 
-export  const getStaticProps: GetStaticProps<INewsData> =async () => {
+export  const getStaticProps: GetStaticProps<INewsData> = async () => {
     
   const newsAll = await NewsService.getAllNews()
 
