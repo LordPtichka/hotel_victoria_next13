@@ -11,16 +11,16 @@ import { useForm, SubmitHandler } from "react-hook-form"
 // =====================================================
 // =======> REMAKE <=================> REMAKE <=========
 
-const [userData] = useState<IUser>({} as IUser)
+// const [userData] = useState<IUser>({} as IUser)
 
-useEffect(() => {
-  const dataUser = async () => {
-    const data = await AuthService.getUser()
-    console.log(data)
-    return await data
-  }
-  dataUser()
-})
+// useEffect(() => {
+//   const dataUser = async () => {
+//     const data = await AuthService.getUser()
+//     console.log(data)
+//     return await data
+//   }
+//   dataUser()
+// })
 
 // =====================================================
 // =====================================================
@@ -34,7 +34,7 @@ const AuthPage: FC<IUserData> = ({user}) => {
 
   const onSubmit: SubmitHandler<IUser> = ( data ) => { // будет принимать поля из формы которые мы получим
     console.log(data) // выполняем действие с данными которые пришли с формы
-    console.log(userData)
+    // console.log(userData)
     // тут должна быть отправка данных с формы на сервак для инициализации
   }
 
