@@ -1,7 +1,22 @@
-import { FC } from 'react'
+import { FC, MouseEvent, useState } from 'react'
 
 const FormCreate: FC = () => {
-  return (
+  
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [image, setImage] = useState('')
+  
+    // const createNews = e => { // было так
+    const createNews = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => { // исправление от vs code
+      e.preventDefault()
+  
+      console.log({ title, description, image })
+  
+      setNews(prev => [{id: prev.length + 1, title, description, image, }, ...prev])
+    }
+
+  
+    return (
     <form>
         <input type="text" placeholder='title'
         onChange={e => setTitle(e.target.value)} value={title}/>
