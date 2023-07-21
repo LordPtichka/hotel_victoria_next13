@@ -1,15 +1,23 @@
 import { FC } from 'react'
 import style from "./Stocks.module.scss"
-import CardStocks from './card_stocks/CardStocks'
+import { IStockDataSingle } from '@/interface/stock.interface'
 
-const Stocks: FC = () => {
+
+const Stocks: FC<IStockDataSingle> = ({ stock }) => {
   return (
-    <section>
-        <div className={style.title}>Акции</div>
-        <div>
-            <CardStocks />
+
+          <div>
+              <div className={style.offer}>
+                <div className={style.img_for_offer} style={{backgroundImage: `url(${stock.image})`}}></div>
+                <div className={style.title_offer}>
+                  { stock.title }
+                </div>
+              <div className={style.font_for_text}>
+                { stock.description }
+              </div>
+          </div>
         </div>
-    </section>
+    
   )
 }
 

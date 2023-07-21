@@ -1,4 +1,3 @@
-import { INews } from "@/interface/news.interface"
 import { IStock } from "@/interface/stock.interface"
 import axios from "axios"
 
@@ -15,3 +14,4 @@ export const StocksService = {
         return data [0]
     }
 }
+

@@ -2,8 +2,9 @@ import { FC } from "react"
 import Layout from "../../layout/Layout"
 import style from "./Home.module.scss" 
 import Stocks from "./stocks/Stocks"
+import { IStockData } from "@/interface/stock.interface"
 
-const Home: FC = () => {
+const Home: FC<IStockData> = ({ stocksAll }) => {
   return (
     <Layout title="Home" description="Home">
 
@@ -16,28 +17,15 @@ const Home: FC = () => {
 
 
 
-      {/* import News from '@/component/screens/news/News';
- import { INewsData } from '@/interface/news.interface';
- import { NewsService } from '@/services/news.service';
- import { GetStaticProps, NextPage } from 'next';
- 
- const newsPage: NextPage<INewsData> = ({ newsAll }) => {
-    return <News newsAll={newsAll} />;
- };
- 
- export const getStaticProps: GetStaticProps<INewsData> = async () => {
-   const newsAll = await NewsService.getAllNews();
-   return {
-     props: { newsAll },
-     revalidate: 60,
-   };
- };
- 
- export default newsPage; */}
 
 
 
-      <Stocks />
+      {/* <Stocks /> */}
+
+      <section>
+        <div className={style.title}>Акции</div>
+        {stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} />) : <div>News Not Found</div>}
+      </section>
 
       <section className={`${style.section_number_room} ${style.section}`} >
         <div className={style.block_number_room} >

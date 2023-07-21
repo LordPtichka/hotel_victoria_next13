@@ -7,10 +7,10 @@ export interface IStock {
 }
 
 export interface IStockData {
-    newsAll: IStock[]
+    stocksAll: IStock[]
 }
 
 
 export interface IStockDataSingle {
-    news: IStock
+    stock: IStock
 }

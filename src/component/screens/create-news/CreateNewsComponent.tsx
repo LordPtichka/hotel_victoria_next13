@@ -72,4 +72,4 @@ import axios from 'axios';
    );
  };
  
- export default CreateNews; 
+ export default CreateNews;
