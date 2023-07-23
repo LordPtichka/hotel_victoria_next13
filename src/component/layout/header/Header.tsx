@@ -10,7 +10,7 @@ const Header: FC = () => {
         <Link className={style.nav_link} href="/">Контакты</Link>
         <Link className={style.nav_link} href="/">Рестораны</Link>
         <Link className={style.nav_link} href="/">Услуги</Link>
-        <Link className={style.nav_link} href="/news">Новости</Link>
+        <Link className={style.nav_link} href="/News">Новости</Link>
         <Link className={`${style.nav_link} ${style.btn_border}`} href="/">Онлайн-бронирование</Link>
       </nav>
     </div>

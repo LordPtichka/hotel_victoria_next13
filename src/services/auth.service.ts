@@ -5,7 +5,8 @@ const API_URL = 'http://localhost:4200'
 
 export const AuthService = {
     async getUser() {
-        const { data } = await axios.get<IUser[]>(`${API_URL}/users`)
+        // const { data } = await axios.get<IUser[]>(`${API_URL}/users`)
+        const data = "lol"
         return data
     }
 }

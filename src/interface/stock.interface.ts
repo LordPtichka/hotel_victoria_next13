@@ -1,16 +1,14 @@
-
 export interface IStock {
-    id: number
-    title: string
-    description: string
-    image: string
+  id: number
+  title: string
+  description: string
+  img: string
 }
 
 export interface IStockData {
-    stocksAll: IStock[]
+  stocksAll: IStock[]
 }
 
-
 export interface IStockDataSingle {
-    stock: IStock
+  stock: IStock
 }
