@@ -9,7 +9,7 @@ const CreateNews: FC<INewsData> = ({ newsAll }) => {
   const [news, setNews] = useState(newsAll) // Состояние для хранения всех новостей
   const [title, setTitle] = useState("") // Состояние для хранения заголовка новости
   const [description, setDescription] = useState("") // Состояние для хранения описания новости
-  const [image, setImage] = useState("") // Состояние для хранения пути к изображению новости
+  const [img, setImage] = useState("") // Состояние для хранения пути к изображению новости
 
   // Обработчик события при нажатии на кнопку "создать статью"
   const createNews = (e: MouseEvent<HTMLButtonElement>) => {
@@ -19,15 +19,15 @@ const CreateNews: FC<INewsData> = ({ newsAll }) => {
       id: news.length + 1,
       title,
       description,
-      image,
+      img,
     }
     // Добавление новой новости в начало массива новостей с помощью функции setNews
     //  setNews((prev) => [newNews, ...prev]); // локально добавлял элемент в массив, сейчас это не нужно
 
     // Отправка POST-запроса на сервер
     axios
-      .post("http://localhost:4200/news", newNews)
-      // .post("http://localhost:4200/News/CreateNews", newNews)
+      // .post("http://localhost:4200/news", newNews)
+      .post("http://localhost:4200/News/CreateNews", newNews)
       .then((response) => {
         console.log(response.data) // Вывод ответа сервера в консоль
         setNews((prev) => [newNews, ...prev])
@@ -54,7 +54,7 @@ const CreateNews: FC<INewsData> = ({ newsAll }) => {
         {/* Поле ввода для описания новости */}
         <input type="text" placeholder="description" onChange={(e) => setDescription(e.target.value)} value={description} />
         {/* Поле ввода для пути к изображению новости */}
-        <input type="text" placeholder="image" onChange={(e) => setImage(e.target.value)} value={image} />
+        <input type="text" placeholder="img" onChange={(e) => setImage(e.target.value)} value={img} />
         {/* Кнопка для создания новой статьи */}
         <button onClick={createNews}>создать статью</button>
       </form>

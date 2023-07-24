@@ -8,6 +8,10 @@ import style from "./Layout.module.scss"
 
 import localFont from '@next/font/local' // импортим пакет
 import Footer from "./footer/Footer"
+import HeaderVideo from "./headerVideo/HeaderVideo"
+
+import { useRouter } from "next/router"
+
 
 const myFontFors = localFont({ src: [
   {
@@ -32,9 +36,14 @@ const myFontRamillas = localFont({ src: [
 
 
 const Layout: FC<PropsWithChildren<IMeta>> = ({ children, title, description }) => {
+  
+  const { pathname } = useRouter() // получаю имя ссылки из useRouter()
+
   return (
     <Meta title={title} description={description}>
         <Header />
+        
+        {pathname === "/" ? <HeaderVideo /> : ""} {/* если ссылка / то вывожу видео*/}
         <main className={style.main} >
           {children}
         </main>

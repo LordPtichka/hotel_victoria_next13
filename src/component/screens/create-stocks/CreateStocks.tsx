@@ -26,8 +26,8 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
     // Отправка POST-запроса на сервер
     axios
 
-      .post("http://localhost:4200/stocks", newStock)
-      // .post("http://localhost:4200/Stocks/CreateStocks", newStock)
+      // .post("http://localhost:4200/stocks", newStock)
+      .post("http://localhost:4200/Stocks/CreateStocks", newStock)
       .then((response) => {
         console.log(response.data) // Вывод ответа сервера в консоль
         setStocks((prev) => {

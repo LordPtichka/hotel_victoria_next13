@@ -5,14 +5,14 @@ const API_URL = "http://localhost:4200"
 
 export const StocksService = {
   async getStocks() {
-    const { data } = await axios.get<IStock[]>(`${API_URL}/stocks`)
-    // const { data } = await axios.get<IStock[]>(`${API_URL}/Stocks/AllStocks`)
+    // const { data } = await axios.get<IStock[]>(`${API_URL}/stocks`)
+    const { data } = await axios.get<IStock[]>(`${API_URL}/Stocks/AllStocks`)
     return data
   },
 
   async getByIDstock(id: string) {
-    const { data } = await axios.get<IStock[]>(`${API_URL}/stocks`, { params: { id } })
-    // const { data } = await axios.get<IStock[]>(`${API_URL}/Stocks`, { params: { id } })
+    // const { data } = await axios.get<IStock[]>(`${API_URL}/stocks`, { params: { id } })
+    const { data } = await axios.get<IStock[]>(`${API_URL}/Stocks`, { params: { id } })
     return data[0]
   },
 }

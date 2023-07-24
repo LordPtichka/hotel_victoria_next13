@@ -7,14 +7,14 @@ const API_URL = "http://localhost:4200"
 
 export const NewsService = {
   async getAllNews() {
-    const { data } = await axios.get<INews[]>(`${API_URL}/news`)
-    // const { data } = await axios.get<INews[]>(`${API_URL}/News/AllNews`)
+    // const { data } = await axios.get<INews[]>(`${API_URL}/news`)
+    const { data } = await axios.get<INews[]>(`${API_URL}/News/AllNews`)
     return data
   },
 
   async getDyIDNews(id: string) {
-    const { data } = await axios.get<INews[]>(`${API_URL}/news`, { params: { id } })
-    // const { data } = await axios.get<INews[]>(`${API_URL}/News/OneNews/`, {params: {id}})
+    // const { data } = await axios.get<INews[]>(`${API_URL}/news`, { params: { id } })
+    const { data } = await axios.get<INews[]>(`${API_URL}/News/OneNews/`, {params: {id}})
     return data[0]
   },
 }
