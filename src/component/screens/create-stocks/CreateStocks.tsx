@@ -3,6 +3,7 @@ import axios from "axios"
 import { IStockData } from "@/interface/stock.interface"
 import { FC, MouseEvent, useState } from "react"
 import Stock from "../home/stocks/Stock"
+import style from "./CreateStocks.module.scss"
 
 const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
   // Состояния для хранения данных формы
@@ -44,18 +45,34 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       })
   }
 
+
+
+
   return (
     <Layout title={"create"}>
+
+
+
+
+      <div>==============================</div>
+
       <form>
-        {/* Поле ввода для заголовка новости */}
-        <input type="text" placeholder="title" onChange={(e) => setTitle(e.target.value)} value={title} />
-        {/* Поле ввода для описания новости */}
-        <input type="text" placeholder="description" onChange={(e) => setDescription(e.target.value)} value={description} />
-        {/* Поле ввода для пути к изображению новости */}
-        <input type="text" placeholder="img" onChange={(e) => setImg(e.target.value)} value={img} />
-        {/* Кнопка для создания новой статьи */}
+        <div>
+          <div className={style.offer}>
+            <div className={style.img_for_offer} style={{ backgroundImage: `url()` }}>
+              <input type="file" placeholder="title" onChange={(e) => setTitle(e.target.value)} value={title} />
+            </div>
+            <div className={style.title_offer}>
+              <textarea className={`${style.input} ${style.title_offer}`}  placeholder="title" onChange={(e) => setTitle(e.target.value)} value={title} />
+            </div>
+            <div className={style.font_for_text}>
+              <textarea className={style.input}  placeholder="description" onChange={(e) => setDescription(e.target.value)} value={description} />
+            </div>
+          </div>
+        </div>
         <button onClick={createStocks}>создать статью</button>
       </form>
+
       <div>==============================</div>
       {/* Отображение списка новостей */}
       {stock.length ? stock.map((stock) => <Stock key={stock.id} stock={stock} />) : <div>Stocks Not Found</div>}
