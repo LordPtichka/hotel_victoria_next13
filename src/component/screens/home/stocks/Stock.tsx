@@ -4,21 +4,11 @@ import { IStock, IStockDataSingle } from "@/interface/stock.interface"
 import axios from "axios"
 
 const Stock: FC<IStockDataSingle> = ({ stock }) => {
-  const handleClick = async () => {
-    // try {
-    // const re = await axios.get("http://localhost:4200/Stocks/DeleteStocks/2")
-    const { stock_ } = await axios.get(`http://localhost:4200/Stocks/DeleteStocks/2`)
-    // console.log(response.data) // Обработка полученных данных
-    // } catch (error) {
-    // console.error(error)
-    // }
+  const handleClick = async (id) => {
+    console.log(id)
+    const result = await axios.get(`http://localhost:4200/Stocks/DeleteStocks/${id}`)
+    console.log(result.status) // Обработка полученных данных
   }
-
-  // async getStocks() {
-  //   // const { data } = await axios.get<IStock[]>(`${API_URL}/stocks`)
-  //   const { data } = await axios.get<IStock[]>(`${API_URL}/Stocks/AllStocks`)
-  //   return data
-  // }
 
   return (
     <div>
@@ -27,7 +17,7 @@ const Stock: FC<IStockDataSingle> = ({ stock }) => {
         <div className={style.title_offer}>{stock.title}</div>
         <div className={style.font_for_text}>{stock.description}</div>
 
-        {/* <button onClick={handleClick}>удалить акцию</button> */}
+        <button onClick={() => handleClick(stock.id)}>удалить акцию</button>
       </div>
     </div>
   )
