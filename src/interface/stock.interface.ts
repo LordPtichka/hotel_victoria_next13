@@ -1,5 +1,5 @@
 export interface IStock {
-  id: number
+  id: string
   title: string
   description: string
   img: string

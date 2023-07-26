@@ -4,7 +4,7 @@ import { IStock, IStockDataSingle } from "@/interface/stock.interface"
 import axios from "axios"
 
 const Stock: FC<IStockDataSingle> = ({ stock }) => {
-  const handleClick = async (id) => {
+  const handleClick = async (id: string) => {
     console.log(id)
     const result = await axios.get(`http://localhost:4200/Stocks/DeleteStocks/${id}`)
     console.log(result.status) // Обработка полученных данных

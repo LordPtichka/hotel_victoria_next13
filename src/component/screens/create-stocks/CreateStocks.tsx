@@ -25,10 +25,12 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
     // Добавление новой новости в начало массива новостей с помощью функции setStocks
 
     // Отправка POST-запроса на сервер
+
     axios
 
       // .post("http://localhost:4200/stocks", newStock)
-      .post("http://localhost:4200/Stocks/CreateStocks", newStock)
+      // .post("http://localhost:4200/Stocks/CreateStocks", newStock)
+      .post("http://localhost:4200/Stocks/uploadImg", newStock)
       .then((response) => {
         console.log(response.data) // Вывод ответа сервера в консоль
         setStocks((prev) => {
@@ -45,28 +47,21 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       })
   }
 
-
-
-
   return (
     <Layout title={"create"}>
-
-
-
-
       <div>==============================</div>
 
       <form>
         <div>
           <div className={style.offer}>
             <div className={style.img_for_offer} style={{ backgroundImage: `url()` }}>
-              <input type="file" placeholder="title" onChange={(e) => setTitle(e.target.value)} value={title} />
+              <input type="file" placeholder="title" onChange={(e) => setTitle(e.target.value)} name="file" />
             </div>
             <div className={style.title_offer}>
-              <textarea className={`${style.input} ${style.title_offer}`}  placeholder="title" onChange={(e) => setTitle(e.target.value)} value={title} />
+              <textarea className={`${style.input} ${style.title_offer}`} placeholder="title" onChange={(e) => setTitle(e.target.value)} value={title} />
             </div>
             <div className={style.font_for_text}>
-              <textarea className={style.input}  placeholder="description" onChange={(e) => setDescription(e.target.value)} value={description} />
+              <textarea className={style.input} placeholder="description" onChange={(e) => setDescription(e.target.value)} value={description} />
             </div>
           </div>
         </div>
@@ -81,3 +76,36 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
 }
 
 export default CreateStocks
+
+// import { useState } from "react";
+// import axios from "axios";
+
+// const ImageUpload = () => {
+//   const [selectedImage, setSelectedImage] = useState(null);
+
+//   const handleImageChange = (event) => {
+//     const file = event.target.files[0];
+//     setSelectedImage(file);
+//   };
+
+//   const handleUpload = async () => {
+//     try {
+//       const formData = new FormData();
+//       formData.append("image", selectedImage);
+
+//       const response = await axios.post("/api/upload", formData);
+//       console.log(response.data); // Обработка ответа от сервера
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <input type="file" onChange={handleImageChange} />
+//       <button onClick={handleUpload}>Загрузить</button>
+//     </div>
+//   );
+// };
+
+// export default ImageUpload;
