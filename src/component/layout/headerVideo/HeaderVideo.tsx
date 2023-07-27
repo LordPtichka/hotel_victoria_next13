@@ -17,32 +17,32 @@ const HeaderVideo: FC = () => {
                   Главная
                 </Link>
               </li>
-              <li>
+              <li className="li-nav">
                 <Link className="nav-link font-for-link font-color-white" href="/">
                   Номера
                 </Link>
               </li>
-              <li>
+              <li className="li-nav">
                 <Link className="nav-link font-for-link font-color-white" href="/">
                   Контакты
                 </Link>
               </li>
-              <li>
+              <li className="li-nav">
                 <Link className="nav-link font-for-link font-color-white" href="/">
                   Рестораны
                 </Link>
               </li>
-              <li>
+              <li className="li-nav">
                 <Link className="nav-link font-for-link font-color-white" href="/">
                   Услуги
                 </Link>
               </li>
-              <li>
+              <li className="li-nav">
                 <Link className="nav-link font-for-link font-color-white" href="/News">
                   Новости
                 </Link>
               </li>
-              <li>
+              <li className="li-nav">
                 <Link className="button btn-for-nav font-for-text font-color-white" href="/">
                   Онлайн-бронирование
                 </Link>
