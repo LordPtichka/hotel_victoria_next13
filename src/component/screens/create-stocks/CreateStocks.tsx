@@ -1,60 +1,57 @@
-import Layout from "@/component/layout/Layout";
-import axios from "axios";
-import { IStockData } from "@/interface/stock.interface";
-import { FC, MouseEvent, useState } from "react";
-import Stock from "../home/stocks/Stock";
-import style from "./CreateStocks.module.scss";
+import Layout from "@/component/layout/Layout"
+import axios from "axios"
+import { IStockData } from "@/interface/stock.interface"
+import { FC, MouseEvent, useState } from "react"
+import Stock from "../home/stocks/Stock"
+import style from "./CreateStocks.module.scss"
 
 const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
   // Состояния для хранения данных формы
-  const [stock, setStocks] = useState(stocksAll); // Состояние для хранения всех новостей
-  const [title, setTitle] = useState(""); // Состояние для хранения заголовка новости
-  const [description, setDescription] = useState(""); // Состояние для хранения описания новости
-  const [image, setImage] = useState<File | null>(null); // Состояние для хранения выбранного изображения
+  const [stock, setStocks] = useState(stocksAll) // Состояние для хранения всех новостей
+  const [title, setTitle] = useState("") // Состояние для хранения заголовка новости
+  const [description, setDescription] = useState("") // Состояние для хранения описания новости
+  const [image, setImage] = useState<File | null>(null) // Состояние для хранения выбранного изображения
 
   // Обработчик события при нажатии на кнопку "создать статью"
   const createStocks = async (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
       // Создание нового объекта FormData
-      const formData = new FormData();
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("image", image as File);
-      
-      const formDataObject = {};
+      const formData = new FormData()
+      formData.append("title", title)
+      formData.append("description", description)
+      formData.append("image", image as File)
+
+      const formDataObject = {}
       for (const [key, value] of formData.entries()) {
-        formDataObject[key] = value;
+        formDataObject[key] = value
       }
-      formData.append("img", `http://localhost:4200/${formDataObject.image.name}`);
+      formData.append("img", `http://localhost:4200/${formDataObject.image.name}`)
 
       // Отправка данных на сервер с помощью axios
-      await axios.post("http://localhost:4200/Stocks/CreateStocks", formData);
+      await axios.post("http://localhost:4200/Stocks/CreateStocks", formData)
 
       // Обновление состояния новостей после успешной отправки
-      setStocks([...stock, { id: stock.length + 1, title, description, img: "" }]);
+      setStocks([...stock, { id: stock.length + 1, title, description, img: "" }])
 
-        setStocks((prev) => {
-          console.log(prev) // Вывод prev в консоль
-          return [formData, ...prev]
-        })
+      setStocks((prev) => {
+        console.log(prev) // Вывод prev в консоль
+        return [formData, ...prev]
+      })
 
-        setTitle("")
-        setDescription("")
-        setImage(`http://localhost:4200/${formDataObject.image.name}`)
+      setTitle("")
+      setDescription("")
+      setImage(`http://localhost:4200/${formDataObject.image.name}`)
       // }
-
-
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-  };
+  }
 
   return (
     <Layout title={"create"}>
       <div>==============================</div>
-
 
       <form>
         <div>
@@ -76,12 +73,7 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       {/* Отображение списка новостей */}
       {stock.length ? stock.map((stock) => <Stock key={stock.id} stock={stock} />) : <div>Stocks Not Found</div>}
     </Layout>
+  )
+}
 
-
-
-
-  );
-};
-
-export default CreateStocks;
-
+export default CreateStocks
