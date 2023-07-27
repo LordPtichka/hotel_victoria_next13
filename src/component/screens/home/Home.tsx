@@ -11,7 +11,6 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
 
       {/* ================================================================== */}
       {/* <header className="header-main"><video src="/static/video/video_promo.mp4" autoplay="" loop=""></video> */}
-      
 
       {/* ================================================================== */}
 
@@ -19,7 +18,7 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
 
       <section>
         <div className={style.title}>Акции</div>
-        {stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} />) : <div>News Not Found</div>}
+        <div className={style.cardStockWrap}>{stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} />) : <div>News Not Found</div>}</div>
       </section>
 
       <section className={`${style.section_number_room} ${style.section}`}>

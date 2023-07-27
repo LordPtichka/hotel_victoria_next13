@@ -1,9 +1,10 @@
-import { FC } from 'react'
+import Link from "next/link"
+import { FC } from "react"
 
 const HeaderVideo: FC = () => {
   return (
     <>
-    <link rel="stylesheet" href="/header.css" />
+      <link rel="stylesheet" href="/header.css" />
       <header className="header-main">
         <video src="/video/video_promo.mp4" loop autoPlay></video>
         <script type="text/javascript" src="travelline/head_script.js" defer></script>
@@ -12,33 +13,40 @@ const HeaderVideo: FC = () => {
           <nav className="nav-line content">
             <ul className="ul-nav">
               <li className="li-nav">
-                <a href="{% url 'home' %}" className="nav-link font-for-link font-color-white">
+                <Link className="nav-link font-for-link font-color-white" href="/">
                   Главная
-                </a>
+                </Link>
               </li>
-              <li className="li-nav">
-                <a href="{% url 'rooms' %}" className="nav-link font-for-link font-color-white">
+              <li>
+                <Link className="nav-link font-for-link font-color-white" href="/">
                   Номера
-                </a>
+                </Link>
               </li>
-              <li className="li-nav">
-                <a href="#contact" className="nav-link font-for-link font-color-white">
+              <li>
+                <Link className="nav-link font-for-link font-color-white" href="/">
                   Контакты
-                </a>
+                </Link>
               </li>
-              <li className="li-nav">
-                <a href="#restaurant" className="nav-link font-for-link font-color-white">
+              <li>
+                <Link className="nav-link font-for-link font-color-white" href="/">
                   Рестораны
-                </a>
+                </Link>
               </li>
-              <li className="li-nav">
-                <a href="#service" className="nav-link font-for-link font-color-white">
+              <li>
+                <Link className="nav-link font-for-link font-color-white" href="/">
                   Услуги
-                </a>
+                </Link>
               </li>
-              <a href="{% url 'booking' %}" className="button btn-for-nav font-for-text font-color-white">
-                Онлайн-бронирование
-              </a>
+              <li>
+                <Link className="nav-link font-for-link font-color-white" href="/News">
+                  Новости
+                </Link>
+              </li>
+              <li>
+                <Link className="button btn-for-nav font-for-text font-color-white" href="/">
+                  Онлайн-бронирование
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
