@@ -6,9 +6,9 @@ const HeaderVideo: FC = () => {
     <>
       <link rel="stylesheet" href="/header.css" />
       <header className="header-main">
-        <video src="/video/video_promo.mp4" loop autoPlay></video>
-        <script type="text/javascript" src="travelline/head_script.js" defer></script>
-        <script type="text/javascript" src="/travelline/search_form.j" defer></script>
+        <video src="/video/video_promo.mp4" loop autoPlay muted playsInline ></video>
+        {/* <script type="text/javascript" src="travelline/head_script.js" defer></script>
+        <script type="text/javascript" src="/travelline/search_form.js" defer></script> */}
         <div className="gradient">
           <nav className="nav-line content">
             <ul className="ul-nav">
@@ -51,9 +51,9 @@ const HeaderVideo: FC = () => {
           </nav>
         </div>
 
-        <section className="booking-block content">
+        {/* <section className="booking-block content">
           <div id="tl-search-form">&nbsp;</div>
-        </section>
+        </section> */}
       </header>
     </>
   )

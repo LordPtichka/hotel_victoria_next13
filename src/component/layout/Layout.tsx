@@ -1,5 +1,8 @@
 import { FC, PropsWithChildren } from "react"
+import { useEffect, useRef } from 'react';
+
 import Header from "./header/Header"
+import { useRouter } from "next/router"
 
 import { IMeta } from "../seo/meta.interface"
 import Meta from "../seo/Meta"
@@ -10,7 +13,6 @@ import localFont from "@next/font/local" // импортим пакет
 import Footer from "./footer/Footer"
 import HeaderVideo from "./headerVideo/HeaderVideo"
 
-import { useRouter } from "next/router"
 
 const myFontFors = localFont({
   src: [
@@ -49,3 +51,62 @@ const Layout: FC<PropsWithChildren<IMeta>> = ({ children, title, description }) 
 }
 
 export default Layout
+
+
+
+// function ScrollTracker() {
+//   const targetRef = useRef(null);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const targetElement = targetRef.current;
+//       if (targetElement) {
+//         const { top } = targetElement.getBoundingClientRect();
+//         if (top <= window.innerHeight && top >= 0) {
+//           console.log('Блок видим');
+//           // Выполните здесь нужные действия при просмотре блока
+//         }
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+//     return () => {
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
+
+
+
+//   const targetRef = useRef(null);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const targetElement = targetRef.current;
+//       if (targetElement) {
+//         const { top } = targetElement.getBoundingClientRect();
+//         if (top <= window.innerHeight && top >= 0) {
+//           console.log('Блок видим');
+//           // Выполните здесь нужные действия при просмотре блока
+//         }
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+//     return () => {
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
+
+
+//   return (
+//     <div>
+//       <h2>Блок 1</h2>
+//       <div ref={targetRef}>
+//         <p>Целевой блок</p>
+//       </div>
+//       <h2>Блок 2</h2>
+//     </div>
+//   );
+// }
+
+// export default ScrollTracker;

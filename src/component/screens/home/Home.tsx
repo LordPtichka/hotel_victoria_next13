@@ -7,19 +7,20 @@ import { IStockData } from "@/interface/stock.interface"
 const Home: FC<IStockData> = ({ stocksAll }) => {
   return (
     <Layout title="Home" description="Home">
-      {/* http://localhost:4200/video/video_promo.mp4 */}
 
-      {/* ================================================================== */}
-      {/* <header className="header-main"><video src="/static/video/video_promo.mp4" autoplay="" loop=""></video> */}
 
-      {/* ================================================================== */}
+      <script type="text/javascript" src="/travelline/head_script.js" defer></script>
+      <script type="text/javascript" src="/travelline/search_form.js" defer></script>
 
-      {/* <Stocks /> */}
+      <section className="booking-block content">
+        <div id="tl-search-form">&nbsp;</div>
+      </section>
 
       <section>
         <div className={style.title}>Акции</div>
-        <div className={style.cardStockWrap}>{stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} />) : <div>News Not Found</div>}</div>
+        <div className={style.cardStockWrap}>{stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} />) : <div></div>}</div>
       </section>
+      
 
       <section className={`${style.section_number_room} ${style.section}`}>
         <div className={style.block_number_room}>
@@ -36,6 +37,7 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
           </div>
         </div>
       </section>
+
 
       <section className={`${style.restaurant} ${style.section}`}>
         <div className={style.left_block}></div>

@@ -2,6 +2,7 @@ export interface IStock {
   id: number
   title: string
   description: string
+  shortDescription: string
   img: string
 }
 
