@@ -13,6 +13,22 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
   const [shortDescription, setShortDescription] = useState("") // Состояние для хранения описания новости
   const [image, setImage] = useState<File | null>(null) // Состояние для хранения выбранного изображения
 
+  const [previewImage, setPreviewImage] = useState(null)
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      // Проверяем, существует ли переменная file
+      const reader = new FileReader() // Создаем новый экземпляр объекта FileReader
+
+      reader.onloadend = () => {
+        // Устанавливаем обработчик события onloadend
+        setPreviewImage(reader.result) // Устанавливаем результат чтения файла в переменную previewImage
+      }
+      reader.readAsDataURL(file) // Читаем содержимое файла и преобразуем его в Data URL
+    }
+  }
+
   // Обработчик события при нажатии на кнопку "создать статью"
   const createStocks = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -23,54 +39,36 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       formData.append("title", title)
       formData.append("description", description)
       formData.append("short_description", shortDescription)
-      formData.append("imagу", image as File)
+      formData.append("image", image as File)
 
       console.log(title, description, shortDescription)
 
       const formDataObject = {}
       for (const [key, value] of formData.entries()) {
         formDataObject[key] = value
-        сщтыщдуюд
       }
-      formData.append("img", `http://localhost:4200/${formDataObject.image.name}`)
+      formData.append("image", `http://localhost:4200/${formDataObject.image.name}`)
 
       // Отправка данных на сервер с помощью axios
-      await axios.post("http://localhost:4200/Stocks/CreateStocks", formData)
+      console.log(formData)
+      await axios.post("http://localhost:4200/Stocks/CreateStocks", formData) // отправка данных
 
       // Обновление состояния новостей после успешной отправки
-      setStocks([...stock, { id: stock.length + 1, title, description, shortDescription, img: "" }])
-
-      setStocks((prev) => {
-        console.log(prev) // Вывод prev в консоль
-        return [formData, ...prev]
-      })
+      setStocks([...stock, { id: stock.length + 1, title, description, shortDescription, image: `http://localhost:4200/${formDataObject.image.name}` }])
 
       setTitle("")
       setDescription("")
-      setImage(`http://localhost:4200/${formDataObject.image.name}`)
+      setShortDescription("")
+      setImage(null)
+      setPreviewImage(null)
       // }
     } catch (error) {
       console.error(error)
     }
   }
-  
+
   // ===========================================
   // ===========================================
-
- 
-  // const [previewImage, setPreviewImage] = useState(null);
-
-  // const handleImageChange = (event) => {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       setPreviewImage(reader.result);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
-  
 
   return (
     <Layout title={"create"}>
@@ -79,9 +77,16 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       <form>
         <div>
           <div className={style.offer}>
-            <div className={style.img_for_offer} style={{ backgroundImage: `url()` }}>
-              {/* ${previewImage} */}
-              <input type="file" placeholder="title" accept="image/*"  onChange={(e) => setImage(e.target.files?.[0])} />
+            <div className={style.img_for_offer} style={{ backgroundImage: `url(${previewImage})` }}>
+              <input
+                type="file"
+                placeholder="title"
+                accept="image/*"
+                onChange={(e) => {
+                  setImage(e.target.files?.[0])
+                  handleImageChange(e)
+                }}
+              />
             </div>
             <div className={style.title_offer}>
               <input className={`${style.input} ${style.title_offer}`} placeholder="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -97,10 +102,6 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
         <button onClick={createStocks}>создать статью</button>
       </form>
       <div>==============================</div>
-
-      <div>
-        {/* <input type="file" onChange={handleImageChange} /> */}
-      </div>
 
       {/* Отображение списка скидок */}
       {stock.length ? stock.map((stock) => <Stock key={stock.id} stock={stock} />) : <div>Stocks Not Found</div>}

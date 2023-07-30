@@ -17,17 +17,25 @@
     background-size: cover;
     background-position: center;
   }
-  .title_offer {
-    padding: 10px 15px;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 28px;
-  }
-  .font_for_text {
-    font-weight: 300;
-    padding: 0 15px;
-    font-weight: 300;
-    font-size: 13px;
-    line-height: 18px;
+
+  .info_block {
+    padding: 15px;
+    height: 180px;
+    .title_offer {
+      height: 44px;
+
+      font-family: Ramillas;
+      font-size: 16px;
+      // font-style: normal;
+      font-weight: 300;
+      // line-height: normal;
+    }
+    .font_for_text {
+      margin-top: 10px;
+      font-family: Fors;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 300;
+    }
   }
 }

@@ -1,9 +1,12 @@
 // =============================
 .title {
-  margin: 7% 0;
-  font-size: 39px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-family: Ramillas;
+  font-size: 48px;
+  // font-style: normal;
   font-weight: 500;
-  text-transform: uppercase;
+  // line-height: normal;
 }
 
 .btn {
@@ -26,7 +29,6 @@
 }
 
 .section {
-  padding: 7% 0;
   border-top: 1px solid rgba(89, 89, 89, 0.2);
   // display: flex;
 }
@@ -36,12 +38,17 @@
   width: 100%;
 }
 // =============================
+.sectionStock {
+  margin: 50px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+// =============================
 .section_number_room {
   height: 700px;
 
   margin: 25px 0;
   display: flex;
-  justify-content:  flex-end;
+  justify-content: flex-end;
   align-items: center;
   border-radius: 20px;
   background: url(http://localhost:4200/room-dlx.webp);
@@ -95,7 +102,7 @@
   border-top: 1px solid #59595933;
 
   .left_block {
-    width: 600px;
+    width: 510px;
     height: 400px;
     margin-right: 20px;
     border-radius: 20px;
@@ -106,8 +113,19 @@
 
   .right_block {
     margin: auto;
-    max-width: 410px;
+    max-width: 505px;
     max-height: 400px;
+
+    .info_block {
+      margin: 50px auto;
+      color: #262626;
+      text-align: justify;
+      font-family: Fors;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
 
     .wrap_block {
       margin-top: 5%;
@@ -115,17 +133,36 @@
       justify-content: space-between;
     }
 
+    .time_block {
+      margin-top: 10px;
+      color: #000;
+      font-family: Fors;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
+
     .restaurant_title {
-      margin: 7% 0;
-      font-size: 39px;
+      color: #262626;
+      font-family: TT Ramillas Trl;
+      font-size: 48px;
       font-weight: 500;
       text-transform: uppercase;
       display: flex;
-      gap: 10px;
 
       .mark_color {
+        margin-left: 12px;
         color: #b06101;
       }
+    }
+    .btn {
+      color: #262626;
+      font-family: Fors;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
     }
   }
 }
@@ -133,37 +170,67 @@
 .service {
   .title_block {
     margin: 7% 0;
-    font-size: 39px;
+    color: #262626;
+    font-family: Ramillas;
+    font-size: 48px;
+    font-style: normal;
     font-weight: 500;
+    line-height: normal;
     text-transform: uppercase;
   }
 
   .service_wrap {
     display: grid;
-    grid-auto-rows: 320px;
-    grid-template-columns: repeat(2, 500px);
+    // grid-auto-rows: 320px;
+    grid-template-columns: repeat(2, 510px);
     justify-content: space-between;
-    row-gap: 30px;
+    row-gap: 40px;
 
-    .service_block_one {
+    .service_block {
+      // margin-bottom: 40px;
       .block_img {
         width: 100%;
         padding: 100px 0;
         border-radius: 20px;
-        background: url(http://localhost:4200/service/spa_service.webp);
         background-color: #cfcfcf;
         background-size: cover;
         background-position: center;
       }
+      .bathhouse {
+        background-image: url(http://localhost:4200/service/spa_service.webp);
+      }
+      .fitnes {
+        background-image: url(http://localhost:4200/service/fitness_service.webp);
+      }
+      .conference {
+        background-image: url(http://localhost:4200/service/conference_service.webp);
+      }
+      .transfer {
+        background-image: url(http://localhost:4200/service/transfer-service.webp);
+      }
+
       .block_service_info {
-        font-family: "Fors", sans-serif;
+        color: #000;
+        font-family: Fors;
+        font-size: 13px;
         font-weight: 300;
+
+        .btn {
+          margin-left: 25px;
+          width: 155px;
+          color: #262626;
+          font-family: Fors;
+          font-size: 16px;
+          font-weight: 300;
+        }
       }
       .service_title {
-        font-family: "Ramillas", sans-serif;
-        letter-spacing: 0.03em;
-        line-height: 28px;
-        margin: 20px 0px 5px 0;
+        margin: 20px auto 5px;
+        color: #000;
+        font-family: Ramillas;
+        font-size: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
       }
       .block_info {
         display: flex;
@@ -174,5 +241,46 @@
         }
       }
     }
+  }
+}
+
+.contact {
+  border-top: 1px solid #59595933;
+
+  .title {
+    margin-top: 50px;
+    color: #262626;
+    font-family: Ramillas;
+    font-size: 48px;
+    font-weight: 500;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+  }
+  .info_block {
+    margin: 60px auto;
+  }
+  .text {
+    color: #262626;
+    font-family: Fors;
+    font-size: 16px;
+    font-weight: 300;
+  }
+  .block_email {
+    margin: 60px auto;
+  }
+  .email {
+    color: #b06101;
+    font-family: Fors;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+  .btn {
+    width: 250px;
+    color: #262626;
+    font-family: Fors;
+    font-size: 16px;
+    font-weight: 300;
   }
 }

@@ -43,7 +43,7 @@
 
 .nav-link {
   font-size: 16px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .nav-link:hover {
@@ -73,15 +73,15 @@
 }
 
 /* reservation-ru.html */
-#tl-booking-form{
+#tl-booking-form {
   width: 100%;
-  max-width:1440px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
 #tl-anchor {
-  font: 16px 'Open Sans', sans-serif;
-  color: #272E38;
+  font: 16px "Open Sans", sans-serif;
+  color: #272e38;
   line-height: 24px;
   margin: 0 auto;
   max-width: 1440px;
@@ -89,16 +89,17 @@
 /* reservation-ru.html */
 
 /* search_forms.html */
-#block-search, #block-search * {
+#block-search,
+#block-search * {
   box-sizing: border-box;
 }
 #block-search {
- background: #FFFFFF;
- border-radius: 20px;
+  background: #ffffff;
+  border-radius: 20px;
 }
 
 .tl-container {
- padding: 0 30px;
+  padding: 0 30px;
 }
 
 #tl-search-form {

@@ -12,9 +12,12 @@ const Stock: FC<IStockDataSingle> = ({ stock }) => {
 
   return (
     <div className={style.offer}>
-      <div className={style.img_for_offer} style={{ backgroundImage: `url(${stock.img})` }}></div>
-      <div className={style.title_offer}>{stock.title}</div>
-      <div className={style.font_for_text}>{stock.description}</div>
+      <div className={style.img_for_offer} style={{ backgroundImage: `url(${stock.image})` }}></div>
+
+      <div className={style.info_block}>
+        <div className={style.title_offer}>{stock.title}</div>
+        <div className={style.font_for_text}>{stock.description}</div>
+      </div>
 
       <button onClick={() => handleClick(stock.id)}>удалить акцию</button>
     </div>
