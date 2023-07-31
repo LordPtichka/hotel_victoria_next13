@@ -88,14 +88,16 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
                 }}
               />
             </div>
-            <div className={style.title_offer}>
-              <input className={`${style.input} ${style.title_offer}`} placeholder="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-            </div>
-            <div className={style.font_for_text}>
-              <textarea className={style.input} placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-            </div>
-            <div className={style.font_for_text}>
-              <textarea className={style.input} placeholder="shortDescription" value={shortDescription} onChange={(e) => setShortDescription(e.target.value)} />
+            <div className={style.info_block}>
+              <div className={style.title_offer}>
+                <input className={`${style.input} ${style.title_offer}`} placeholder="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+              </div>
+              <div className={style.font_for_text}>
+                <textarea className={style.input} placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+              </div>
+              <div className={style.font_for_text}>
+                <textarea className={style.input} placeholder="shortDescription" value={shortDescription} onChange={(e) => setShortDescription(e.target.value)} />
+              </div>
             </div>
           </div>
         </div>

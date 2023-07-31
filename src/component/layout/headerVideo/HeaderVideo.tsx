@@ -9,7 +9,7 @@ const HeaderVideo: FC = () => {
     <>
       <link rel="stylesheet" href="/header.css" />
       <header className="header-main">
-        <video src="/video/video_promo.mp4" loop muted playsInline></video>
+        <video src="/video/video_promo.mp4" loop muted playsInline autoPlay ></video>
         {/* autoPlay */}
         {/* <script type="text/javascript" src="travelline/head_script.js" defer></script>
         <script type="text/javascript" src="/travelline/search_form.js" defer></script> */}
@@ -57,7 +57,7 @@ const HeaderVideo: FC = () => {
                 </Link>
               </li>
               <li className="li-nav">
-                <Link className="button btn-for-nav font-for-text font-color-white" href="/">
+                <Link className="button btn-for-nav font-for-text font-color-white" href="/Booking">
                   Онлайн-бронирование
                 </Link>
               </li>

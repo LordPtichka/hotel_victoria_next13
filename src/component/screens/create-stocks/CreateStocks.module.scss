@@ -17,18 +17,24 @@
     background-size: cover;
     background-position: center;
   }
-  .title_offer {
-    padding: 10px 15px;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 28px;
-  }
-  .font_for_text {
-    font-weight: 300;
-    padding: 0 15px;
-    font-weight: 300;
-    font-size: 13px;
-    line-height: 18px;
+
+  .info_block {
+    padding: 15px;
+    height: 180px;
+    .title_offer {
+      text-transform: uppercase;
+      height: 44px;
+      font-family: Ramillas;
+      font-size: 16px;
+      font-weight: 300;
+    }
+    .font_for_text {
+      margin-top: 10px;
+      font-family: Fors;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 300;
+    }
   }
 }
 
@@ -43,5 +49,47 @@
   &:focus-visible {
     outline: none;
     // border-bottom: 2px solid #B06101;
+  }
+}
+
+
+
+
+.offer {
+  margin: 0 20px;
+  height: 400px;
+  width: 29%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #f8f8f8;
+  color: #000000;
+  cursor: pointer;
+  transition: 400ms;
+
+  .img_for_offer {
+    // background-image: url(http://localhost:4200/gastro-dinner.webp);
+    height: 220px;
+    background-color: #5e5b5b;
+    border-radius: 20px 20px 0 0;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .info_block {
+    padding: 15px;
+    height: 180px;
+    .title_offer {
+      height: 44px;
+      font-family: Ramillas;
+      font-size: 16px;
+      font-weight: 300;
+    }
+    .font_for_text {
+      margin-top: 10px;
+      font-family: Fors;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 300;
+    }
   }
 }
