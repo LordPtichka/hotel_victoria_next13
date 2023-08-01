@@ -53,7 +53,7 @@ const Footer: FC = () => {
 
         <div className={style.footer_nav_block}>
           <div className={`${style.footer_link} ${style.footer_nav_title}`}> </div>
-          <div className={style.footer_link_block}>
+          <div className={`${style.footer_link_block}`}>
             <Link href={"/"} className={style.footer_link}>
               <Image src={VkLogo} alt="Vk"/>
             </Link>
@@ -70,9 +70,9 @@ const Footer: FC = () => {
       </section>
 
       <section className={style.footer_two}>
-        <div>© Victoria business hotel 2009 - 2023</div>
+        <div className={style.w_40}>© Victoria business hotel 2009 - 2023</div>
         <Image className="logo_svg" src="../logo_in_footer.svg" alt="" width={80} height={75}/>
-        <div>Правовая информация</div>
+        <div className={`${style.w_40} ${style.text_end}`}>Правовая информация</div>
       
       </section>
     </footer>
