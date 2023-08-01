@@ -7,6 +7,7 @@
     justify-content: space-between;
     border-top: 1px solid #59595933;
     padding-top: 50px;
+    margin-bottom: 50px;
 
     .footer_link_block {
       font-family: "Ramillas", sans-serif;
@@ -45,6 +46,13 @@
 
     .logo_svg {
       user-select: none;
+    }
+
+    .w_40 {
+      width: 40%;
+    }
+    .text_end {
+      text-align: end;
     }
   }
 }
