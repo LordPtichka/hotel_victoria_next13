@@ -42,59 +42,7 @@
   margin: 50px 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
-// =============================
-.section_number_room {
-  height: 700px;
 
-  margin: 25px 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  border-radius: 20px;
-  background: url(http://localhost:4200/room-dlx.webp);
-  background-size: cover;
-  background-position: center;
-
-  .block_number_room {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    margin: auto 100px;
-    padding: 40px;
-    width: 400px;
-    height: 600px;
-    border-radius: 20px;
-    background: #fff;
-
-    .number_room_title {
-      margin: 7% 0;
-      font-size: 39px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      line-height: 28px;
-    }
-
-    .number_room_text {
-      text-align: justify;
-      font-weight: 300;
-      font-size: 13px;
-      line-height: 18px;
-      padding: 3% 0;
-    }
-
-    .wrap_btn {
-      display: flex;
-      flex-direction: column;
-
-      .btn {
-        padding: 15px 20px;
-      }
-    }
-  }
-}
-
-// ===================
 .restaurant {
   display: flex;
   padding: 7% 0;

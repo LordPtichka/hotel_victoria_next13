@@ -9,7 +9,7 @@ const HeaderVideo: FC = () => {
     <>
       <link rel="stylesheet" href="/header.css" />
       <header className="header-main">
-        <video src="/video/video_promo.mp4" loop muted playsInline autoPlay ></video>
+        <video src="/video/video_promo.mp4" loop muted playsInline></video>
         {/* autoPlay */}
         {/* <script type="text/javascript" src="travelline/head_script.js" defer></script>
         <script type="text/javascript" src="/travelline/search_form.js" defer></script> */}

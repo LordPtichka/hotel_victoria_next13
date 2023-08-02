@@ -3,6 +3,7 @@ import Layout from "../../layout/Layout"
 import style from "./Home.module.scss"
 import Stocks from "./stocks/Stock"
 import { IStockData } from "@/interface/stock.interface"
+import Rooms from "./rooms/Rooms"
 
 const Home: FC<IStockData> = ({ stocksAll }) => {
   return (
@@ -19,21 +20,7 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
         <div className={style.cardStockWrap}>{stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} />) : <div></div>}</div>
       </section>
 
-      <section className={`${style.section_number_room} ${style.section}`}>
-        <div className={style.block_number_room}>
-          <div>
-            <div className={style.number_room_title}>НОМЕРА</div>
-            <div className={style.number_room_text}>
-              К Вашему выбору Отель предлагает 63 просторных номеров, разных категорий. Звездное украшение коллекции Отеля - номера с лучшими террасами Петербурга, откуда открывается великолепный вид
-              на панораму исторического центра города и Невский проспект.
-            </div>
-          </div>
-          <div className={style.wrap_btn}>
-            <button className={style.btn}>Все номера</button>
-            <button className={style.btn}>Забронировать</button>
-          </div>
-        </div>
-      </section>
+      <Rooms />
 
       <section className={`${style.restaurant} ${style.section}`}>
         <div className={style.left_block}></div>
