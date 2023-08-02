@@ -14,3 +14,4 @@ const Meta: FC<PropsWithChildren<IMeta>> = ({ title, description, children }) =>
 }
 
 export default Meta
+
