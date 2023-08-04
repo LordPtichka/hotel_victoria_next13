@@ -33,12 +33,13 @@
   // display: flex;
 }
 .cardStockWrap {
+  width: 2000px;
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+  background-color: #0056b3;
 }
 // =============================
 .sectionStock {
+  overflow: hidden;
   margin: 50px 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -256,7 +257,7 @@
 
 .slider {
   display: flex;
-  flex-wrap: hidden;
+  overflow: hidden;
 }
 
 .button {

@@ -5,72 +5,43 @@ import Stocks from "./stocks/Stock"
 import { IStockData } from "@/interface/stock.interface"
 import Rooms from "./rooms/Rooms"
 
+import { useEffect, useRef } from 'react'
+import { transform } from "typescript"
+
 const Home: FC<IStockData> = ({ stocksAll }) => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  let transformValue = 0;
 
   const handlePrevSlide = () => {
-    setCurrentSlide((prevSlide) => prevSlide - 1);
+    // setCurrentSlide((prevSlide) => prevSlide - 1);
+    return transformValue -= 340;
   };
 
   const handleNextSlide = () => {
     setCurrentSlide((prevSlide) => prevSlide + 1);
+    // transformValue = '-396px';
   };
 
-  const products = [
-    {
-      id: 1,
-      title: 'Product 1',
-      description: 'This is the description of product 1',
-    },
-    {
-      id: 2,
-      title: 'Product 2',
-      description: 'This is the description of product 2',
-    },
-    {
-      id: 3,
-      title: 'Product 3',
-      description: 'This is the description of product 3',
-    },
-    {
-      id: 4,
-      title: 'Product 4',
-      description: 'This is the description of product 4',
-    },
-    {
-      id: 5,
-      title: 'Product 5',
-      description: 'This is the description of product 5',
-    },
-    {
-      id: 6,
-      title: 'Product 6',
-      description: 'This is the description of product 6',
-    },
-    {
-      id: 7,
-      title: 'Product 7',
-      description: 'This is the description of product 7',
-    },
-    {
-      id: 8,
-      title: 'Product 8',
-      description: 'This is the description of product 8',
-    },
-    {
-      id: 9,
-      title: 'Product 9',
-      description: 'This is the description of product 9',
-    },
-    // Add more products here
-  ];
+  //================================================
+  //================================================
+  const [width, setWidth] = useState(0);
+  const ref = useRef(null);
 
-  const startIndex = currentSlide * 3;
-  const visibleProducts = products.slice(startIndex, startIndex + 3);
-
-
-
+  useEffect(() => {
+    const handleResize = () => {
+      if (ref.current) { //  Эта строка проверяет, существует ли ссылка на элемент DOM
+        setWidth(ref.current.offsetWidth) // получение ширины объекта
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize) // будет вызываться каждый раз, когда происходит изменение размера окна браузера.
+    return () => window.removeEventListener('resize', handleResize);
+    
+  }, []);
+ 
+  //================================================
+  //================================================
 
   return (
     <Layout title="Home" description="Home">
@@ -85,23 +56,21 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
 
       <div>
         <button className={style.button} onClick={handlePrevSlide}>Previous</button>
-        <div className={style.slider}>
-          {visibleProducts.map((product) => (
-            <div className={style.card} key={product.id}>
-              <h2>{product.title}</h2>
-              <p>{product.description}</p>
-            </div>
-          ))}
-        </div>
+        
         <button className={style.button} onClick={handleNextSlide}>Next</button>
       </div>
+
+      <div >
+        The width of the object is: {width}px
+      </div>
+      {/* =========================== */}
 
 
 
 
       <section className={style.sectionStock}>
         <div className={style.title}>Акции</div>
-        <div className={style.cardStockWrap}>{stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} />) : <div></div>}</div>
+        <div className={style.cardStockWrap} style={{ transform: `translateX(${transformValue})` }}>{stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} />) : <div></div>}</div>
       </section>
 
       <Rooms />
