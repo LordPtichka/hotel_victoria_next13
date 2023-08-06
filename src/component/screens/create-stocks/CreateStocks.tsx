@@ -29,6 +29,14 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
     }
   }
 
+  // const handleKeyDown = (e) => {
+  //   if (e.key === "Enter") {
+  //     e.preventDefault()
+  //     console.log("==")
+  //     setDescription((description) => description + "<br />")
+  //   }
+  // }
+
   // Обработчик события при нажатии на кнопку "создать статью"
   const createStocks = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -37,11 +45,12 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       // Создание нового объекта FormData
       const formData = new FormData()
       formData.append("title", title)
-      formData.append("description", description)
+      formData.append("description", description.replace(/\n/g, "<br />"))
+      console.log(formData.description)
       formData.append("short_description", shortDescription)
       formData.append("image", image as File)
 
-      console.log(title, description, shortDescription)
+      // console.log(title, description, shortDescription)
 
       const formDataObject = {}
       for (const [key, value] of formData.entries()) {
@@ -50,7 +59,6 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       formData.append("image", `http://localhost:4200/${formDataObject.image.name}`)
 
       // Отправка данных на сервер с помощью axios
-      console.log(formData)
       await axios.post("http://localhost:4200/Stocks/CreateStocks", formData) // отправка данных
 
       // Обновление состояния новостей после успешной отправки
@@ -74,9 +82,25 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
     <Layout title={"create"}>
       <div>==============================</div>
 
-      <form>
-        <div>
+      <form className={style.form}>
+        <div className={style.card_create_wrap}>
           <div className={style.offer}>
+            <div className={style.img_for_offer} style={{ backgroundImage: `url(${previewImage})` }}></div>
+            <div className={style.info_block}>
+              <div className={style.title_offer}>
+                {/* <textarea className={`${style.input} ${style.title_offer}`} placeholder="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} /> */}
+                <div className={`${style.input} ${style.title_offer}`}> {title}</div>
+              </div>
+              <div className={style.font_for_text}>
+                {/* <textarea className={style.input} placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} /> */}
+                <div className={`${style.input} ${style.text}`}> {description} </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ============================== */}
+          {/* <div className={style.full_card}> */}
+          <div className={`${style.offer} ${style.full_card}`}>
             <div className={style.img_for_offer} style={{ backgroundImage: `url(${previewImage})` }}>
               <input
                 type="file"
@@ -88,25 +112,35 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
                 }}
               />
             </div>
+
             <div className={style.info_block}>
               <div className={style.title_offer}>
-                <input className={`${style.input} ${style.title_offer}`} placeholder="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                <textarea className={`${style.input} ${style.title_offer}`} placeholder="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
               </div>
               <div className={style.font_for_text}>
-                <textarea className={style.input} placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                <textarea
+                  className={style.input}
+                  placeholder="description"
+                  value={description}
+                  // onKeyDown={handleKeyDown}
+                  onChange={(e) => {
+                    setDescription(e.target.value)
+                  }}
+                />
               </div>
-              <div className={style.font_for_text}>
+              {/* <div className={style.font_for_text}>
                 <textarea className={style.input} placeholder="shortDescription" value={shortDescription} onChange={(e) => setShortDescription(e.target.value)} />
-              </div>
+              </div> */}
             </div>
           </div>
+          {/* </div> */}
         </div>
         <button onClick={createStocks}>создать статью</button>
       </form>
       <div>==============================</div>
 
       {/* Отображение списка скидок */}
-      {stock.length ? stock.map((stock) => <Stock key={stock.id} stock={stock} />) : <div>Stocks Not Found</div>}
+      <div className={style.card_wrap}>{stock.length ? stock.map((stock) => <Stock key={stock.id} stock={stock} />) : <div>Stocks Not Found</div>}</div>
     </Layout>
   )
 }
