@@ -149,6 +149,7 @@
 }
 
 .service {
+  margin-bottom: 50px;
   .title_block {
     margin: 7% 0;
     color: #262626;
@@ -218,7 +219,19 @@
         justify-content: space-between;
         align-items: center;
         .service_info {
+          max-width: 326px;
+          color: #262626;
+          font-family: Fors;
+          font-size: 13px;
+          font-weight: 300;
+          height: 54px;
           margin-right: 10px;
+
+          display: -webkit-box; /* Установка типа отображения блока */
+          -webkit-box-orient: vertical; /* Установка вертикальной ориентации блока */
+          overflow: hidden; /* Скрытие любого текста, выходящего за пределы контейнера */
+          text-overflow: ellipsis; /* Добавление многоточия для обозначения скрытого текста */
+          -webkit-line-clamp: 3; /* Ограничение количества видимых строк */
         }
       }
     }
