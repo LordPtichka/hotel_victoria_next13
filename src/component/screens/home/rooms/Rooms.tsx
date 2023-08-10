@@ -5,7 +5,7 @@ const Rooms: FC = () => {
   return (
     <section className={`${style.section_number_room} ${style.section}`}>
       <div className={style.block_left}>
-        <div className={style.info_block}>
+        {/* <div className={style.info_block}> */}
           <div className={style.number_room_title}>НОМЕРА</div>
           <div className={style.number_room_text}>
             К Вашему выбору Отель предлагает 63 просторных номеров, разных категорий. Звездное украшение коллекции Отеля - номера с лучшими террасами Петербурга, откуда открывается великолепный вид на
@@ -15,7 +15,7 @@ const Rooms: FC = () => {
             <button className={style.btn}>Все номера</button>
             <button className={style.btn}>Забронировать</button>
           </div>
-        </div>
+        {/* </div> */}
       </div>
 
       <div className={style.block_right}>

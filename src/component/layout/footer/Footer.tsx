@@ -11,56 +11,60 @@ const Footer: FC = () => {
     <footer className={style.footer} > 
       <section className={style.footer_top}>
 
-        <div className={style.footer_nav_block}>
-          <div className={`${style.footer_link} ${style.footer_nav_title}`}>ОТЕЛЬ</div>
-          <div className={style.footer_link_block}>
-            <Link href={"/"} className={style.footer_link}>Номера</Link>
-            <Link href={"/"} className={style.footer_link}>Банный комплекс</Link>
-            <Link href={"/"} className={style.footer_link}>Бронирование</Link>
+        <div className={style.link_block}>
+
+          <div className={style.footer_nav_block}>
+            <div className={`${style.footer_link} ${style.footer_nav_title}`}>ОТЕЛЬ</div>
+            <div className={style.footer_link_block}>
+              <Link href={"/"} className={style.footer_link}>Номера</Link>
+              <Link href={"/"} className={style.footer_link}>Банный комплекс</Link>
+              <Link href={"/"} className={style.footer_link}>Бронирование</Link>
+            </div>
+          </div>
+
+          <div className={style.footer_nav_block}>
+            <div className={`${style.footer_link} ${style.footer_nav_title}`}>Номера</div>
+            <div className={style.footer_link_block}>
+              <Link href={"/"} className={style.footer_link}>Стандарт</Link>
+              <Link href={"/"} className={style.footer_link}>Полулюкс</Link>
+              <Link href={"/"} className={style.footer_link}>Люкс</Link>
+              <Link href={"/"} className={style.footer_link}>Пред. люкс</Link>
+              <Link href={"/"} className={style.footer_link}>Делюкс</Link>
+              <Link href={"/"} className={style.footer_link}>Аппартаменты</Link>
+            </div>
+          </div>
+
+          <div className={style.footer_nav_block}>
+            <div className={`${style.footer_link} ${style.footer_nav_title}`}>РЕСТОРАНЫ</div>
+            <div className={style.footer_link_block}>
+              <Link href={"/"} className={style.footer_link}>Ресторан Вкус</Link>
+              <Link href={"/"} className={style.footer_link}>Ресторан Монрэпа</Link>
+            </div>
+          </div>
+
+          <div className={style.footer_nav_block}>
+            <div className={`${style.footer_link} ${style.footer_nav_title}`}>Дополнительно</div>
+            <div className={style.footer_link_block}>
+              <Link href={"/"} className={style.footer_link}>info@ibc-victoria.com</Link>
+              <Link href={"/"} className={style.footer_link}>г. Выборг, наб. 40-летия ВЛКСМ, д.1</Link>
+              <Link href={"/"} className={style.footer_link}>8 (800) 500-51-74</Link>
+              <Link href={"/"} className={style.footer_link}>8 (800) 100-51-66</Link>
+            </div>
           </div>
         </div>
 
-        <div className={style.footer_nav_block}>
-          <div className={`${style.footer_link} ${style.footer_nav_title}`}>Номера</div>
-          <div className={style.footer_link_block}>
-            <Link href={"/"} className={style.footer_link}>Стандарт</Link>
-            <Link href={"/"} className={style.footer_link}>Полулюкс</Link>
-            <Link href={"/"} className={style.footer_link}>Люкс</Link>
-            <Link href={"/"} className={style.footer_link}>Пред. люкс</Link>
-            <Link href={"/"} className={style.footer_link}>Делюкс</Link>
-            <Link href={"/"} className={style.footer_link}>Аппартаменты</Link>
-          </div>
-        </div>
-
-        <div className={style.footer_nav_block}>
-          <div className={`${style.footer_link} ${style.footer_nav_title}`}>РЕСТОРАНЫ</div>
-          <div className={style.footer_link_block}>
-            <Link href={"/"} className={style.footer_link}>Ресторан Вкус</Link>
-            <Link href={"/"} className={style.footer_link}>Ресторан Монрэпа</Link>
-          </div>
-        </div>
-
-        <div className={style.footer_nav_block}>
-          <div className={`${style.footer_link} ${style.footer_nav_title}`}>Дополнительно</div>
-          <div className={style.footer_link_block}>
-            <Link href={"/"} className={style.footer_link}>reservation@ibc-victoria.com</Link>
-            <Link href={"/"} className={style.footer_link}>г. Выборг, наб. 40-летия ВЛКСМ, д.1</Link>
-            <Link href={"/"} className={style.footer_link}>8 (800) 500-51-74</Link>
-            <Link href={"/"} className={style.footer_link}>8 (800) 100-51-66</Link>
-          </div>
-        </div>
         
 
         <div className={style.footer_nav_block}>
           <div className={`${style.footer_link} ${style.footer_nav_title}`}> </div>
           <div className={`${style.footer_link_block}`}>
-            <Link href={"/"} className={style.footer_link}>
+            <Link href={"/"} className={`${style.footer_link} ${style.footer_icon}`}>
               <Image src={VkLogo} alt="Vk"/>
             </Link>
-            <Link href={"/"} className={style.footer_link}>
+            <Link href={"/"} className={`${style.footer_link} ${style.footer_icon}`}>
               <Image src={TelegramLogo} alt="Telegram"/>
             </Link>
-            <Link href={"/"} className={style.footer_link}>
+            <Link href={"/"} className={`${style.footer_link} ${style.footer_icon}`}>
               <Image src={WhatsappLogo} alt="Whatsapp"/>
             </Link>
 

@@ -1,8 +1,53 @@
-.nav_video {
-  color: #fff;
+.nav {
+  display: flex;
+  width: 1050px;
+  padding: 15px 0px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ul_nav {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.nav_link {
   text-align: center;
-  font-family: Fors;
   font-size: 16px;
-  font-weight: 300;
+  line-height: normal;
   letter-spacing: 0.8px;
 }
+
+.nav_link:hover {
+  color: #b06101;
+}
+
+.BTN_boking {
+  padding: 8px 20px;
+
+  border: 1px solid #b06101;
+  border-radius: 20px;
+}
+
+.title {
+  text-align: center;
+
+  font-size: 48px;
+  font-family: "Ramillas", sans-serif;;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 2.4px;
+
+  text-transform: uppercase;
+}
+
+.first_title {
+  color: #D27604;
+}
+
+.second_title {
+  color: #fff;
+}
+

@@ -14,55 +14,55 @@ const HeaderVideo: FC = () => {
         {/* <script type="text/javascript" src="travelline/head_script.js" defer></script>
         <script type="text/javascript" src="/travelline/search_form.js" defer></script> */}
         <div className="gradient">
-          <nav className="nav-line content">
-            <ul className="ul-nav">
-              <li className="li-nav">
-                <Image
-                  src={VictoriaLogo}
-                  alt="Picture of the author"
-                  // width={500} automatically provided
-                  // height={500} automatically provided
-                  // blurDataURL="data:..." automatically provided
-                  // placeholder="blur" // Optional blur-up while loading
-                />
-              </li>
-              <li className="li-nav">
-                <Link className={`nav-link font-for-link font-color-white ${style.nav_video}`} href="/">
+          <nav className={`content ${style.nav}`}>
+            <div>
+              <Image
+                src={VictoriaLogo}
+                alt="Picture of the author"
+              />
+            </div>
+            <ul className={`${style.ul_nav}`}>
+              <li>
+                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/">
                   Главная
                 </Link>
               </li>
-              <li className="li-nav">
-                <Link className={`nav-link font-for-link font-color-white ${style.nav_video}`} href="/">
+              <li>
+                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/">
                   Номера
                 </Link>
               </li>
-              <li className="li-nav">
-                <Link className={`nav-link font-for-link font-color-white ${style.nav_video}`} href="/">
+              <li>
+                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/">
                   Контакты
                 </Link>
               </li>
-              <li className="li-nav">
-                <Link className={`nav-link font-for-link font-color-white ${style.nav_video}`} href="/">
+              <li>
+                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/">
                   Рестораны
                 </Link>
               </li>
-              <li className="li-nav">
-                <Link className={`nav-link font-for-link font-color-white ${style.nav_video}`} href="/">
+              <li>
+                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/">
                   Услуги
                 </Link>
               </li>
-              <li className="li-nav">
-                <Link className={`nav-link font-for-link font-color-white ${style.nav_video}`} href="/News">
+              <li>
+                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/News">
                   Новости
                 </Link>
               </li>
-              <li className="li-nav">
-                <Link className="button btn-for-nav font-for-text font-color-white" href="/Booking">
+            </ul>
+            <div>
+                <Link className={`button font-for-text font-color-white ${style.BTN_boking}`} href="/Booking">
                   Онлайн-бронирование
                 </Link>
-              </li>
-            </ul>
+            </div>
           </nav>
+
+          <div className={style.title}>
+            <span className={style.first_title}> Victoria </span><span className={`font-color-white ${style.second_title}`}>- Будь в центре <br/> истории и комфорта</span>
+          </div>
         </div>
 
         {/* <section className="booking-block content">

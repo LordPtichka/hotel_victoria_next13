@@ -164,6 +164,12 @@ legend {
   font-weight: 300;
   font-style: normal;
 }
+@font-face {
+  font-family: "Fors";
+  src: url("/fonts/Fors/TT Fors Trial Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
 /* ================== */
 @font-face {
   font-family: "Ramillas";

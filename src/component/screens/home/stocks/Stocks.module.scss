@@ -10,6 +10,11 @@
   cursor: pointer;
   transition: 400ms;
 
+  &:hover {
+    transform: scale(105%);
+    z-index: 2;
+  }
+
   .img_for_offer {
     // background-image: url(http://localhost:4200/gastro-dinner.webp);
     height: 220px;
