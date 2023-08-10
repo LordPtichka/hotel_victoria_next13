@@ -50,6 +50,15 @@
   font-weight: 300;
 }
 
+.font-for-button {
+  font-family: "Fors", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+
+  transition: 0.3s;
+}
+
 .font-color-black {
   color: #262626;
 }

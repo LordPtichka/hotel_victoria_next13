@@ -30,7 +30,18 @@
   border-radius: 20px;
 }
 
+.middle {
+  margin: auto;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .title {
+  margin-bottom: 50px;
+
   text-align: center;
 
   font-size: 48px;
@@ -43,11 +54,22 @@
   text-transform: uppercase;
 }
 
-.first_title {
-  color: #D27604;
+.button_booking {
+  padding: 5px 50px;
+
+  font-family: "Fors", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+
+  border-radius: 20px;
+  border: 2px solid #B06101;
+
+  transition: 0.3s;
 }
 
-.second_title {
-  color: #fff;
+.button_booking:hover {
+
+  background-color: #B06101;
 }
 

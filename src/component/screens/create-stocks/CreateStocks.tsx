@@ -56,13 +56,13 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       for (const [key, value] of formData.entries()) {
         formDataObject[key] = value
       }
-      formData.append("image", `http://localhost:4200/${formDataObject.image.name}`)
+      formData.append("image", `http://192.168.10.26:4200/${formDataObject.image.name}`)
 
       // Отправка данных на сервер с помощью axios
-      await axios.post("http://localhost:4200/Stocks/CreateStocks", formData) // отправка данных
+      await axios.post("http://192.168.10.26:4200/Stocks/CreateStocks", formData) // отправка данных
 
       // Обновление состояния новостей после успешной отправки
-      setStocks([...stock, { id: stock.length + 1, title, description, shortDescription, image: `http://localhost:4200/${formDataObject.image.name}` }])
+      setStocks([...stock, { id: stock.length + 1, title, description, shortDescription, image: `http://192.168.10.26:4200/${formDataObject.image.name}` }])
 
       setTitle("")
       setDescription("")

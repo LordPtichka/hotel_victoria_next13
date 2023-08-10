@@ -37,7 +37,6 @@
 }
 
 button {
-  padding: 0;
   border: none;
   font: inherit;
   color: inherit;
@@ -49,7 +48,6 @@ button {
 .button:hover {
   display: block;
   background-color: #B06101;
-  color: white;
 }
 
 .btn-for-nav {

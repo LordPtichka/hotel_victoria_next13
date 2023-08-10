@@ -7,7 +7,7 @@ import { useRouter } from "next/router"
 const Stock: FC<IStockDataSingle> = ({ stock }) => {
   const handleClick = async (id: string) => {
     console.log(id)
-    const result = await axios.get(`http://localhost:4200/Stocks/DeleteStocks/${id}`)
+    const result = await axios.get(`http://192.168.10.26:4200/Stocks/DeleteStocks/${id}`)
     console.log(result.status) // Обработка полученных данных
   }
 

@@ -60,9 +60,18 @@ const HeaderVideo: FC = () => {
             </div>
           </nav>
 
-          <div className={style.title}>
-            <span className={style.first_title}> Victoria </span><span className={`font-color-white ${style.second_title}`}>- Будь в центре <br/> истории и комфорта</span>
-          </div>
+          <section className={style.middle}>
+            <div className={style.title}>
+              <span className={`font-color-orange`}>Victoria</span><span className={`font-color-white`}> - Будь в центре <br/> истории и комфорта</span>
+            </div>
+
+            <div>
+              <Link className={`font-color-white ${style.button_booking}`} href="/booking">
+                Найти номер
+              </Link>
+            </div>
+          </section>
+
         </div>
 
         {/* <section className="booking-block content">
