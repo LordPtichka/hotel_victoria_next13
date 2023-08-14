@@ -7,7 +7,7 @@ import { useRouter } from "next/router"
 const Stock: FC<IStockDataSingle> = ({ stock }) => {
   const handleClick = async (id: string) => {
     console.log(id)
-    const result = await axios.get(`http://192.168.10.26:4200/Stocks/DeleteStocks/${id}`)
+    const result = await axios.get(`http://${process.env.HOST}/Stocks/DeleteStocks/${id}`)
     console.log(result.status) // Обработка полученных данных
   }
 
@@ -25,7 +25,7 @@ const Stock: FC<IStockDataSingle> = ({ stock }) => {
 
   return (
     <div className={style.offer}>
-      <div className={style.img_for_offer} style={{ backgroundImage: `url(${stock.image})` }}>
+      <div className={style.img_for_offer} style={{ backgroundImage: `url(http://${process.env.HOST}/${stock.image})` }}>
         {pathname === "/CreateStocks" ? <button onClick={() => handleClick(stock.id)} className={style.btn_delete}></button> : ""}
       </div>
 

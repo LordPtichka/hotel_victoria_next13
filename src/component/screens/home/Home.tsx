@@ -3,7 +3,7 @@ import Layout from "../../layout/Layout"
 import style from "./Home.module.scss"
 import Stocks from "./stocks/Stock"
 import { IStockData } from "@/interface/stock.interface"
-import Rooms from "./rooms/Rooms"
+import Rooms from "./rooms/Room"
 import PopupStock from "./stocks/popup_stocks/PopupStock"
 
 const Home: FC<IStockData> = ({ stocksAll }) => {
@@ -54,7 +54,7 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
         <Rooms />
 
         <section className={`${style.restaurant} ${style.section}`}>
-          <div className={style.left_block}></div>
+          <div className={style.left_block} style={{ backgroundImage: `url(http://${process.env.HOST}/Vkys_bar.webp);` }}></div>
           <div className={style.right_block}>
             <div className={style.restaurant_title}>
               <div>РЕСТОРАН</div>
@@ -85,7 +85,9 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
 
           <div className={style.service_wrap}>
             <div className={style.service_block}>
-              <div className={`${style.block_img} ${style.bathhouse}`}> </div>
+              <div className={`${style.block_img} ${style.bathhouse}`} style={{ backgroundImage: `url(http://${process.env.HOST}/service/spa_service.webp)` }}>
+                {" "}
+              </div>
               <div className={style.block_service_info}>
                 <div className={style.service_title}>Банный комплекс</div>
                 <div className={style.block_info}>
@@ -99,7 +101,9 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
             </div>
 
             <div className={style.service_block}>
-              <div className={`${style.block_img} ${style.fitnes}`}> </div>
+              <div className={`${style.block_img} ${style.fitnes}`} style={{ backgroundImage: `url(http://${process.env.HOST}/service/fitness_service.webp)` }}>
+                {" "}
+              </div>
               <div className={style.block_service_info}>
                 <div className={style.service_title}>Фитнес-зал</div>
                 <div className={style.block_info}>
@@ -112,7 +116,9 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
             </div>
 
             <div className={style.service_block}>
-              <div className={`${style.block_img} ${style.conference}`}> </div>
+              <div className={`${style.block_img} ${style.conference}`} style={{ backgroundImage: `url(http://${process.env.HOST}/service/conference_service.webp)` }}>
+                {" "}
+              </div>
               <div className={style.block_service_info}>
                 <div className={style.service_title}>КОНФЕРЕНЦ-ЗАЛЫ</div>
                 <div className={style.block_info}>
@@ -123,7 +129,9 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
             </div>
 
             <div className={style.service_block}>
-              <div className={`${style.block_img} ${style.transfer}`}> </div>
+              <div className={`${style.block_img} ${style.transfer}`} style={{ backgroundImage: `url(http://${process.env.HOST}/service/transfer-service.webp)` }}>
+                {" "}
+              </div>
               <div className={style.block_service_info}>
                 <div className={style.service_title}>Трансфер</div>
                 <div className={style.block_info}>
