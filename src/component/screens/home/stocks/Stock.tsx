@@ -26,7 +26,7 @@ const Stock: FC<IStockDataSingle> = ({ stock }) => {
   return (
     <div className={style.offer}>
       <div className={style.img_for_offer} style={{ backgroundImage: `url(http://${process.env.HOST}/${stock.image})` }}>
-        {pathname === "/CreateStocks" ? <button onClick={() => handleClick(stock.id)} className={style.btn_delete}></button> : ""}
+        {pathname === "/create/stock" ? <button onClick={() => handleClick(stock.id)} className={style.btn_delete}></button> : ""}
       </div>
 
       <div className={style.info_block}>

@@ -63,7 +63,7 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks`, formData) // отправка данных
 
       // Обновление состояния новостей после успешной отправки
-      setStocks([...stock, { id: stock.length + 1, title, description, shortDescription, image: `http://${process.env.HOST}/${formDataObject.image.name}` }])
+      setStocks([...stock, { id: stock.length + 1, title, description, shortDescription, image: `${formDataObject.image.name}` }])
 
       setTitle("")
       setDescription("")
@@ -141,7 +141,7 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       <div>==============================</div>
 
       {/* Отображение списка скидок */}
-      <div className={style.card_wrap}>{stock.length ? stock.map((stock) => <Stock key={stock.id} stock={stock} />) : <div>Stocks Not Found</div>}</div>
+      <div className={style.card_wrap}>{stock.length ? stock.map((stock) => <Stock key={stock.id} stock={stock} />) : <div>В данный момент акции не проводятся</div>}</div>
     </Layout>
   )
 }

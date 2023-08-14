@@ -43,11 +43,13 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
         <section className={style.sectionStock}>
           <div className={style.title}>Акции</div>
           <div className={style.slider_block}>
-            <button className={style.button} onClick={handlePrevSlide}></button>
-            <button className={style.button} onClick={handleNextSlide}></button>
-          </div>
-          <div className={style.cardStockWrap} style={{ transform: `translateX(${transformValue}px)`, width: `${width}px` }}>
-            {stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} />) : <div></div>}
+            {stocksAll.length > 3 ? <button className={style.button} onClick={handlePrevSlide}></button> : <div></div>}
+            <div className={style.slide_wrap}>
+              <div className={style.cardStockWrap} style={{ transform: `translateX(${transformValue}px)`, width: `${width}px` }}>
+                {stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} />) : <div>В данный момент акции не проводятся</div>}
+              </div>
+            </div>
+            {stocksAll.length > 3 ? <button className={style.button} onClick={handleNextSlide}></button> : <div></div>}
           </div>
         </section>
 
