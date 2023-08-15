@@ -5,8 +5,14 @@ import Stocks from "./stocks/Stock"
 import { IStockData } from "@/interface/stock.interface"
 import Rooms from "./rooms/Room"
 import PopupStock from "./stocks/popup_stocks/PopupStock"
+import { IRoomData } from "@/interface/room.interface"
 
-const Home: FC<IStockData> = ({ stocksAll }) => {
+interface HomePageProps {
+  stocksAll: IStockData
+  roomAll: IRoomData
+}
+
+const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   const [transformValue, setTransformValue] = useState(0)
 
   const indexWidth = 360
@@ -53,7 +59,7 @@ const Home: FC<IStockData> = ({ stocksAll }) => {
           </div>
         </section>
 
-        <Rooms />
+        <Rooms roomAll={roomAll} />
 
         <section className={`${style.restaurant} ${style.section}`}>
           <div className={style.left_block} style={{ backgroundImage: `url(http://${process.env.HOST}/Vkys_bar.webp);` }}></div>

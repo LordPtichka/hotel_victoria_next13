@@ -7,7 +7,7 @@ export interface IRoom {
 }
 
 export interface IRoomData {
-  roomsAll: IRoom[]
+  roomAll: IRoom[]
 }
 
 export interface IRoomDataSingle {

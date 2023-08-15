@@ -28,19 +28,17 @@
       font-size: 16px;
       font-weight: 300;
       margin-bottom: 10px;
-
     }
     .footer_icon {
       height: 30px;
       width: 30px;
       margin: 0px 60px 20px 60px;
       user-select: none;
-
     }
     .footer_nav_title {
       color: #262626;
       font-family: Ramillas;
-      font-size: 20px; 
+      font-size: 20px;
       font-weight: 700;
       letter-spacing: 0.6px;
       text-transform: uppercase;
@@ -53,15 +51,14 @@
   .footer_two {
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid #59595933;  
+    border-top: 1px solid #59595933;
     display: flex;
     align-items: center;
     color: #b06101;
-    color: #B06101;
+    color: #b06101;
     font-family: Fors;
     font-size: 16px;
     font-weight: 300;
-
 
     .logo_svg {
       user-select: none;
@@ -71,7 +68,7 @@
       width: 40%;
     }
     .text_end {
-      text-align: end;
+      text-align: flex-end;
     }
   }
 }

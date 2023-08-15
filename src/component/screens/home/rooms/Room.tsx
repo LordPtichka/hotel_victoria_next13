@@ -1,7 +1,8 @@
 import { FC } from "react"
 import style from "./Room.module.scss"
+import { IRoomData } from "@/interface/room.interface"
 
-const Rooms: FC = () => {
+const Rooms: FC<IRoomData> = ({ roomAll }) => {
   return (
     <section className={`${style.section_number_room} ${style.section}`}>
       <div className={style.block_left}>
@@ -19,13 +20,24 @@ const Rooms: FC = () => {
       </div>
 
       <div className={style.block_right}>
-        <div className={style.card_room}>
-          <div className={style.gradient_bg} style={{ backgroundImage: `url(http://${process.env.HOST}/rooms/room_standart.png)` }}>
-            <div className={style.info_block}>
-              <div className={style.card_title}>Стандарт</div>
-              <div className={style.card_price}>от 4350 руб.</div>
+        <div className={style.slide_wrap}>
+          {roomAll.map((room) => (
+            <div className={style.card_room}>
+              {}
+              <div
+                className={`${style.gradient_bg}`}
+                style={{
+                  background: `linear-gradient(180deg, rgba(255, 255, 255, 0.00) 20.31%, rgba(0, 0, 0, 0.60) 80.73%), url(http://${process.env.HOST}/room/${room.image}), lightgray -172.387px -0.254px / 240% 100% no-repeat`,
+                  backgroundPosition: `center`,
+                  backgroundSize: `cover`,
+                }}>
+                <div className={style.info_block}>
+                  <div className={style.card_title}>{room.category}</div>
+                  <div className={style.card_price}>{room.price}</div>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

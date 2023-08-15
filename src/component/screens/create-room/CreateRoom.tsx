@@ -5,6 +5,7 @@ import { FC, MouseEvent, useState } from "react"
 // import Room from "../home/rooms/Room"
 import style from "./CreateRoom.module.scss"
 import Rooms from "../home/rooms/Room"
+import { useRouter } from "next/router"
 
 const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
   // Состояния для хранения данных формы
@@ -60,7 +61,7 @@ const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
       await axios.post(`http://${process.env.HOST}/rooms/create`, formData) // отправка данных
 
       // Обновление состояния новостей после успешной отправки
-      setRooms([...room, { id: room.length + 1, title, description, price, category, shortDescription, image: `http://${process.env.HOST}/${formDataObject.image.name}` }])
+      setRooms([...room, { id: room.length + 1, title, description, price, category, shortDescription, image: `${formDataObject.image.name}` }])
 
       setTitle("")
       setDescription("")
@@ -74,7 +75,12 @@ const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
       console.error(error)
     }
   }
-
+  const { pathname } = useRouter() // получаю имя ссылки из useRouter()
+  const handleClick = async (id: string) => {
+    console.log(id)
+    const result = await axios.get(`http://${process.env.HOST}/rooms/delete/${id}`)
+    console.log(result.status) // Обработка полученных данных
+  }
   // ===========================================
   // ===========================================
 
@@ -110,6 +116,7 @@ const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
         {room.length ? (
           room.map((room) => (
             <div className={style.card_room}>
+              {pathname === "/create/room" ? <button onClick={() => handleClick(room.id)} className={style.btn_delete}></button> : ""}
               <div className={style.gradient_bg} style={{ backgroundImage: `url(http://${process.env.HOST}/${room.image})` }}>
                 <div className={style.info_block}>
                   <div className={style.card_title}>{room.category}</div>

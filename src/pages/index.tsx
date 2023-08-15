@@ -5,11 +5,16 @@ import { StocksService } from "@/services/stocks.service"
 import { IRoomData } from "@/interface/room.interface"
 import { RoomsService } from "@/services/rooms.service"
 
-const HomePage: NextPage<IStockData, IRoomData > = ({ stocksAll }) => {
-  return <Home stocksAll={stocksAll} />
+interface HomePageProps {
+  stocksAll: IStockData
+  roomAll: IRoomData
 }
 
-export const getStaticProps: GetStaticProps<IStockData IRoomData> = async () => {
+const HomePage: NextPage<HomePageProps> = ({ stocksAll, roomAll }) => {
+  return <Home stocksAll={stocksAll} roomAll={roomAll} />
+}
+
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   const stocksAll = await StocksService.getStocks()
   const roomAll = await RoomsService.getRooms()
   return {
