@@ -1,8 +1,8 @@
-import BoookingPage from '@/component/screens/booking/BoookingPage'
-import { NextPage } from 'next'
+import Booking from "@/component/screens/booking/BookingPage"
+import { NextPage } from "next"
 
 const BookingPage: NextPage = () => {
-  return (<BoookingPage/>)
+  return <Booking />
 }
 
 export default BookingPage

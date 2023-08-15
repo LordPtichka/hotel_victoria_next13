@@ -15,12 +15,9 @@ const HeaderVideo: FC = () => {
         <script type="text/javascript" src="/travelline/search_form.js" defer></script> */}
         <div className="gradient">
           <nav className={`content ${style.nav}`}>
-            <div>
-              <Image
-                src={VictoriaLogo}
-                alt="Picture of the author"
-              />
-            </div>
+            <Link href={"/"}>
+              <Image src={VictoriaLogo} alt="Picture of the author" />
+            </Link>
             <ul className={`${style.ul_nav}`}>
               <li>
                 <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/">
@@ -54,15 +51,19 @@ const HeaderVideo: FC = () => {
               </li>
             </ul>
             <div>
-                <Link className={`button font-for-text font-color-white ${style.BTN_boking}`} href="/Booking">
-                  Онлайн-бронирование
-                </Link>
+              <Link className={`button font-for-text font-color-white ${style.BTN_boking}`} href="/Booking">
+                Онлайн-бронирование
+              </Link>
             </div>
           </nav>
 
           <section className={style.middle}>
             <div className={style.title}>
-              <span className={`font-color-orange`}>Victoria</span><span className={`font-color-white`}> - Будь в центре <br/> истории и комфорта</span>
+              <span className={`font-color-orange`}>Victoria</span>
+              <span className={`font-color-white`}>
+                {" "}
+                - Будь в центре <br /> истории и комфорта
+              </span>
             </div>
 
             <div>
@@ -71,7 +72,6 @@ const HeaderVideo: FC = () => {
               </Link>
             </div>
           </section>
-
         </div>
 
         {/* <section className="booking-block content">
