@@ -1,5 +1,5 @@
 .offer {
-  // margin: 0 20px;
+  margin: 10px 0px;
   height: 400px;
   // width: 29%;
   width: 330px;
@@ -45,17 +45,17 @@
   }
 
   .info_block {
-    padding: 15px;
-    height: 180px;
-    .title_offer {
-      height: 44px;
+    padding: 15px 30px;
 
+    .title_offer {
       font-family: Ramillas;
       font-size: 16px;
       // font-style: normal;
       font-weight: 300;
       // line-height: normal;
+      text-transform: uppercase;
     }
+
     .font_for_text {
       margin-top: 10px;
       font-family: Fors;
@@ -77,4 +77,10 @@
       }
     }
   }
+}
+
+.more_btn {
+  font-family: "Fors", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
 }

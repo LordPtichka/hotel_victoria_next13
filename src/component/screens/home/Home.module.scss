@@ -34,7 +34,7 @@
 }
 
 .sectionStock {
-  margin: 50px 0px;
+  margin: 50px 30px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   .slider_block {
     display: flex;
@@ -43,7 +43,7 @@
     align-items: center;
     position: relative;
     z-index: 2;
-    max-width: 1100px;
+    max-width: 1110px;
 
     .button {
       background: center;
@@ -69,13 +69,9 @@
 
     .slide_wrap {
       overflow: hidden;
-      padding: 10px 0px;
-      padding-left: 5px;
-      margin: 0px -10px;
     }
   }
   .cardStockWrap {
-    padding-left: 10px;
     display: flex;
     gap: 30px;
     transition: 500ms ease;

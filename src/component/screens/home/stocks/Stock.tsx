@@ -3,6 +3,7 @@ import style from "./Stocks.module.scss"
 import { IStock, IStockDataSingle } from "@/interface/stock.interface"
 import axios from "axios"
 import { useRouter } from "next/router"
+import React from "react"
 
 const Stock: FC<IStockDataSingle> = ({ stock }) => {
   const handleClick = async (id: string) => {
@@ -33,7 +34,7 @@ const Stock: FC<IStockDataSingle> = ({ stock }) => {
         <div className={style.title_offer}>{stock.title}</div>
         {/* <div className={style.font_for_text}>{stock.description}</div> */}
         <textarea className={style.font_for_text} readOnly={true} value={stock.description} />
-        <button onClick={handleOpenPopup}>Подробнее</button>
+        <button className={style.more_btn} onClick={handleOpenPopup}>Подробнее</button>
       </div>
     </div>
   )

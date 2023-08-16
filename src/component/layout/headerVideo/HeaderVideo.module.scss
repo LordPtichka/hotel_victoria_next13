@@ -28,6 +28,12 @@
 
   border: 1px solid #b06101;
   border-radius: 20px;
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+.BTN_boking:hover {
+  background-color: #b06101;
 }
 
 .middle {
@@ -45,7 +51,7 @@
   text-align: center;
 
   font-size: 48px;
-  font-family: "Ramillas", sans-serif;;
+  font-family: "Ramillas", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -55,7 +61,7 @@
 }
 
 .button_booking {
-  padding: 5px 50px;
+  padding: 7px 50px;
 
   font-family: "Fors", sans-serif;
   font-weight: 300;
@@ -63,13 +69,17 @@
   line-height: 22px;
 
   border-radius: 20px;
-  border: 2px solid #B06101;
+  border: 1px solid #b06101;
 
   transition: 0.3s;
 }
 
 .button_booking:hover {
-
-  background-color: #B06101;
+  background-color: #b06101;
 }
-
+// видео
+.video_wallpaper {
+  min-height: 100vh;
+  min-width: 100vw;
+  position: absolute;
+}

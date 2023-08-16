@@ -29,14 +29,6 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
     }
   }
 
-  // const handleKeyDown = (e) => {
-  //   if (e.key === "Enter") {
-  //     e.preventDefault()
-  //     console.log("==")
-  //     setDescription((description) => description + "<br />")
-  //   }
-  // }
-
   // Обработчик события при нажатии на кнопку "создать статью"
   const createStocks = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -60,7 +52,12 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       formData.append("image", `${formDataObject.image.name}`)
 
       // Отправка данных на сервер с помощью axios
-      await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks`, formData) // отправка данных
+      if (setImage == undefined) {
+        await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks/noImg`, formData) // отправка данных
+      } else {
+        console.log(setImage)
+        await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks`, formData) // отправка данных
+      }
 
       // Обновление состояния новостей после успешной отправки
       setStocks([...stock, { id: stock.length + 1, title, description, shortDescription, image: `${formDataObject.image.name}` }])

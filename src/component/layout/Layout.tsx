@@ -42,7 +42,7 @@ const Layout: FC<PropsWithChildren<IMeta>> = ({ children, title, description }) 
 
   return (
     <Meta title={title} description={description}>
-      {pathname === "/" ? <HeaderVideo /> : <Header />} {/* если ссылка / то вывожу видео*/}
+      {pathname === "/" ? <HeaderVideo /> : <Header />} {/* если ссылка / то вывожу видео */}
       <main className={style.main}>{children}</main>
       <Footer />
     </Meta>

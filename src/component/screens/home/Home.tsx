@@ -6,6 +6,7 @@ import { IStockData } from "@/interface/stock.interface"
 import Rooms from "./rooms/Room"
 import PopupStock from "./stocks/popup_stocks/PopupStock"
 import { IRoomData } from "@/interface/room.interface"
+import React from "react"
 
 interface HomePageProps {
   stocksAll: IStockData
@@ -29,8 +30,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
     if (transformValue <= indexWidth * (stocksAll.length - 2) * -1) return console.log(`${transformValue}, ${stocksAll.length}`)
     setTransformValue((prevSlide) => prevSlide - indexWidth)
   }
-  //================================================
-
+  
   //================================================
   //================================================
 
