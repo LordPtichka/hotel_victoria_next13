@@ -52,14 +52,12 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
       formData.append("image", `${formDataObject.image.name}`)
 
       // Отправка данных на сервер с помощью axios
-      // if (image !== file) {
-      console.log(formData.image)
-      // await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks/noImg`, formData) // отправка данных
-      // } else {
-      //   console.log(formData.image)
-      //   // await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks`, formData) // отправка данных
-      // }
-
+      if (formDataObject.image == null) {
+        await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks/noImg`, formDataObject) // отправка данных
+      } else {
+        console.log(formDataObject)
+        await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks`, formDataObject) // отправка данных
+      }
       // Обновление состояния новостей после успешной отправки
       setStocks([...stock, { id: stock.length + 1, title, description, shortDescription, image: `${formDataObject.image.name}` }])
 
