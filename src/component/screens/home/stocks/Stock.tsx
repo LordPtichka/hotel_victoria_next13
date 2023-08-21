@@ -27,14 +27,25 @@ const Stock: FC<IStockDataSingle> = ({ stock }) => {
   return (
     <div className={style.offer}>
       <div className={style.img_for_offer} style={{ backgroundImage: `url(http://${process.env.HOST}/${stock.image})` }}>
-        {pathname === "/create/stock" ? <button onClick={() => handleClick(stock.id)} className={style.btn_delete}></button> : ""}
+        {pathname === "/create/stock" ? (
+          <>
+            <button onClick={() => handleClick(stock.id)} className={style.btn_delete}></button>
+            <button onClick={() => handleClick(stock.id)} className={style.btn_delete}>
+              Изменить
+            </button>
+          </>
+        ) : (
+          ""
+        )}
       </div>
 
       <div className={style.info_block}>
         <div className={style.title_offer}>{stock.title}</div>
         {/* <div className={style.font_for_text}>{stock.description}</div> */}
         <textarea className={style.font_for_text} readOnly={true} value={stock.description} />
-        <button className={style.more_btn} onClick={handleOpenPopup}>Подробнее</button>
+        <button className={style.more_btn} onClick={handleOpenPopup}>
+          Подробнее
+        </button>
       </div>
     </div>
   )

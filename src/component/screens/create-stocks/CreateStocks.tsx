@@ -10,63 +10,56 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
   const [stock, setStocks] = useState(stocksAll) // Состояние для хранения всех новостей
   const [title, setTitle] = useState("") // Состояние для хранения заголовка новости
   const [description, setDescription] = useState("") // Состояние для хранения описания новости
-  const [shortDescription, setShortDescription] = useState("") // Состояние для хранения описания новости
   const [image, setImage] = useState<File | null>(null) // Состояние для хранения выбранного изображения
 
   const [previewImage, setPreviewImage] = useState(null)
 
+  // ==================================
+  // ====> вывод превью картинки <=====
   const handleImageChange = (e) => {
     const file = e.target.files[0]
     if (file) {
-      // Проверяем, существует ли переменная file
       const reader = new FileReader() // Создаем новый экземпляр объекта FileReader
-
       reader.onloadend = () => {
-        // Устанавливаем обработчик события onloadend
         setPreviewImage(reader.result) // Устанавливаем результат чтения файла в переменную previewImage
       }
       reader.readAsDataURL(file) // Читаем содержимое файла и преобразуем его в Data URL
     }
   }
+  // ==================================
+  // ==================================
 
   // Обработчик события при нажатии на кнопку "создать статью"
   const createStocks = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-
     try {
       // Создание нового объекта FormData
       const formData = new FormData()
       formData.append("title", title)
       formData.append("description", description)
-      console.log(formData.description)
-      // formData.append("short_description", shortDescription)
       formData.append("short_description", "-")
       formData.append("image", image as File)
-
-      // console.log(title, description, shortDescription)
-
       const formDataObject = {}
       for (const [key, value] of formData.entries()) {
         formDataObject[key] = value
       }
+      console.log(formDataObject)
       formData.append("image", `${formDataObject.image.name}`)
 
       // Отправка данных на сервер с помощью axios
       if (formDataObject.image == null) {
         await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks/noImg`, formDataObject) // отправка данных
       } else {
-        console.log(formDataObject)
-        await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks`, formDataObject) // отправка данных
+        console.log()
+        await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks`, formData) // отправка данных
       }
       // Обновление состояния новостей после успешной отправки
-      setStocks([...stock, { id: stock.length + 1, title, description, shortDescription, image: `${formDataObject.image.name}` }])
+      setStocks([...stock, { id: stock.length + 1, title, description, image: `${formDataObject.image.name}` }])
 
       setTitle("")
       setDescription("")
-      setShortDescription("")
       setImage(null)
       setPreviewImage(null)
-      // }
     } catch (error) {
       console.error(error)
     }
@@ -125,9 +118,6 @@ const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
                   }}
                 />
               </div>
-              {/* <div className={style.font_for_text}>
-                <textarea className={style.input} placeholder="shortDescription" value={shortDescription} onChange={(e) => setShortDescription(e.target.value)} />
-              </div> */}
             </div>
           </div>
           {/* </div> */}
