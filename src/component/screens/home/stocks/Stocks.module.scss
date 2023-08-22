@@ -42,6 +42,16 @@
         transition: 400ms;
       }
     }
+    .btn_change {
+      background-color: #f8f8f8;
+      height: 50px;
+      width: 50px;
+      &:hover {
+        transform: scale(105%);
+        background-color: #f0e32a;
+        transition: 400ms;
+      }
+    }
   }
 
   .info_block {
@@ -70,7 +80,6 @@
       // white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    
 
       &:focus-visible {
         outline: none;

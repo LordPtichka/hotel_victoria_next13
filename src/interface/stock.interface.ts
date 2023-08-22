@@ -9,6 +9,7 @@ export interface IStock {
 
 export interface IStockData {
   stocksAll: IStock[]
+  dataCard: IStock[]
 }
 
 export interface IStockDataSingle {

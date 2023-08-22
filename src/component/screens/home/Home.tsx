@@ -30,7 +30,11 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
     if (transformValue <= indexWidth * (stocksAll.length - 2) * -1) return console.log(`${transformValue}, ${stocksAll.length}`)
     setTransformValue((prevSlide) => prevSlide - indexWidth)
   }
-  
+
+  const handleClickAbout = async (id: number) => {
+    console.log(stock)
+  }
+
   //================================================
   //================================================
 
@@ -52,7 +56,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
             {stocksAll.length > 3 ? <button className={style.button} onClick={handlePrevSlide}></button> : <div></div>}
             <div className={style.slide_wrap}>
               <div className={style.cardStockWrap} style={{ transform: `translateX(${transformValue}px)`, width: `${width}px` }}>
-                {stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} />) : <div>В данный момент акции не проводятся</div>}
+                {stocksAll.length ? stocksAll.map((stock) => <Stocks key={stock.id} stock={stock} handleClickAbout={handleClickAbout} />) : <div>В данный момент акции не проводятся</div>}
               </div>
             </div>
             {stocksAll.length > 3 ? <button className={style.button} onClick={handleNextSlide}></button> : <div></div>}
@@ -168,6 +172,10 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
         </section>
       </Layout>
       {stocksAll.length ? stocksAll.map((stock) => <PopupStock key={stock.id} stock={stock} />) : <div></div>}
+
+      {/* <div className={style.popup}>
+        <div>test</div>
+      </div> */}
     </>
   )
 }

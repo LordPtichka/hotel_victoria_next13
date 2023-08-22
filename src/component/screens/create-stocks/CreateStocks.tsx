@@ -5,7 +5,8 @@ import { FC, MouseEvent, useState } from "react"
 import Stock from "../home/stocks/Stock"
 import style from "./CreateStocks.module.scss"
 
-const CreateStocks: FC<IStockData> = ({ stocksAll }) => {
+const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
+  console.log(dataCard)
   // Состояния для хранения данных формы
   const [stock, setStocks] = useState(stocksAll) // Состояние для хранения всех новостей
   const [title, setTitle] = useState("") // Состояние для хранения заголовка новости
