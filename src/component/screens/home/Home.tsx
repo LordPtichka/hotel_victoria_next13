@@ -31,8 +31,18 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
     setTransformValue((prevSlide) => prevSlide - indexWidth)
   }
 
-  const handleClickAbout = async (id: number) => {
+  const [popupImg, setPopupImg] = useState("")
+  const [popupTitle, setPopupTitle] = useState("")
+  const [popupDescription, setPopupDescription] = useState("")
+  const [popupCttive, setPopupCttive] = useState("none")
+
+  const handleClickAbout = async (stock) => {
     console.log(stock)
+    setPopupImg(`${process.env.HOST}/${stock.image}`)
+    setPopupTitle(stock.title)
+    setPopupDescription(stock.description)
+
+    setPopupCttive("block")
   }
 
   //================================================
@@ -173,9 +183,11 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
       </Layout>
       {stocksAll.length ? stocksAll.map((stock) => <PopupStock key={stock.id} stock={stock} />) : <div></div>}
 
-      {/* <div className={style.popup}>
-        <div>test</div>
-      </div> */}
+      <div className={style.popup} style={{ display: `${popupCttive}` }}>
+        <div style={{ backgroundImage: `url(${process.env.HOST}/${popupImg})` }}></div>
+        <div>{popupTitle}</div>
+        <div>{popupDescription}</div>
+      </div>
     </>
   )
 }

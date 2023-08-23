@@ -6,7 +6,12 @@ import { useRouter } from "next/router"
 import React from "react"
 import CreateStocks from "../../create-stocks/CreateStocks"
 
-const Stock: FC<IStockDataSingle> = ({ stock, handleClickAbout }) => {
+interface block {
+  stock: IStock
+  handleClickAbout: (event: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+const Stock: FC<block> = ({ stock, handleClickAbout }) => {
   // const handleClickAbout = async (id: number) => {
   //   console.log(stock)
   // }
@@ -20,10 +25,6 @@ const Stock: FC<IStockDataSingle> = ({ stock, handleClickAbout }) => {
   const { pathname } = useRouter() // получаю имя ссылки из useRouter()
 
   const [dataCard, setData] = useState("111")
-
-  const handleData = async (data: {}) => {
-    console.log(data)
-  }
 
   return (
     <>
@@ -46,7 +47,7 @@ const Stock: FC<IStockDataSingle> = ({ stock, handleClickAbout }) => {
           <div className={style.title_offer}>{stock.title}</div>
           {/* <div className={style.font_for_text}>{stock.description}</div> */}
           <textarea className={style.font_for_text} readOnly={true} value={stock.description} />
-          <button className={style.more_btn} onClick={() => handleData(stock)}>
+          <button className={style.more_btn} onClick={() => handleClickAbout(stock)}>
             Подробнее
           </button>
         </div>
