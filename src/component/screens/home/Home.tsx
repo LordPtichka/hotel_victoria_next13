@@ -34,15 +34,15 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   const [popupImg, setPopupImg] = useState("")
   const [popupTitle, setPopupTitle] = useState("")
   const [popupDescription, setPopupDescription] = useState("")
-  const [popupCttive, setPopupCttive] = useState("none")
+  const [popupActive, setPopupActive] = useState("none")
 
   const handleClickAbout = async (stock) => {
     console.log(stock)
-    setPopupImg(`${process.env.HOST}/${stock.image}`)
+    setPopupImg(`${stock.image}`)
     setPopupTitle(stock.title)
     setPopupDescription(stock.description)
 
-    setPopupCttive("block")
+    setPopupActive("flex")
   }
 
   //================================================
@@ -183,10 +183,16 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
       </Layout>
       {stocksAll.length ? stocksAll.map((stock) => <PopupStock key={stock.id} stock={stock} />) : <div></div>}
 
-      <div className={style.popup} style={{ display: `${popupCttive}` }}>
-        <div style={{ backgroundImage: `url(${process.env.HOST}/${popupImg})` }}></div>
-        <div>{popupTitle}</div>
-        <div>{popupDescription}</div>
+      <div className={style.popupWrap} style={{ display: `${popupActive}` }}>
+        <div className={style.popup}>
+          <div className={style.popupImg} style={{ backgroundImage: `url(http://${process.env.HOST}/${popupImg})` }}>
+            <button className={style.popupClose} onClick={() => setPopupActive("none")}></button>
+          </div>
+          <div className={style.popupData}>
+            <div>{popupTitle}</div>
+            <div>{popupDescription}</div>
+          </div>
+        </div>
       </div>
     </>
   )

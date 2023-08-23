@@ -28,7 +28,7 @@ const Stock: FC<block> = ({ stock, handleClickAbout }) => {
 
   return (
     <>
-      <div className={style.offer}>
+      <div className={style.offer} onClick={() => handleClickAbout(stock)}>
         <div className={style.img_for_offer} style={{ backgroundImage: `url(http://${process.env.HOST}/${stock.image})` }}>
           {pathname === "/create/stock" ? (
             <>
@@ -47,9 +47,6 @@ const Stock: FC<block> = ({ stock, handleClickAbout }) => {
           <div className={style.title_offer}>{stock.title}</div>
           {/* <div className={style.font_for_text}>{stock.description}</div> */}
           <textarea className={style.font_for_text} readOnly={true} value={stock.description} />
-          <button className={style.more_btn} onClick={() => handleClickAbout(stock)}>
-            Подробнее
-          </button>
         </div>
       </div>
     </>
