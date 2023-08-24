@@ -98,7 +98,7 @@ const Footer: FC = () => {
       </section>
 
       <section className={style.footer_two}>
-        <Link target="_blank" className={style.w_40} href={"http://192.168.10.26:4200/file/politika-konfidencialnosti.pdf"}>
+        <Link target="_blank" className={`${style.w_40}`} href={"http://192.168.10.26:4200/file/politika-konfidencialnosti.pdf"}>
           © Victoria business hotel 2009 - 2023
         </Link>
         <Link href={"/"}>

@@ -22,8 +22,7 @@ const Rooms: FC<IRoomData> = ({ roomAll }) => {
       <div className={style.block_right}>
         <div className={style.slide_wrap}>
           {roomAll.map((room) => (
-            <div className={style.card_room}>
-              {}
+            <div key={room.id} className={style.card_room}>
               <div
                 className={`${style.gradient_bg}`}
                 style={{

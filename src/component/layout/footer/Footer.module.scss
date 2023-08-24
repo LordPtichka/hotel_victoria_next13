@@ -28,6 +28,11 @@
       font-size: 16px;
       font-weight: 300;
       margin-bottom: 10px;
+
+      &:hover {
+        color: #262626;
+        transition: 400ms;
+      }
     }
     .footer_icon {
       height: 30px;
@@ -66,6 +71,10 @@
 
     .w_40 {
       width: 40%;
+      &:hover {
+        color: #262626;
+        transition: 400ms;
+      }
     }
     .text_end {
       text-align: end;

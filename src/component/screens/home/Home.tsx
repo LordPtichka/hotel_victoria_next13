@@ -1,4 +1,4 @@
-import { FC, useState } from "react"
+import { FC, useEffect, useRef, useState } from "react"
 import Layout from "../../layout/Layout"
 import style from "./Home.module.scss"
 import Stocks from "./stocks/Stock"
@@ -7,6 +7,9 @@ import Rooms from "./rooms/Room"
 import PopupStock from "./stocks/popup_stocks/PopupStock"
 import { IRoomData } from "@/interface/room.interface"
 import React from "react"
+import { KeyObject } from "crypto"
+import { ObjectFlags } from "typescript"
+import Header from "@/component/layout/header/Header"
 
 interface HomePageProps {
   stocksAll: IStockData
@@ -44,12 +47,52 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 
     setPopupActive("flex")
   }
-
+  // =============================================
+  // =============================================
+  const handleClickClosePopup = (event) => {
+    if (event.target.id == "PopupWrap") {
+      setPopupActive("none")
+    }
+  }
   //================================================
   //================================================
+  const [navActive, setNavActive] = useState("none")
+  const targetRef = useRef(null) // Создаем ссылку (ref) для хранения ссылки на целевой DOM-элемент
+  const [isIntersecting, setIsIntersecting] = useState(false) // Объявляем состояние для отслеживания пересечения целевого элемента с видимой областью
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (targetRef.current) {
+        // Проверяем, есть ли у нас действительное значение в targetRef
+        // const { top } = targetRef.current.getBoundingClientRect() // Получаем верхнюю позицию целевого элемента относительно видимой области
+        const { bottom } = targetRef.current.getBoundingClientRect() // Получаем верхнюю позицию целевого элемента относительно видимой области
+        const isVisible = bottom <= window.innerHeight // Проверяем, находится ли верхняя позиция в пределах высоты видимой области
+        setIsIntersecting(isVisible) // Обновляем состояние isIntersecting на основе видимости
+      }
+    }
+    window.addEventListener("scroll", handleScroll) // Добавляем слушатель события прокрутки
+    handleScroll() // Вызываем handleScroll в начале для проверки видимости
+    return () => {
+      window.removeEventListener("scroll", handleScroll) // Очищаем слушатель события прокрутки при размонтировании компонента
+    }
+  }, []) // Пустой массив зависимостей означает, что этот эффект запускается только один раз после первого рендера
+
+  useEffect(() => {
+    if (isIntersecting) {
+      console.log("Пользователь прокрутил до блока")
+      setNavActive("block")
+    } else {
+      console.log("Пользователь прокрутил назад")
+      setNavActive("none")
+    }
+  }, [isIntersecting]) // Запускаем этот эффект при каждом изменении isIntersecting
+  //================================================
+  //================================================
   return (
     <>
+      <div style={{ display: `${navActive}` }}>
+        <Header />
+      </div>
       <Layout title="Home" description="Home">
         <script type="text/javascript" src="/travelline/head_script.js" defer></script>
         <script type="text/javascript" src="/travelline/search_form.js" defer></script>
@@ -59,7 +102,6 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
         </section>
 
         {/* =========================== */}
-
         <section className={style.sectionStock}>
           <div className={style.title}>Акции</div>
           <div className={style.slider_block}>
@@ -75,7 +117,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 
         <Rooms roomAll={roomAll} />
 
-        <section className={`${style.restaurant} ${style.section}`}>
+        <section className={`${style.restaurant} ${style.section}`} ref={targetRef}>
           <div className={style.left_block} style={{ backgroundImage: `url(http://${process.env.HOST}/Vkys_bar.webp);` }}></div>
           <div className={style.right_block}>
             <div className={style.restaurant_title}>
@@ -102,7 +144,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
         </section>
 
         {/* ==================================== */}
-        <section className={`${style.service} ${style.section}`}>
+        <section className={`${style.service} ${style.section}`} ref={targetRef}>
           <div className={style.title_block}>Услуги</div>
 
           <div className={style.service_wrap}>
@@ -183,7 +225,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
       </Layout>
       {stocksAll.length ? stocksAll.map((stock) => <PopupStock key={stock.id} stock={stock} />) : <div></div>}
 
-      <div className={style.popupWrap} style={{ display: `${popupActive}` }}>
+      <div className={style.popupWrap} id="PopupWrap" style={{ display: `${popupActive}` }} onClick={handleClickClosePopup}>
         <div className={style.popup}>
           <div className={style.popupImg} style={{ backgroundImage: `url(http://${process.env.HOST}/${popupImg})` }}>
             <button className={style.popupClose} onClick={() => setPopupActive("none")}></button>

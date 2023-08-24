@@ -13,6 +13,8 @@ import localFont from "@next/font/local" // импортим пакет
 import Footer from "./footer/Footer"
 import HeaderVideo from "./headerVideo/HeaderVideo"
 
+// ===========================
+// ===========================
 const myFontFors = localFont({
   src: [
     {
@@ -36,7 +38,8 @@ const myFontRamillas = localFont({
     },
   ],
 })
-
+// ===========================
+// ===========================
 const Layout: FC<PropsWithChildren<IMeta>> = ({ children, title, description }) => {
   const { pathname } = useRouter() // получаю имя ссылки из useRouter()
 
