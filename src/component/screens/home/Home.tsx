@@ -63,9 +63,8 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   useEffect(() => {
     const handleScroll = () => {
       if (targetRef.current) {
-        // Проверяем, есть ли у нас действительное значение в targetRef
         // const { top } = targetRef.current.getBoundingClientRect() // Получаем верхнюю позицию целевого элемента относительно видимой области
-        const { bottom } = targetRef.current.getBoundingClientRect() // Получаем верхнюю позицию целевого элемента относительно видимой области
+        const { bottom } = targetRef.current.getBoundingClientRect() // Получаем нижнюю позицию целевого элемента относительно видимой области
         const isVisible = bottom <= window.innerHeight // Проверяем, находится ли верхняя позиция в пределах высоты видимой области
         setIsIntersecting(isVisible) // Обновляем состояние isIntersecting на основе видимости
       }
@@ -80,24 +79,26 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   useEffect(() => {
     if (isIntersecting) {
       console.log("Пользователь прокрутил до блока")
-      setNavActive("block")
+      // setNavActive("block")
+      setNavActive("active")
     } else {
       console.log("Пользователь прокрутил назад")
-      setNavActive("none")
+      // setNavActive("none")
+      setNavActive("noActive")
     }
   }, [isIntersecting]) // Запускаем этот эффект при каждом изменении isIntersecting
   //================================================
   //================================================
   return (
     <>
-      <div style={{ display: `${navActive}` }}>
+      <div style={{ display: `${navActive}` }} className={style.navActive}>
         <Header />
       </div>
       <Layout title="Home" description="Home">
         <script type="text/javascript" src="/travelline/head_script.js" defer></script>
         <script type="text/javascript" src="/travelline/search_form.js" defer></script>
 
-        <section className="booking-block content">
+        <section className="booking-block content" ref={targetRef}>
           <div id="tl-search-form">&nbsp;</div>
         </section>
 
@@ -144,7 +145,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
         </section>
 
         {/* ==================================== */}
-        <section className={`${style.service} ${style.section}`} ref={targetRef}>
+        <section className={`${style.service} ${style.section}`}>
           <div className={style.title_block}>Услуги</div>
 
           <div className={style.service_wrap}>
