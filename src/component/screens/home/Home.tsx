@@ -56,7 +56,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   }
   //================================================
   //================================================
-  const [navActive, setNavActive] = useState("none")
+  const [navActive, setNavActive] = useState({ display: "none" })
   const targetRef = useRef(null) // Создаем ссылку (ref) для хранения ссылки на целевой DOM-элемент
   const [isIntersecting, setIsIntersecting] = useState(false) // Объявляем состояние для отслеживания пересечения целевого элемента с видимой областью
 
@@ -79,31 +79,40 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   useEffect(() => {
     if (isIntersecting) {
       console.log("Пользователь прокрутил до блока")
-      // setNavActive("block")
-      setNavActive("active")
+      const styleActive = {
+        display: "block",
+        opacity: 100,
+        transition: "600ms",
+      }
+
+      setNavActive(styleActive)
     } else {
       console.log("Пользователь прокрутил назад")
-      // setNavActive("none")
-      setNavActive("noActive")
+      const styleDisActive = {
+        // display: "none",
+        opacity: 0,
+        transition: "600ms",
+      }
+      setNavActive(styleDisActive)
     }
   }, [isIntersecting]) // Запускаем этот эффект при каждом изменении isIntersecting
   //================================================
   //================================================
   return (
     <>
-      <div style={{ display: `${navActive}` }} className={style.navActive}>
+      <div style={navActive}>
         <Header />
       </div>
       <Layout title="Home" description="Home">
         <script type="text/javascript" src="/travelline/head_script.js" defer></script>
         <script type="text/javascript" src="/travelline/search_form.js" defer></script>
 
-        <section className="booking-block content" ref={targetRef}>
+        <section className="booking-block content">
           <div id="tl-search-form">&nbsp;</div>
         </section>
 
         {/* =========================== */}
-        <section className={style.sectionStock}>
+        <section className={style.sectionStock} ref={targetRef}>
           <div className={style.title}>Акции</div>
           <div className={style.slider_block}>
             {stocksAll.length > 3 ? <button className={style.button} onClick={handlePrevSlide}></button> : <div></div>}
@@ -118,7 +127,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 
         <Rooms roomAll={roomAll} />
 
-        <section className={`${style.restaurant} ${style.section}`} ref={targetRef}>
+        <section className={`${style.restaurant} ${style.section}`}>
           <div className={style.left_block} style={{ backgroundImage: `url(http://${process.env.HOST}/Vkys_bar.webp);` }}></div>
           <div className={style.right_block}>
             <div className={style.restaurant_title}>
