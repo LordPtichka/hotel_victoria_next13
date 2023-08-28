@@ -6,7 +6,7 @@ import Stock from "../home/stocks/Stock"
 import style from "./CreateStocks.module.scss"
 
 const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
-  console.log(dataCard)
+  // console.log(dataCard)
   // Состояния для хранения данных формы
   const [stock, setStocks] = useState(stocksAll) // Состояние для хранения всех новостей
   const [title, setTitle] = useState("") // Состояние для хранения заголовка новости
@@ -44,14 +44,14 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
       for (const [key, value] of formData.entries()) {
         formDataObject[key] = value
       }
-      console.log(formDataObject)
+      // console.log(formDataObject)
+      // console.log(formDataObject.image == "null")
       formData.append("image", `${formDataObject.image.name}`)
 
       // Отправка данных на сервер с помощью axios
-      if (formDataObject.image == null) {
+      if (formDataObject.image == "null") {
         await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks/noImg`, formDataObject) // отправка данных
       } else {
-        console.log()
         await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks`, formData) // отправка данных
       }
       // Обновление состояния новостей после успешной отправки
@@ -71,7 +71,7 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
 
   return (
     <Layout title={"create"}>
-      <div>==============================</div>
+      <div style={{ paddingTop: "130px" }}></div>
 
       <form className={style.form}>
         <div className={style.card_create_wrap}>

@@ -1,17 +1,23 @@
 import Layout from "@/component/layout/Layout"
 import axios from "axios"
-import { IRoomData } from "@/interface/room.interface"
+import { IServiceData } from "@/interface/service.interface"
 import { FC, MouseEvent, useState } from "react"
-// import Room from "../home/rooms/Room"
-import style from "./CreateRoom.module.scss"
-import Rooms from "../home/rooms/Room"
+// import Service from "../home/services/Service"
+import style from "./CreateService.module.scss"
+import Services from "../home/services/Service"
 import { useRouter } from "next/router"
 
-const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
+const CreateServices: FC<IServiceData> = ({ servicesAll }) => {
+  const handleClickDelite = async (id: string) => {
+    console.log(id)
+    const result = await axios.get(`http://${process.env.HOST}/Stocks/DeleteStocks/${id}`)
+    console.log(result.status) // Обработка полученных данных
+  }
+
   // Состояния для хранения данных формы
-  const [room, setRooms] = useState(roomsAll) // Состояние для хранения всех новостей
-  const [price, setPrice] = useState(roomsAll)
-  const [category, setCategory] = useState(roomsAll)
+  const [service, setServices] = useState(servicesAll) // Состояние для хранения всех новостей
+  const [price, setPrice] = useState(servicesAll)
+  const [category, setCategory] = useState(servicesAll)
   const [title, setTitle] = useState("") // Состояние для хранения заголовка новости
   const [description, setDescription] = useState("") // Состояние для хранения описания новости
   const [shortDescription, setShortDescription] = useState("") // Состояние для хранения описания новости
@@ -36,7 +42,7 @@ const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
   }
 
   // Обработчик события при нажатии на кнопку "создать статью"
-  const createRooms = async (e: MouseEvent<HTMLButtonElement>) => {
+  const createServices = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
     try {
@@ -56,12 +62,12 @@ const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
         formDataObject[key] = value
       }
       formData.append("image", `${formDataObject.image.name}`)
-
+      console.log(formDataObject)
       // Отправка данных на сервер с помощью axios
-      await axios.post(`http://${process.env.HOST}/rooms/create`, formData) // отправка данных
+      await axios.post(`http://${process.env.HOST}/services/create`, formData) // отправка данных
 
       // Обновление состояния новостей после успешной отправки
-      setRooms([...room, { id: room.length + 1, title, description, price, category, shortDescription, image: `${formDataObject.image.name}` }])
+      setServices([...service, { id: service.length + 1, title, description, price, category, shortDescription, image: `${formDataObject.image.name}` }])
 
       setTitle("")
       setDescription("")
@@ -78,7 +84,7 @@ const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
   const { pathname } = useRouter() // получаю имя ссылки из useRouter()
   const handleClick = async (id: string) => {
     console.log(id)
-    const result = await axios.get(`http://${process.env.HOST}/rooms/delete/${id}`)
+    const result = await axios.get(`http://${process.env.HOST}/services/delete/${id}`)
     console.log(result.status) // Обработка полученных данных
   }
   // ===========================================
@@ -87,7 +93,7 @@ const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
   return (
     <Layout title={"create"}>
       <form className={style.form} style={{ paddingTop: "130px" }}>
-        <div className={style.card_room}>
+        <div className={style.card_service}>
           <input
             type="file"
             placeholder="title"
@@ -99,36 +105,51 @@ const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
           />
           <div className={style.gradient_bg} style={{ backgroundImage: `url(${previewImage})` }}>
             <div className={style.info_block}>
-              <textarea className={style.card_title} placeholder="title" type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
-              <textarea className={style.card_price} placeholder="title" type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
+              <textarea className={style.card_title} placeholder="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+              <textarea className={style.card} placeholder="" type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
             </div>
           </div>
         </div>
 
-        <button onClick={createRooms}>создать статью</button>
+        <button onClick={createServices}>создать статью</button>
       </form>
       <div>==============================</div>
 
       {/* Отображение списка номеров */}
       <div className={style.card_wrap}>
-        {room.length ? (
-          room.map((room) => (
-            <div className={style.card_room}>
-              {pathname === "/create/room" ? <button onClick={() => handleClick(room.id)} className={style.btn_delete}></button> : ""}
-              <div className={style.gradient_bg} style={{ backgroundImage: `url(http://${process.env.HOST}/${room.image})` }}>
-                <div className={style.info_block}>
-                  <div className={style.card_title}>{room.category}</div>
-                  <div className={style.card_price}>{room.price}</div>
+        {service.length ? (
+          service.map((service) => (
+            <div className={style.service_block}>
+              <div className={`${style.block_img} ${style.transfer}`} style={{ backgroundImage: `url(http://${process.env.HOST}/service/${service.image})` }}>
+                {pathname === "/create/stock" ? (
+                  <>
+                    <button onClick={() => handleClickDelite(stock.id)} className={style.btn_delete}></button>
+                    <button onClick={() => handleData(stock)} className={style.btn_change}>
+                      Изменить
+                    </button>
+                    {/* <CreateStocks dataCard={dataCard} /> */}
+                  </>
+                ) : (
+                  ""
+                )}
+              </div>
+
+              <div className={style.block_service_info}>
+                <textarea className={style.service_title} value={service.title}></textarea>
+
+                <div className={style.block_info}>
+                  <textarea className={style.service_info} value={service.description}></textarea>
+                  <div className={style.btn}>Подробнее</div>
                 </div>
               </div>
             </div>
           ))
         ) : (
-          <div>Rooms Not Found</div>
+          <div>Services Not Found</div>
         )}
       </div>
     </Layout>
   )
 }
 
-export default CreateRooms
+export default CreateServices

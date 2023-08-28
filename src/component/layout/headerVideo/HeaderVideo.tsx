@@ -35,7 +35,7 @@ const HeaderVideo: FC = () => {
                 </Link>
               </li>
               <li>
-                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/">
+                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/restaurant/vkus">
                   Рестораны
                 </Link>
               </li>

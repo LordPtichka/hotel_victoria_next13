@@ -1,7 +1,8 @@
+import RestaurantVkus from "@/component/screens/restaurant-vkus/RestaurantVkus"
 import { NextPage } from "next"
 
 const vkusPage: NextPage = () => {
-  return <div>vkus</div>
+  return <RestaurantVkus />
 }
 
 export default vkusPage

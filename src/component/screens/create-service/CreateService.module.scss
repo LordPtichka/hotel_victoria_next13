@@ -1,0 +1,114 @@
+.card_room {
+  width: 250px;
+  height: 400px;
+
+  .btn_delete {
+    background: url("../../../../public/delete.svg");
+    background-color: #f8f8f8;
+    height: 50px;
+    width: 50px;
+    border-radius: 0px 0px 0px 15px;
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 400ms;
+
+    &:hover {
+      transform: scale(105%);
+      background-color: #ee5e5e;
+      transition: 400ms;
+    }
+  }
+  .gradient_bg {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 10px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #ffffff10, #00000060), #d3d3d3 -172.387px -0.254px / 240% 100% no-repeat;
+    background-position: center;
+    transition: 400ms;
+    background-size: 100%;
+    cursor: pointer;
+
+    &:hover {
+      background-size: 110%;
+      transition: 400ms;
+    }
+  }
+  .info_block {
+    margin: 12px;
+    .card_title {
+      color: #fff;
+      font-family: Fors;
+      font-size: 24px;
+      font-weight: 500;
+    }
+    .card_price {
+      color: #fff;
+      font-family: Fors;
+      font-size: 18px;
+      font-weight: 300;
+    }
+  }
+}
+
+.service_block {
+  // margin-bottom: 40px;
+  .block_img {
+    width: 100%;
+    padding: 100px 0;
+    border-radius: 20px;
+    background-color: #cfcfcf;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .block_service_info {
+    color: #000;
+    font-family: Fors;
+    font-size: 13px;
+    font-weight: 300;
+
+    .btn {
+      margin-left: 25px;
+      width: 155px;
+      color: #262626;
+      font-family: Fors;
+      font-size: 16px;
+      font-weight: 300;
+      &:hover {
+        color: #fff;
+        background-color: #b06101;
+      }
+    }
+  }
+  .service_title {
+    margin: 20px auto 5px;
+    color: #000;
+    font-family: Ramillas;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .block_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .service_info {
+      max-width: 326px;
+      color: #262626;
+      font-family: Fors;
+      font-size: 13px;
+      font-weight: 300;
+      height: 54px;
+      margin-right: 10px;
+
+      display: -webkit-box; /* Установка типа отображения блока */
+      -webkit-box-orient: vertical; /* Установка вертикальной ориентации блока */
+      overflow: hidden; /* Скрытие любого текста, выходящего за пределы контейнера */
+      text-overflow: ellipsis; /* Добавление многоточия для обозначения скрытого текста */
+      -webkit-line-clamp: 3; /* Ограничение количества видимых строк */
+    }
+  }
+}

@@ -1,8 +1,14 @@
 import { FC } from "react"
 import style from "./Room.module.scss"
-import { IRoomData } from "@/interface/room.interface"
+import { IRoom, IRoomData } from "@/interface/room.interface"
+import Link from "next/link"
 
-const Rooms: FC<IRoomData> = ({ roomAll }) => {
+interface block {
+  roomAll: IRoom
+  handleClickAbout: (event: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+const Rooms: FC<block> = ({ roomAll, handleClickAbout }) => {
   return (
     <section className={`${style.section_number_room} ${style.section}`}>
       <div className={style.block_left}>
@@ -14,7 +20,9 @@ const Rooms: FC<IRoomData> = ({ roomAll }) => {
         </div>
         <div className={style.wrap_btn}>
           <button className={style.btn}>Все номера</button>
-          <button className={style.btn}>Забронировать</button>
+          <Link href={"/Booking"}>
+            <button className={style.btn}>Забронировать</button>
+          </Link>
         </div>
         {/* </div> */}
       </div>
@@ -22,7 +30,7 @@ const Rooms: FC<IRoomData> = ({ roomAll }) => {
       <div className={style.block_right}>
         <div className={style.slide_wrap}>
           {roomAll.map((room) => (
-            <div key={room.id} className={style.card_room}>
+            <div key={room.id} className={style.card_room} onClick={() => handleClickAbout(room)}>
               <div
                 className={`${style.gradient_bg}`}
                 style={{
