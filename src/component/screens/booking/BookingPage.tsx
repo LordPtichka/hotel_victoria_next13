@@ -75,13 +75,11 @@ const Booking: FC = () => {
 
   return (
     <Layout title="Booking">
-      {/* <script src="/travelline/booking_form.js" defer></script> */}
-      {/* <script src="/travelline/head_script.js" defer></script> */}
 
-      <section className="name-page">
-        <div className="title-for-page font-for-title">Бронирование</div>
-      </section>
+      <section className="name-page"  style={{paddingTop: "130px"}}>
       <div id="tl-booking-form">&nbsp;</div>
+
+      </section>
     </Layout>
   )
 }

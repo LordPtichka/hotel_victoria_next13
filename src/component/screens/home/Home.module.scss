@@ -305,6 +305,7 @@
     border-radius: 20px;
     box-shadow: 1px 1px 11px 5px #00000020;
     overflow: hidden;
+    display: flex;
 
     .popupImg {
       height: 400px;
@@ -324,6 +325,19 @@
     }
     .popupData {
       padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .textareaPopup {
+        user-select: none;
+        resize: none;
+        width: 100%;
+      }
+      .popupTitle {
+        margin-bottom: 10px;
+      }
     }
   }
 }

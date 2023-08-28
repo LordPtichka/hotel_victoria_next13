@@ -82,10 +82,10 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   // =============================================
   // =============================================
   const handleClickClosePopup = (event) => {
-    if (event.target.id == "PopupWrap") {
+    if (event.target.id == "PopupWrap" || event.target.id == "BtnPopupClose") {
       stylePopup.display = "none"
       setPopupActive(stylePopup)
-    }
+    } 
   }
   //================================================
   //================================================
@@ -282,13 +282,21 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
       <div className={style.popupWrap} id="PopupWrap" style={popupActive} onClick={handleClickClosePopup}>
         <div className={style.popup}>
           <div className={style.popupImg} style={{ backgroundImage: `url(http://${process.env.HOST}/${popupImg})` }}>
-            <button className={style.popupClose} onClick={() => setPopupActive("none")}></button>
+            <button className={style.popupClose} id="BtnPopupClose" onClick={handleClickClosePopup}></button>
           </div>
           <div className={style.popupData}>
-            <div>{popupTitle}</div>
-            <div>{popupDescription}</div>
-            <div>{popupCategory}</div>
-            <div>{popupPrice}</div>
+            <div className={`${style.textareaPopup} ${style.popupTitle}`}>{popupTitle}</div>
+            {popupDescription != null ?
+            <textarea className={style.textareaPopup} value={popupDescription} readOnly={true}/> : ""
+            }
+            {popupCategory != null ?
+            <textarea className={style.textareaPopup} value={popupCategory} readOnly={true}/> : ""
+            }
+            {popupPrice != null ?
+            <textarea className={style.textareaPopup} value={popupPrice} readOnly={true}/> : ""
+            }
+            {/* <textarea className={style.textareaPopup} value={popupCategory}/>
+            <textarea className={style.textareaPopup} value={popupPrice}/> */}
           </div>
         </div>
       </div>

@@ -9,8 +9,9 @@ const News: FC<INewsData> = ({ newsAll }) => {
 
   return (
     <Layout title="Home" description="Home">
+      <div  style={{paddingTop: "130px"}}> Данная страница находиться в разработке</div>
         {newsAll.length ? newsAll.map((news) => <NewsItem key={news.id} news={news} />) : 
-        <div>News Not Found</div>}
+        <div>Сейчас нету статей</div>}
     </Layout>
   )
 }
