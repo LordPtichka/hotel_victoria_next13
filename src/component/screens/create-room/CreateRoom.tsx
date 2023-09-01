@@ -97,15 +97,15 @@ const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
               handleImageChange(e)
             }}
           />
-          <div className={style.gradient_bg} style={{ backgroundImage: `url(${previewImage})` }}>
+          <div className={`${style.cardCreate} ${style.gradient_bg}`} style={{ backgroundImage: `url(${previewImage})` }}>
             <div className={style.info_block}>
-              <textarea className={style.card_title} placeholder="title" type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
-              <textarea className={style.card_price} placeholder="title" type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
+              <textarea className={style.card_title} placeholder="title" type="text"  onChange={(e) => setCategory(e.target.value)} />
+              <textarea className={style.card_price} placeholder="title" type="text"  onChange={(e) => setPrice(e.target.value)} />
             </div>
           </div>
         </div>
 
-        <button onClick={createRooms}>создать статью</button>
+        <button onClick={createRooms} className={style.btnCreate}>создать статью</button>
       </form>
       <div>==============================</div>
 
@@ -114,11 +114,11 @@ const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
         {room.length ? (
           room.map((room) => (
             <div className={style.card_room}>
+              <div className={style.gradient_bg} style={{ backgroundImage: `url(http://${process.env.HOST}/room/${room.image})` }}>
               {pathname === "/create/room" ? <button onClick={() => handleClick(room.id)} className={style.btn_delete}></button> : ""}
-              <div className={style.gradient_bg} style={{ backgroundImage: `url(http://${process.env.HOST}/${room.image})` }}>
                 <div className={style.info_block}>
-                  <div className={style.card_title}>{room.category}</div>
-                  <div className={style.card_price}>{room.price}</div>
+                  <div className={style.card_title} dangerouslySetInnerHTML={{ __html: room.category }}></div>
+                  <div className={style.card_price} dangerouslySetInnerHTML={{ __html: room.price }}></div>
                 </div>
               </div>
             </div>

@@ -34,13 +34,12 @@ const Rooms: FC<block> = ({ roomAll, handleClickAbout }) => {
               <div
                 className={`${style.gradient_bg}`}
                 style={{
-                  background: `linear-gradient(180deg, rgba(255, 255, 255, 0.00) 20.31%, rgba(0, 0, 0, 0.60) 80.73%), url(http://${process.env.HOST}/room/${room.image}), lightgray -172.387px -0.254px / 240% 100% no-repeat`,
-                  backgroundPosition: `center`,
-                  backgroundSize: `cover`,
-                }}>
+                  backgroundImage: `url(http://${process.env.HOST}/room/${room.image})`,
+                }}
+                >
                 <div className={style.info_block}>
-                  <div className={style.card_title}>{room.category}</div>
-                  <div className={style.card_price}>{room.price}</div>
+                  <div className={style.card_title} dangerouslySetInnerHTML={{ __html: room.category }}></div>
+                  <div className={style.card_price} dangerouslySetInnerHTML={{ __html: room.price }}></div>
                 </div>
               </div>
             </div>

@@ -1,3 +1,10 @@
+.card_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+
 .card_room {
   width: 250px;
   height: 400px;
@@ -20,9 +27,13 @@
     }
   }
   .gradient_bg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+
     height: 100%;
     display: flex;
-    align-items: flex-end;
     border-radius: 10px;
     border-radius: 10px;
     background: linear-gradient(180deg, #ffffff10, #00000060), #d3d3d3 -172.387px -0.254px / 240% 100% no-repeat;
@@ -36,19 +47,37 @@
       transition: 400ms;
     }
   }
+  .cardCreate {
+    justify-content: end;
+  }
   .info_block {
-    margin: 12px;
+    padding: 12px;
+
     .card_title {
+      width: 100%;
       color: #fff;
-      font-family: Fors;
+      font-family: "Fors";
       font-size: 24px;
       font-weight: 500;
     }
     .card_price {
+      width: 100%;
+
       color: #fff;
-      font-family: Fors;
+      font-family: "Fors";
       font-size: 18px;
       font-weight: 300;
     }
+  }
+}
+.btnCreate {
+  margin-top: 30px;
+  box-shadow: 2px 2px 5px 2px #00000030;
+  padding: 10px 20px ;
+  border-radius: 14px;
+  transition: 400ms;
+  &:hover {
+    background: #40df24;
+    transition: 400ms;
   }
 }

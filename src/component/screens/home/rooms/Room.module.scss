@@ -79,16 +79,16 @@
         height: 100%;
         display: flex;
         align-items: flex-end;
-        border-radius: 10px;
-        border-radius: 10px;
-        // background: linear-gradient(180deg, #ffffff10, #00000060), rgb(211, 211, 211) -172.387px -0.254px / 240% 100% no-repeat;
-        background-size: cover;
+        background: linear-gradient(180deg, #ffffff00 20%, #00000099 80%), #d3d3d3;
         background-position: center;
-        transition: 400ms;
         cursor: pointer;
+        background-size: 100%;
+        border-radius: 10px;
+        transition: 400ms;
 
         &:hover {
-          background-size: 110%;
+          background-size: 112%;
+          background-color: #000;
           transition: 400ms;
         }
       }

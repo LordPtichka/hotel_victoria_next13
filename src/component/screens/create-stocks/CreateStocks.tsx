@@ -66,6 +66,8 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
     }
   }
 
+  // const chengeData = ()
+
   // ===========================================
   // ===========================================
 

@@ -4,15 +4,12 @@ import style from "./Home.module.scss"
 import Stocks from "./stocks/Stock"
 import { IStockData } from "@/interface/stock.interface"
 import Rooms from "./rooms/Room"
-import PopupStock from "./stocks/popup_stocks/PopupStock"
 import { IRoomData } from "@/interface/room.interface"
 import React from "react"
-import { KeyObject } from "crypto"
-import { ObjectFlags } from "typescript"
 import Header from "@/component/layout/header/Header"
 import Travelline from "./travelline/travelline"
-import dynamic from "next/dynamic"
 import Link from "next/link"
+
 
 interface HomePageProps {
   stocksAll: IStockData
@@ -57,7 +54,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   const [popupActive, setPopupActive] = useState(stylePopup)
 
   const handleClickAbout = async (data) => {
-    console.log(data)
+    // console.log(data)
     // console.log(data.category)
     // console.log(data.category != undefined)
     if (data.category != undefined) {
@@ -65,8 +62,8 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
     } else {
       setPopupImg(data.image)
     }
-    setPopupTitle(data.title)
-    setPopupDescription(data.description)
+    setPopupTitle(replaceNewlinesWithBreaks(data.title))
+    setPopupDescription(replaceNewlinesWithBreaks(data.description))
     setPopupCategory(data.category)
     setPopupPrice(data.price)
 
@@ -79,6 +76,9 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
     // }
     setPopupActive(stylePopup)
   }
+  function replaceNewlinesWithBreaks(text) {
+    return text.replace(/\n/g, '<br />');
+  }
   // =============================================
   // =============================================
   const handleClickClosePopup = (event) => {
@@ -87,6 +87,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
       setPopupActive(stylePopup)
     } 
   }
+
   //================================================
   //================================================
   //======> NAV <=========> NAV <======> NAV <======
@@ -101,7 +102,9 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 
   const [navActive, setNavActive] = useState(styleActive)
   const targetRef = useRef(null) // Создаем ссылку (ref) для хранения ссылки на целевой DOM-элемент
-  const [isIntersecting, setIsIntersecting] = useState(false) // Объявляем состояние для отслеживания пересечения целевого элемента с видимой областью
+  const [isIntersecting, setIsIntersecting] = useState(true) // Объявляем состояние для отслеживания пересечения целевого элемента с видимой областью
+  // console.log(setIsIntersecting)
+  // console.log(isIntersecting)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,6 +113,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
         const { bottom } = targetRef.current.getBoundingClientRect() // Получаем нижнюю позицию целевого элемента относительно видимой области
         const isVisible = bottom <= window.innerHeight // Проверяем, находится ли верхняя позиция в пределах высоты видимой области
         setIsIntersecting(isVisible) // Обновляем состояние isIntersecting на основе видимости
+        // console.log(isVisible)
       }
     }
     window.addEventListener("scroll", handleScroll) // Добавляем слушатель события прокрутки
@@ -287,16 +291,14 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
           <div className={style.popupData}>
             <div className={`${style.textareaPopup} ${style.popupTitle}`}>{popupTitle}</div>
             {popupDescription != null ?
-            <textarea className={style.textareaPopup} value={popupDescription} readOnly={true}/> : ""
+            <div dangerouslySetInnerHTML={{ __html: popupDescription }} ></div> : ""
             }
             {popupCategory != null ?
-            <textarea className={style.textareaPopup} value={popupCategory} readOnly={true}/> : ""
+            <div dangerouslySetInnerHTML={{ __html: popupCategory }} ></div>: ""
             }
             {popupPrice != null ?
-            <textarea className={style.textareaPopup} value={popupPrice} readOnly={true}/> : ""
+            <div dangerouslySetInnerHTML={{ __html: popupPrice }} ></div>: ""
             }
-            {/* <textarea className={style.textareaPopup} value={popupCategory}/>
-            <textarea className={style.textareaPopup} value={popupPrice}/> */}
           </div>
         </div>
       </div>

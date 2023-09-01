@@ -9,10 +9,8 @@ const HeaderVideo: FC = () => {
     <>
       <link rel="stylesheet" href="/header.css" />
       <header className="header-main">
-        <video className={style.video_wallpaper} src="/video/video_promo.mp4" loop muted playsInline></video>
+        <video className={style.video_wallpaper} src="http://192.168.10.26:4200/video/video_promo.mp4" loop muted playsInline></video>
         {/* autoPlay */}
-        {/* <script type="text/javascript" src="travelline/head_script.js" defer></script>
-        <script type="text/javascript" src="/travelline/search_form.js" defer></script> */}
         <div className="gradient">
           <nav className={`content ${style.nav}`}>
             <Link href={"/"}>
@@ -20,38 +18,38 @@ const HeaderVideo: FC = () => {
             </Link>
             <ul className={`${style.ul_nav}`}>
               <li>
-                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/">
+                <Link className={` ${style.nav_link}`} href="/">
                   Главная
                 </Link>
               </li>
               <li>
-                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/">
+                <Link className={`${style.nav_link}`} href="/">
                   Номера
                 </Link>
               </li>
               <li>
-                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/">
+                <Link className={` ${style.nav_link}`} href="/">
                   Контакты
                 </Link>
               </li>
               <li>
-                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/restaurant/vkus">
+                <Link className={` ${style.nav_link}`} href="/restaurant/vkus">
                   Рестораны
                 </Link>
               </li>
               <li>
-                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/">
+                <Link className={`${style.nav_link}`} href="/">
                   Услуги
                 </Link>
               </li>
               <li>
-                <Link className={`font-for-link font-color-white ${style.nav_link}`} href="/News">
+                <Link className={` ${style.nav_link}`} href="/News">
                   Новости
                 </Link>
               </li>
             </ul>
             <div>
-              <Link className={`font-for-text font-color-white ${style.BTN_boking}`} href="/Booking">
+              <Link className={` ${style.BTN_boking}`} href="/Booking">
                 Онлайн-бронирование
               </Link>
             </div>
@@ -73,10 +71,6 @@ const HeaderVideo: FC = () => {
             </div>
           </section>
         </div>
-
-        {/* <section className="booking-block content">
-          <div id="tl-search-form">&nbsp;</div>
-        </section> */}
       </header>
     </>
   )

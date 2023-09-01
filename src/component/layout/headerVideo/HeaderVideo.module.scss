@@ -13,23 +13,32 @@
 }
 
 .nav_link {
+  color: #FFF;
   text-align: center;
+  font-family: "Fors";
   font-size: 16px;
-  line-height: normal;
+  font-weight: 300;
   letter-spacing: 0.8px;
+  transition: 400ms;
+
+
+  &:hover {
+    color: #b06101;
+    transition: 400ms;
+  }
 }
 
-.nav_link:hover {
-  color: #b06101;
-}
 
 .BTN_boking {
   padding: 8px 20px;
+  font-family: "Fors";
+  font-weight: 300;
 
   border: 1px solid #b06101;
   border-radius: 20px;
   background-color: transparent;
   transition: 0.3s;
+  color: #FFF;
 }
 
 .BTN_boking:hover {
@@ -63,7 +72,7 @@
 .button_booking {
   padding: 7px 50px;
 
-  font-family: "Fors", sans-serif;
+  font-family: Fors;
   font-weight: 300;
   font-size: 16px;
   line-height: 22px;
@@ -82,4 +91,5 @@
   min-height: 100vh;
   min-width: 100vw;
   position: absolute;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 0%, #00000050 100%);
 }
