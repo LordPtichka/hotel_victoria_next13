@@ -9,11 +9,12 @@ import CreateStocks from "../../create-stocks/CreateStocks"
 interface block {
   stock: IStock
   handleClickAbout: (event: React.MouseEvent<HTMLButtonElement>) => void
+  handleDataUpdate: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const Stock: FC<block> = ({ stock, handleClickAbout }) => {
-  // const handleClickAbout = async (id: number) => {
-  //   console.log(stock)
+const Stock: FC<block> = ({ stock, handleClickAbout, handleDataUpdate}) => {
+  // const handleDataUpdate = async (data) => {
+  //   console.log(data)
   // }
 
   const handleClickDelite = async (id: string) => {
@@ -24,19 +25,19 @@ const Stock: FC<block> = ({ stock, handleClickAbout }) => {
 
   const { pathname } = useRouter() // получаю имя ссылки из useRouter()
 
-  const [dataCard, setData] = useState("111")
 
   return (
     <>
-      <div className={style.offer} onClick={() => handleClickAbout(stock)}>
-        <div className={style.img_for_offer} style={{ backgroundImage: `url(http://${process.env.HOST}/${stock.image})` }}>
+      <div className={style.offer} onClick={() => pathname !== "/create/stock" ? handleClickAbout(stock) : null}>
+
+
+        <div className={style.img_for_offer}  style={{ backgroundImage: `url(http://${process.env.HOST}/${stock.image})` }}>
           {pathname === "/create/stock" ? (
             <>
               <button onClick={() => handleClickDelite(stock.id)} className={style.btn_delete}></button>
-              <button onClick={() => handleData(stock)} className={style.btn_change}>
+              <button onClick={() => handleDataUpdate(stock)} className={style.btn_change}>
                 Изменить
               </button>
-              {/* <CreateStocks dataCard={dataCard} /> */}
             </>
           ) : (
             ""

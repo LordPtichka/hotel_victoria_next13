@@ -48,10 +48,11 @@
     }
   }
   .cardCreate {
-    justify-content: end;
+    justify-content: flex-end;
   }
   .info_block {
     padding: 12px;
+    width: 100%;
 
     .card_title {
       width: 100%;
@@ -59,6 +60,12 @@
       font-family: "Fors";
       font-size: 24px;
       font-weight: 500;
+      resize: none; /* Запрет изменения размера textarea */
+      overflow: auto; /* Показывать полосы прокрутки, если текст не помещается */
+      word-wrap: break-word; /* Переносить слова, если они не помещаются */
+      &:focus-visible {
+        outline: none;
+      }
     }
     .card_price {
       width: 100%;
@@ -67,6 +74,13 @@
       font-family: "Fors";
       font-size: 18px;
       font-weight: 300;
+
+      resize: none; /* Запрет изменения размера textarea */
+      overflow: auto; /* Показывать полосы прокрутки, если текст не помещается */
+      word-wrap: break-word; /* Переносить слова, если они не помещаются */
+      &:focus-visible {
+        outline: none;
+      }
     }
   }
 }

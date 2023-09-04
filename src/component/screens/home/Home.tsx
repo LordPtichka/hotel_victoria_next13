@@ -54,9 +54,6 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   const [popupActive, setPopupActive] = useState(stylePopup)
 
   const handleClickAbout = async (data) => {
-    // console.log(data)
-    // console.log(data.category)
-    // console.log(data.category != undefined)
     if (data.category != undefined) {
       setPopupImg(`room/${data.image}`)
     } else {

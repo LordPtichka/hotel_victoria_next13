@@ -11,6 +11,7 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
   const [stock, setStocks] = useState(stocksAll) // Состояние для хранения всех новостей
   const [title, setTitle] = useState("") // Состояние для хранения заголовка новости
   const [description, setDescription] = useState("") // Состояние для хранения описания новости
+  const [id, setId] = useState("") // Состояние для хранения описания новости
   const [image, setImage] = useState<File | null>(null) // Состояние для хранения выбранного изображения
 
   const [previewImage, setPreviewImage] = useState(null)
@@ -29,6 +30,15 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
   }
   // ==================================
   // ==================================
+  const handleDataUpdate = async (data: {}) => {
+    console.log(data)
+    setTitle(data.title)
+    setDescription(data.description)
+    setImage(data.image)
+    setPreviewImage(`http://${process.env.HOST}/${data.image}`)
+    setId(data.id)
+  }
+  // ==================================
 
   // Обработчик события при нажатии на кнопку "создать статью"
   const createStocks = async (e: MouseEvent<HTMLButtonElement>) => {
@@ -38,7 +48,7 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
       const formData = new FormData()
       formData.append("title", title)
       formData.append("description", description)
-      formData.append("short_description", "-")
+      formData.append("id", id)
       formData.append("image", image as File)
       const formDataObject = {}
       for (const [key, value] of formData.entries()) {
@@ -49,13 +59,26 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
       formData.append("image", `${formDataObject.image.name}`)
 
       // Отправка данных на сервер с помощью axios
-      if (formDataObject.image == "null") {
-        await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks/noImg`, formDataObject) // отправка данных
+      
+      if (id > 0) {
+        console.log(id)
+        await axios.post(`http://${process.env.HOST}/Stocks/update/${id}`, formDataObject) // отправка данных
+        const updateLoacalCard = stock.find(data => data.id == id)
+        console.log(updateLoacalCard)
+        console.log(stock)
+        updateLoacalCard.title = title
+        updateLoacalCard.description = description 
+        updateLoacalCard.image = image
+
       } else {
-        await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks`, formData) // отправка данных
+        // console.log("lol")
+        if (formDataObject.image == "null") {
+        } else {
+          await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks`, formData) // отправка данных
+        }
+        setStocks([...stock, { id: stock.length + 1, title, description, image: `${formDataObject.image.name}` }])
       }
       // Обновление состояния новостей после успешной отправки
-      setStocks([...stock, { id: stock.length + 1, title, description, image: `${formDataObject.image.name}` }])
 
       setTitle("")
       setDescription("")
@@ -67,7 +90,15 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
   }
 
   // const chengeData = ()
-
+// =============================================
+// ====> RESET DATA <=========> RESET DATA <====
+  const resetData = async() => {
+    setTitle("")
+    setDescription("")
+    setImage(null)
+    setPreviewImage(null)
+    setId("")
+  }
   // ===========================================
   // ===========================================
 
@@ -125,12 +156,14 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
           </div>
           {/* </div> */}
         </div>
+        <input type="" value={id}/>
         <button onClick={createStocks}>создать статью</button>
       </form>
+      <button onClick={resetData}>сброс</button>
       <div>==============================</div>
 
       {/* Отображение списка скидок */}
-      <div className={style.card_wrap}>{stock.length ? stock.map((stock) => <Stock key={stock.id} stock={stock} />) : <div>В данный момент акции не проводятся</div>}</div>
+      <div className={style.card_wrap}>{stock.length ? stock.map((stock) => <Stock key={stock.id} stock={stock}  handleDataUpdate={handleDataUpdate} />) : <div>В данный момент акции не проводятся</div>}</div>
     </Layout>
   )
 }
