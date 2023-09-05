@@ -190,7 +190,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
                   <div>Сб - Вс: 07:00 - 12:00</div>
                 </div>
               </div>
-              <div>
+              <div className={style.btn_reservation}>
                 <Link href={"/restaurant/vkus"}>
                   <button className={style.btn}>Забронировать</button>
                 </Link>

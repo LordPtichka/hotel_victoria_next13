@@ -7,7 +7,7 @@ interface block {
   roomAll: IRoom
   handleClickAbout: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
-
+ 
 const Rooms: FC<block> = ({ roomAll, handleClickAbout }) => {
   return (
     <section className={`${style.section_number_room} ${style.section}`}>
@@ -15,14 +15,14 @@ const Rooms: FC<block> = ({ roomAll, handleClickAbout }) => {
         {/* <div className={style.info_block}> */}
         <div className={style.number_room_title}>НОМЕРА</div>
         <div className={style.number_room_text}>
-          К Вашему выбору Отель предлагает 63 просторных номеров, разных категорий. Звездное украшение коллекции Отеля - номера с лучшими террасами Петербурга, откуда открывается великолепный вид на
-          панораму исторического центра города и Невский проспект.
+          К Вашему выбору предлагает 63 номера, разных категорий. Расположенных в историческом центре Выборга, в непосредственной близости от Выборгского замка и старого города. 
+          Номера с видом на замок и набережную.
         </div>
         <div className={style.wrap_btn}>
           <button className={style.btn}>Все номера</button>
-          <Link href={"/Booking"}>
-            <button className={style.btn}>Забронировать</button>
-          </Link>
+            {/* <Link href={"/Booking"}> */}
+          <button className={style.btn}>Забронировать</button>
+          {/* </Link> */}
         </div>
         {/* </div> */}
       </div>

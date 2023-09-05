@@ -12,7 +12,6 @@
 .btn {
   font-weight: 300;
   margin: 15px 0;
-  padding: 10px 25px;
   background: transparent;
   color: #000;
 
@@ -80,28 +79,29 @@
 // =============================
 
 .restaurant {
-  margin: 0 30px;
+  margin: 50px 30px 0 30px;
   display: flex;
-  padding: 7% 0;
-  margin-top: 7%;
+  justify-content: space-between;
+  padding: 50px 0;
   border-top: 1px solid #59595933;
 
   .left_block {
     width: 510px;
     height: 400px;
-    margin-right: 20px;
     border-radius: 20px;
     background-size: cover;
     background-position: center;
   }
 
   .right_block {
-    margin: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    margin: auto 0;
     max-width: 505px;
-    max-height: 400px;
+    height: 330px;
 
     .info_block {
-      margin: 50px auto;
       color: #262626;
       text-align: justify;
       font-family: Fors;
@@ -112,8 +112,8 @@
     }
 
     .wrap_block {
-      margin-top: 5%;
       display: flex;
+      flex-flow: row;
       justify-content: space-between;
     }
 
@@ -137,10 +137,12 @@
 
       .mark_color {
         margin-left: 12px;
-        color: #b06101;
+        color: #d57500;
       }
     }
     .btn {
+      width: 300px;
+      height: 50px;
       color: #262626;
       font-family: Fors;
       font-size: 16px;
@@ -149,7 +151,7 @@
       line-height: normal;
       &:hover {
         color: #fff;
-        background-color: #b06101;
+        background-color: #d57500;
       }
     }
   }
@@ -202,7 +204,7 @@
           font-weight: 300;
           &:hover {
             color: #fff;
-            background-color: #b06101;
+            background-color: #d57500;
           }
         }
       }

@@ -31,16 +31,20 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
   // ==================================
   // ==================================
   const handleDataUpdate = async (data: {}) => {
-    console.log(data)
     setTitle(data.title)
     setDescription(data.description)
     setImage(data.image)
     setPreviewImage(`http://${process.env.HOST}/${data.image}`)
     setId(data.id)
   }
+
+  
+  // ==================================
+  
   // ==================================
 
   // Обработчик события при нажатии на кнопку "создать статью"
+  console.log(image)
   const createStocks = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     try {
@@ -54,29 +58,32 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
       for (const [key, value] of formData.entries()) {
         formDataObject[key] = value
       }
-      // console.log(formDataObject)
-      // console.log(formDataObject.image == "null")
+      // console.log(formDataObject.image.name)
       formData.append("image", `${formDataObject.image.name}`)
 
       // Отправка данных на сервер с помощью axios
       
       if (id > 0) {
-        console.log(id)
-        await axios.post(`http://${process.env.HOST}/Stocks/update/${id}`, formDataObject) // отправка данных
+        // await axios.post(`http://${process.env.HOST}/Stocks/update/${id}`, formDataObject) // отправка данных
         const updateLoacalCard = stock.find(data => data.id == id)
-        console.log(updateLoacalCard)
-        console.log(stock)
         updateLoacalCard.title = title
         updateLoacalCard.description = description 
         updateLoacalCard.image = image
 
-      } else {
-        // console.log("lol")
-        if (formDataObject.image == "null") {
-        } else {
-          await axios.post(`http://${process.env.HOST}/Stocks/CreateStocks`, formData) // отправка данных
+        console.log(image)
+        if (image != formDataObject.image) {
+
+          // await axios.post(`http://${process.env.HOST}/Stocks/upload`, formData) // отправка данных
         }
-        setStocks([...stock, { id: stock.length + 1, title, description, image: `${formDataObject.image.name}` }])
+
+      } else {
+        // await axios.post(`http://${process.env.HOST}/Stocks/Create`, formDataObject) // отправка данных
+        
+
+        // if (formDataObject.image != "null") {
+        //   await axios.post(`http://${process.env.HOST}/Stocks/upload`, formData) // отправка данных
+        // }
+        // setStocks([...stock, { id: stock.length + 1, title, description, image: `${formDataObject.image.name}` }])
       }
       // Обновление состояния новостей после успешной отправки
 
@@ -84,12 +91,12 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
       setDescription("")
       setImage(null)
       setPreviewImage(null)
-    } catch (error) {
+    } catch (error) { 
       console.error(error)
     }
   }
 
-  // const chengeData = ()
+
 // =============================================
 // ====> RESET DATA <=========> RESET DATA <====
   const resetData = async() => {
@@ -112,13 +119,9 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
             <div className={style.img_for_offer} style={{ backgroundImage: `url(${previewImage})` }}></div>
             <div className={style.info_block}>
               <div className={style.title_offer}>
-                {/* <textarea className={`${style.input} ${style.title_offer}`} placeholder="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} /> */}
                 <div className={`${style.input} ${style.title_offer}`}> {title}</div>
               </div>
-              <div className={style.font_for_text}>
-                {/* <textarea className={style.input} placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} /> */}
-                <div className={`${style.input} ${style.text}`}> {description} </div>
-              </div>
+              <div className={` ${style.font_for_text}`}> {description} </div>
             </div>
           </div>
 
@@ -141,9 +144,8 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
               <div className={style.title_offer}>
                 <textarea className={`${style.input} ${style.title_offer}`} placeholder="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
               </div>
-              <div className={style.font_for_text}>
                 <textarea
-                  className={style.input}
+                  className={`${style.input} ${style.font_for_text}`}
                   placeholder="description"
                   value={description}
                   // onKeyDown={handleKeyDown}
@@ -151,7 +153,7 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
                     setDescription(e.target.value)
                   }}
                 />
-              </div>
+
             </div>
           </div>
           {/* </div> */}

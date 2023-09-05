@@ -7,10 +7,8 @@
 
   .block_left {
     display: flex;
-
-    width: 390px;
+    width: 330px;
     height: 400px;
-    padding: 0px 30px 0px 30px;
     flex-direction: column;
     justify-content: space-between;
     background-color: #fff;
@@ -41,8 +39,8 @@
       gap: 12px;
 
       .btn {
-        width: 129.8px;
-        height: 24.2px;
+        max-width: 100%;
+        height: 55px;
         flex-shrink: 0;
         color: #262626;
         font-family: Fors;
@@ -51,9 +49,6 @@
         font-weight: 300;
         line-height: normal;
 
-        width: 330px;
-        height: 55px;
-        flex-shrink: 0;
         border-radius: 10px;
         border: 1px solid #b06101;
 
@@ -67,9 +62,13 @@
   }
 
   .block_right {
+    width: 100%;
+    
     .slide_wrap {
       display: flex;
       gap: 30px;
+      padding-left: 30px;
+      
     }
     .card_room {
       width: 250px;

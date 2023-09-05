@@ -13,9 +13,6 @@ interface block {
 }
 
 const Stock: FC<block> = ({ stock, handleClickAbout, handleDataUpdate}) => {
-  // const handleDataUpdate = async (data) => {
-  //   console.log(data)
-  // }
 
   const handleClickDelite = async (id: string) => {
     console.log(id)
@@ -47,7 +44,7 @@ const Stock: FC<block> = ({ stock, handleClickAbout, handleDataUpdate}) => {
         <div className={style.info_block}>
           <div className={style.title_offer}>{stock.title}</div>
           {/* <div className={style.font_for_text}>{stock.description}</div> */}
-          <textarea className={style.font_for_text} readOnly={true} value={stock.description} />
+          <textarea className={style.font_for_text} readOnly={true} value={stock.description ? stock.description : ""} />
         </div>
       </div>
     </>
