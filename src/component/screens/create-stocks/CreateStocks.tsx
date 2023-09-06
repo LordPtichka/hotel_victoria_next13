@@ -44,7 +44,6 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
   // ==================================
 
   // Обработчик события при нажатии на кнопку "создать статью"
-  console.log(image)
   const createStocks = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     try {
@@ -64,20 +63,23 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
       // Отправка данных на сервер с помощью axios
       
       if (id > 0) {
-        // await axios.post(`http://${process.env.HOST}/Stocks/update/${id}`, formDataObject) // отправка данных
+        
+        console.log(formDataObject)
+        await axios.post(`http://${process.env.HOST}/Stocks/update/${id}`, formDataObject) // отправка данных
         const updateLoacalCard = stock.find(data => data.id == id)
         updateLoacalCard.title = title
         updateLoacalCard.description = description 
         updateLoacalCard.image = image
 
         console.log(image)
-        if (image != formDataObject.image) {
+        // console.log(image.length)
 
+        if (image != null) {
           // await axios.post(`http://${process.env.HOST}/Stocks/upload`, formData) // отправка данных
         }
 
       } else {
-        // await axios.post(`http://${process.env.HOST}/Stocks/Create`, formDataObject) // отправка данных
+        await axios.post(`http://${process.env.HOST}/Stocks/Create`, formDataObject) // отправка данных
         
 
         // if (formDataObject.image != "null") {

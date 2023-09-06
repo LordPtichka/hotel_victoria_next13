@@ -49,7 +49,7 @@ const HeaderVideo: FC = () => {
               </li>
             </ul>
             <div>
-              <Link className={` ${style.BTN_boking}`} href="/Booking">
+              <Link className={` ${style.BTN_boking}`} href="/booking">
                 Онлайн-бронирование
               </Link>
             </div>
@@ -65,8 +65,8 @@ const HeaderVideo: FC = () => {
             </div>
 
             <div>
-              <Link className={`font-color-white ${style.button_booking}`} href="/booking">
-                Найти номер
+              <Link href="/booking">
+                <div className={`font-color-white ${style.button_booking}`} >Найти номер</div>
               </Link>
             </div>
           </section>

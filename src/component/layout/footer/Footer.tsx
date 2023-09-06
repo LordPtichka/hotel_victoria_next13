@@ -65,16 +65,16 @@ const Footer: FC = () => {
           <div className={style.footer_nav_block}>
             <div className={`${style.footer_link} ${style.footer_nav_title}`}>Дополнительно</div>
             <div className={style.footer_link_block}>
-              <Link href={"/"} className={style.footer_link}>
+              <Link href={"mailto:info@ibc-victoria.com"} className={style.footer_link}>
                 info@ibc-victoria.com
               </Link>
               <Link href={"/"} className={style.footer_link}>
                 г. Выборг, наб. 40-летия ВЛКСМ, д.1
               </Link>
-              <Link href={"/"} className={style.footer_link}>
+              <Link href={"tel:+78005005174"} className={style.footer_link}>
                 8 (800) 500-51-74
               </Link>
-              <Link href={"/"} className={style.footer_link}>
+              <Link href={"tel:+78001005166"} className={style.footer_link}>
                 8 (800) 100-51-66
               </Link>
             </div>

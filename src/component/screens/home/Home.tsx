@@ -99,25 +99,28 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 
   const [navActive, setNavActive] = useState(styleActive)
   const targetRef = useRef(null) // Создаем ссылку (ref) для хранения ссылки на целевой DOM-элемент
-  const [isIntersecting, setIsIntersecting] = useState(true) // Объявляем состояние для отслеживания пересечения целевого элемента с видимой областью
-  // console.log(setIsIntersecting)
-  // console.log(isIntersecting)
+  const [isIntersecting, setIsIntersecting] = useState(false) // Объявляем состояние для отслеживания пересечения целевого элемента с видимой областью
+
+  console.log(isIntersecting)
+  // console.log(targetRef)
 
   useEffect(() => {
     const handleScroll = () => {
       if (targetRef.current) {
-        // const { top } = targetRef.current.getBoundingClientRect() // Получаем верхнюю позицию целевого элемента относительно видимой области
         const { bottom } = targetRef.current.getBoundingClientRect() // Получаем нижнюю позицию целевого элемента относительно видимой области
         const isVisible = bottom <= window.innerHeight // Проверяем, находится ли верхняя позиция в пределах высоты видимой области
         setIsIntersecting(isVisible) // Обновляем состояние isIntersecting на основе видимости
-        // console.log(isVisible)
+        console.log(isVisible)
       }
     }
     window.addEventListener("scroll", handleScroll) // Добавляем слушатель события прокрутки
-    handleScroll() // Вызываем handleScroll в начале для проверки видимости
-    return () => {
-      window.removeEventListener("scroll", handleScroll) // Очищаем слушатель события прокрутки при размонтировании компонента
-    }
+    // handleScroll() // Вызываем handleScroll в начале для проверки видимости
+    
+    const interval = setInterval(() => {
+      return () => {
+        window.removeEventListener("scroll", handleScroll) // Очищаем слушатель события прокрутки при размонтировании компонента
+      }
+    }, 0)
   }, []) // Пустой массив зависимостей означает, что этот эффект запускается только один раз после первого рендера
   //  ==========================
   useEffect(() => {
@@ -143,6 +146,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
       // styleActive.transform = "translateY(-300px)"
       setNavActive(styleActive)
     }
+  // }, [isIntersecting]) // Запускаем этот эффект при каждом изменении isIntersecting
   }, [isIntersecting]) // Запускаем этот эффект при каждом изменении isIntersecting
   //================================================
   //================================================
@@ -215,7 +219,9 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
                     Банный комплекс дарит красоту, молодость, здоровье и хорошее настроение! Это прежде всего, ни с чем несравнимое удовольствие, а также масса вариантов совместить приятный отдых с
                     полезными для здоровья процедурами!
                   </div>
-                  {/* <div className={style.btn}>Подробнее</div> */}
+                  <Link href={"/"}>
+                    <div className={style.btn_more}>Подробнее</div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -230,7 +236,9 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
                   <div className={style.service_info}>
                     В здании комплекса расположен тренажерный залплощадью 100 кв. м. Зал оснащен вытяжкой и кондиционерами,просторными раздевалками с душевыми и финской сауной.
                   </div>
-                  {/* <div className={style.btn}>Подробнее</div> */}
+                  <Link href={"/"}>
+                    <div className={style.btn_more}>Подробнее</div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -243,7 +251,9 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
                 <div className={style.service_title}>КОНФЕРЕНЦ-ЗАЛЫ</div>
                 <div className={style.block_info}>
                   <div className={style.service_info}>Идеальное место для проведения деловых переговоров и встреч. Площадь залов от 25м² до 165м²</div>
-                  {/* <div className={style.btn}>Подробнее</div> */}
+                  <Link href={"/"}>
+                    <div className={style.btn_more}>Подробнее</div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -258,7 +268,9 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
                   <div className={style.service_info}>
                     Теперь, чтобы организовать свою поездку, Вам всего лишь нужно уведомить ресепшн о времени своего отъезда, и наш опытный водитель будет ждать Вас в назначенное время.
                   </div>
-                  {/* <div className={style.btn}>Подробнее</div> */}
+                  <Link href={"/"}>
+                    <div className={style.btn_more}>Подробнее</div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -274,9 +286,11 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
           </div>
           <div className={style.block_email}>
             <div className={style.text}>Почта для обращений:</div>
-            <div className={`${style.text} ${style.email}`}>info@ibc-victoria.com</div>
+            <div className={`${style.text} ${style.email}`}><a href="mailto:info@ibc-victoria.com">info@ibc-victoria.com</a></div>
           </div>
-          <div className={style.btn}>Список контактов</div>
+          <Link href={"/"}>
+            <div className={style.btn_contact_list}>Список контактов</div>
+          </Link>
         </section>
       </Layout>
 
