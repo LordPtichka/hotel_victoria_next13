@@ -10,15 +10,11 @@ interface block {
   stock: IStock
   handleClickAbout: (event: React.MouseEvent<HTMLButtonElement>) => void
   handleDataUpdate: (event: React.MouseEvent<HTMLButtonElement>) => void
+  handleClickDelete: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const Stock: FC<block> = ({ stock, handleClickAbout, handleDataUpdate}) => {
+const Stock: FC<block> = ({ stock, handleClickAbout, handleDataUpdate, handleClickDelete}) => {
 
-  const handleClickDelite = async (id: string) => {
-    console.log(id)
-    const result = await axios.get(`http://${process.env.HOST}/Stocks/DeleteStocks/${id}`)
-    console.log(result.status) // Обработка полученных данных
-  }
 
   const { pathname } = useRouter() // получаю имя ссылки из useRouter()
 
@@ -28,10 +24,10 @@ const Stock: FC<block> = ({ stock, handleClickAbout, handleDataUpdate}) => {
       <div className={style.offer} onClick={() => pathname !== "/create/stock" ? handleClickAbout(stock) : null}>
 
 
-        <div className={style.img_for_offer}  style={{ backgroundImage: `url(http://${process.env.HOST}/${stock.image})` }}>
+        <div className={style.img_for_offer}  style={{ backgroundImage: `url(http://${process.env.HOST}/${stock.imageName})` }}>
           {pathname === "/create/stock" ? (
             <>
-              <button onClick={() => handleClickDelite(stock.id)} className={style.btn_delete}></button>
+              <button onClick={() => handleClickDelete(stock)} className={style.btn_delete}></button>
               <button onClick={() => handleDataUpdate(stock)} className={style.btn_change}>
                 Изменить
               </button>

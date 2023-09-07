@@ -6,43 +6,47 @@ import Stock from "../home/stocks/Stock"
 import style from "./CreateStocks.module.scss"
 
 const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
-  // console.log(dataCard)
   // Состояния для хранения данных формы
-  const [stock, setStocks] = useState(stocksAll) // Состояние для хранения всех новостей
-  const [title, setTitle] = useState("") // Состояние для хранения заголовка новости
-  const [description, setDescription] = useState("") // Состояние для хранения описания новости
-  const [id, setId] = useState("") // Состояние для хранения описания новости
+  const [stock, setStocks] = useState(stocksAll) // Состояние для хранения всех
+  const [title, setTitle] = useState("") // Состояние для хранения заголовка
+  const [description, setDescription] = useState("") // Состояние для хранения описания
+  const [id, setId] = useState("") // Состояние для хранения id
+  const [previewImage, setPreviewImage] = useState(null) // состояние для превью картинки
+  const [imageName, setImageName] = useState("") // Состояние для хранения выбранного изображения
   const [image, setImage] = useState<File | null>(null) // Состояние для хранения выбранного изображения
 
-  const [previewImage, setPreviewImage] = useState(null)
-
-  // ==================================
-  // ====> вывод превью картинки <=====
+  // =======================================================================
+  // ====> вывод превью картинки <=============> вывод превью картинки <====
   const handleImageChange = (e) => {
     const file = e.target.files[0]
-    if (file) {
-      const reader = new FileReader() // Создаем новый экземпляр объекта FileReader
-      reader.onloadend = () => {
-        setPreviewImage(reader.result) // Устанавливаем результат чтения файла в переменную previewImage
-      }
-      reader.readAsDataURL(file) // Читаем содержимое файла и преобразуем его в Data URL
-    }
+    const reader = new FileReader() // Создаем новый экземпляр объекта FileReader
+    reader.onloadend = () => {setPreviewImage(reader.result)} // Устанавливаем результат чтения файла в переменную previewImage
+    reader.readAsDataURL(file) // Читаем содержимое файла и преобразуем его в Data URL
   }
-  // ==================================
-  // ==================================
+  // =======================================================================
+
+  const handleClickDelete = async (data) => {
+    console.log(data.id)
+    // const result = await axios.get(`http://${process.env.HOST}/Stocks/DeleteStocks/${data.id}`)
+    // console.log(result.status) // Обработка полученных данных
+    console.log(stock)
+    stock.splice(2, 1)
+    console.log(stock.splice(data.id, 1))
+    setStocks(stock)
+
+  }
+
+  // ====> UPDATE <=================================> UPDATE <==============
+  // перенос значений из карточки в форму для последующего редактирования
   const handleDataUpdate = async (data: {}) => {
     setTitle(data.title)
     setDescription(data.description)
-    setImage(data.image)
-    setPreviewImage(`http://${process.env.HOST}/${data.image}`)
+    setImageName(data.imageName)
+    setPreviewImage(`http://${process.env.HOST}/${data.imageName}`)
     setId(data.id)
   }
-
-  
-  // ==================================
-  
-  // ==================================
-
+  // =======================================================================
+  // ====> CREATE <=================================> CREATE <==============
   // Обработчик события при нажатии на кнопку "создать статью"
   const createStocks = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -53,46 +57,51 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
       formData.append("description", description)
       formData.append("id", id)
       formData.append("image", image as File)
+      if (image) formData.append("imageName", image.name)
       const formDataObject = {}
       for (const [key, value] of formData.entries()) {
         formDataObject[key] = value
       }
-      // console.log(formDataObject.image.name)
-      formData.append("image", `${formDataObject.image.name}`)
 
+      // =========================================
       // Отправка данных на сервер с помощью axios
-      
-      if (id > 0) {
-        
-        console.log(formDataObject)
+      if (id > 0) { // Действия при редактировании карточки
         await axios.post(`http://${process.env.HOST}/Stocks/update/${id}`, formDataObject) // отправка данных
-        const updateLoacalCard = stock.find(data => data.id == id)
+        if (image != null) { // если есть новое изображение то оно отправится на сервер 
+          await axios.post(`http://${process.env.HOST}/Stocks/upload`, formData) // отправка данных
+        }
+        // ====> изменение данных карточки на стороне клиента <====
+        const updateLoacalCard = stock.find(data => data.id == id) // изменил данные карточки в локальном состоянии
+        console.log(updateLoacalCard)
+
         updateLoacalCard.title = title
         updateLoacalCard.description = description 
-        updateLoacalCard.image = image
+        // updateLoacalCard.image = image
+        if(formDataObject.imageName) updateLoacalCard.imageName = formDataObject.imageName
 
-        console.log(image)
-        // console.log(image.length)
+        console.log(updateLoacalCard)
+
+        // ===========================
+
+
+
+      } else { // Действия при создании карточки
+        console.log(formDataObject.image)
+        await axios.post(`http://${process.env.HOST}/Stocks/Create`, formDataObject) // отправка данных
 
         if (image != null) {
-          // await axios.post(`http://${process.env.HOST}/Stocks/upload`, formData) // отправка данных
+          await axios.post(`http://${process.env.HOST}/Stocks/upload`, formData) // отправка данных
         }
-
-      } else {
-        await axios.post(`http://${process.env.HOST}/Stocks/Create`, formDataObject) // отправка данных
-        
-
-        // if (formDataObject.image != "null") {
-        //   await axios.post(`http://${process.env.HOST}/Stocks/upload`, formData) // отправка данных
-        // }
-        // setStocks([...stock, { id: stock.length + 1, title, description, image: `${formDataObject.image.name}` }])
+        setStocks([...stock, { id: stock.length + 1, title,description , imageName: `${formDataObject.imageName}` }])
       }
-      // Обновление состояния новостей после успешной отправки
-
+      
       setTitle("")
       setDescription("")
-      setImage(null)
       setPreviewImage(null)
+      setImage(null)
+      setImageName(null)
+      setId("")
+
     } catch (error) { 
       console.error(error)
     }
@@ -105,6 +114,7 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
     setTitle("")
     setDescription("")
     setImage(null)
+    setImageName("")
     setPreviewImage(null)
     setId("")
   }
@@ -167,7 +177,7 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
       <div>==============================</div>
 
       {/* Отображение списка скидок */}
-      <div className={style.card_wrap}>{stock.length ? stock.map((stock) => <Stock key={stock.id} stock={stock}  handleDataUpdate={handleDataUpdate} />) : <div>В данный момент акции не проводятся</div>}</div>
+      <div className={style.card_wrap}>{stock.length ? stock.map((stock) => <Stock key={stock.id} stock={stock}  handleDataUpdate={handleDataUpdate} handleClickDelete={handleClickDelete}/>) : <div>В данный момент акции не проводятся</div>}</div>
     </Layout>
   )
 }

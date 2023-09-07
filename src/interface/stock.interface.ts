@@ -3,8 +3,7 @@ export interface IStock {
   title: string
   description: string
   shortDescription: string
-  img: string // ????
-  imgPath: string
+  imageName: string
 }
 
 export interface IStockData {
