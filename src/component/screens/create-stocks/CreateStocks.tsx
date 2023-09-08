@@ -24,18 +24,16 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
     reader.readAsDataURL(file) // Читаем содержимое файла и преобразуем его в Data URL
   }
   // =======================================================================
+  // ====> DELETE <=================================> DELETE <==============
 
   const handleClickDelete = async (data) => {
     console.log(data.id)
-    // const result = await axios.get(`http://${process.env.HOST}/Stocks/DeleteStocks/${data.id}`)
-    // console.log(result.status) // Обработка полученных данных
-    console.log(stock)
-    stock.splice(2, 1)
-    console.log(stock.splice(data.id, 1))
-    setStocks(stock)
-
+    const result = await axios.get(`http://${process.env.HOST}/Stocks/DeleteStocks/${data.id}`)
+    console.log(result.status) // Обработка полученных данных
+    const newStocks = stock.filter((stock) => stock.id !== data.id)
+    setStocks(newStocks)
   }
-
+  // =======================================================================
   // ====> UPDATE <=================================> UPDATE <==============
   // перенос значений из карточки в форму для последующего редактирования
   const handleDataUpdate = async (data: {}) => {
@@ -76,7 +74,6 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
 
         updateLoacalCard.title = title
         updateLoacalCard.description = description 
-        // updateLoacalCard.image = image
         if(formDataObject.imageName) updateLoacalCard.imageName = formDataObject.imageName
 
         console.log(updateLoacalCard)
@@ -87,14 +84,13 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
 
       } else { // Действия при создании карточки
         console.log(formDataObject.image)
-        await axios.post(`http://${process.env.HOST}/Stocks/Create`, formDataObject) // отправка данных
-
+        const result =  await axios.post(`http://${process.env.HOST}/Stocks/Create`, formDataObject) // отправка данных
         if (image != null) {
           await axios.post(`http://${process.env.HOST}/Stocks/upload`, formData) // отправка данных
         }
-        setStocks([...stock, { id: stock.length + 1, title,description , imageName: `${formDataObject.imageName}` }])
+        setStocks([...stock, { id: result.data.id + 1, title,description , imageName: `${formDataObject.imageName}` }])
       }
-      
+      // сброс полей в форме
       setTitle("")
       setDescription("")
       setPreviewImage(null)
