@@ -55,9 +55,9 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 
   const handleClickAbout = async (data) => {
     if (data.category != undefined) {
-      setPopupImg(`room/${data.image}`)
+      setPopupImg(`room/${data.imageName}`)
     } else {
-      setPopupImg(data.image)
+      setPopupImg(data.imageName)
     }
     setPopupTitle(replaceNewlinesWithBreaks(data.title))
     setPopupDescription(replaceNewlinesWithBreaks(data.description))

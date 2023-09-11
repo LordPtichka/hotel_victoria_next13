@@ -134,7 +134,6 @@ const CreateStocks: FC<IStockData> = ({ stocksAll, dataCard }) => {
           </div>
 
           {/* ============================== */}
-          {/* <div className={style.full_card}> */}
           <div className={`${style.offer} ${style.full_card}`}>
             <div className={style.img_for_offer} style={{ backgroundImage: `url(${previewImage})` }}>
               <input
