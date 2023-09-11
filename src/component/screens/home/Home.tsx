@@ -30,8 +30,6 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   const handlePrevSlide = () => {
     if (transformValue >= 0) return console.log(transformValue)
     setTransformValue((prevSlide) => prevSlide + indexWidth)
-    console.log(transformValue)
-    console.log(stocksAll.length)
   }
   const handleNextSlide = () => {
     if (transformValue <= indexWidth * (stocksAll.length - 2) * -1) return console.log(`${transformValue}, ${stocksAll.length}`)
@@ -52,6 +50,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   const [popupCategory, setPopupCategory] = useState("")
   const [popupPrice, setPopupPrice] = useState("")
   const [popupActive, setPopupActive] = useState(stylePopup)
+  const [imageNameArr, setImageNameArr] = useState(stylePopup)
 
   const handleClickAbout = async (data) => {
     if (data.category != undefined) {
@@ -72,6 +71,14 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
     //   display: "flex",
     // }
     setPopupActive(stylePopup)
+
+    // console.log(data)
+    if (data.category) {
+      console.log(data.imageName)
+      setImageNameArr(data.imageName.split(" &&%&& "))
+      // console.log(imageNameArr)
+    }
+
   }
   function replaceNewlinesWithBreaks(text) {
     return text.replace(/\n/g, '<br />');
@@ -85,10 +92,10 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
     } 
   }
 
-  //================================================
-  //================================================
-  //======> NAV <=========> NAV <======> NAV <======
-  //======> NAV <=========> NAV <======> NAV <======
+  //==========================================================================
+  //==========================================================================
+  //======> NAV <=========> NAV <======> NAV <======> NAV <======> NAV <======
+  //======> NAV <=========> NAV <======> NAV <======> NAV <======> NAV <======
   const styleActive = {
     position: "fixed",
     width: "100%",
@@ -101,16 +108,12 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   const targetRef = useRef(null) // Создаем ссылку (ref) для хранения ссылки на целевой DOM-элемент
   const [isIntersecting, setIsIntersecting] = useState(false) // Объявляем состояние для отслеживания пересечения целевого элемента с видимой областью
 
-  console.log(isIntersecting)
-  // console.log(targetRef)
-
   useEffect(() => {
     const handleScroll = () => {
       if (targetRef.current) {
         const { bottom } = targetRef.current.getBoundingClientRect() // Получаем нижнюю позицию целевого элемента относительно видимой области
         const isVisible = bottom <= window.innerHeight // Проверяем, находится ли верхняя позиция в пределах высоты видимой области
         setIsIntersecting(isVisible) // Обновляем состояние isIntersecting на основе видимости
-        console.log(isVisible)
       }
     }
     window.addEventListener("scroll", handleScroll) // Добавляем слушатель события прокрутки
@@ -125,7 +128,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   //  ==========================
   useEffect(() => {
     if (isIntersecting) {
-      console.log("Пользователь прокрутил до блока")
+      // console.log("Пользователь прокрутил до блока")
       const styleActive = {
         position: "fixed",
         width: "100%",
@@ -135,7 +138,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
       }
       setNavActive(styleActive)
     } else {
-      console.log("Пользователь прокрутил назад")
+      // console.log("Пользователь прокрутил назад")
       const styleActive = {
         position: "fixed",
         width: "100%",
@@ -146,7 +149,6 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
       // styleActive.transform = "translateY(-300px)"
       setNavActive(styleActive)
     }
-  // }, [isIntersecting]) // Запускаем этот эффект при каждом изменении isIntersecting
   }, [isIntersecting]) // Запускаем этот эффект при каждом изменении isIntersecting
   //================================================
   //================================================
@@ -311,6 +313,10 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
             <div dangerouslySetInnerHTML={{ __html: popupPrice }} ></div>: ""
             }
           </div>
+          {imageNameArr != null && imageNameArr.map(element => {
+              <div style={{height: "100px", width: "100px", backgroundImage: `url(http://${process.env.HOST}/room/${element})`}}></div>
+          })}
+
         </div>
       </div>
     </>
