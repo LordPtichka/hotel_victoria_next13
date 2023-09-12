@@ -300,9 +300,22 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 
       <div className={style.popupWrap} id="PopupWrap" style={popupActive} onClick={handleClickClosePopup}>
         <div className={style.popup}>
-          <div className={style.popupImg} style={{ backgroundImage: `url(http://${process.env.HOST}/${popupImg})` }}>
-            <button className={style.popupClose} id="BtnPopupClose" onClick={handleClickClosePopup}></button>
-          </div>
+
+
+          {popupCategory ? 
+            <div className={style.slideVisibleBlock}>
+              <div className={style.slideImgWrap}>
+                {imageNameArr.length ? imageNameArr.map((element, index) => (
+                    <div className={style.imageSlideRoom} key={index} style={{ backgroundImage: `url(http://${process.env.HOST}/room/${element})` }}></div>
+                )) : null}
+              </div>
+            </div>
+            :
+            <div className={style.popupImg} style={{ backgroundImage: `url(http://${process.env.HOST}/${popupImg})` }}>
+              <button className={style.popupClose} id="BtnPopupClose" onClick={handleClickClosePopup}></button>
+            </div>
+          }
+
           <div className={style.popupData}>
             <div className={`${style.textareaPopup} ${style.popupTitle}`}>{popupTitle}</div>
             {popupDescription != null ?
@@ -319,14 +332,19 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 
 
 
-          {imageNameArr.length ? imageNameArr.map((element, index) => (
-              <div key={index} style={{ height: "100px", width: "100px", backgroundImage: `url(http://${process.env.HOST}/room/${element})` }}></div>
-          )) : null}
+          {/* <div className={style.slideVisibleBlock}>
+            <div className={style.slideImgWrap}>
+              {imageNameArr.length ? imageNameArr.map((element, index) => (
+                  <div className={style.imageSlideRoom} key={index} style={{ backgroundImage: `url(http://${process.env.HOST}/room/${element})` }}></div>
+              )) : null}
+            </div>
+          </div> */}
 
 
 
         </div>
-      </div>
+      </div> 
+      {/* скб контр */}
     </>
   )
 }

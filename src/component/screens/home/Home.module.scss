@@ -361,6 +361,23 @@
         margin-bottom: 10px;
       }
     }
+    .slideVisibleBlock {
+      height: 350px;
+      width: 400px;
+      overflow: hidden;
+      
+      .slideImgWrap {
+        position: absolute;
+        display: flex;
+  
+  
+        .imageSlideRoom {
+          background-size: cover;
+          height: 350px; 
+          width: 400px;
+        }
+      }
+    }
   }
 }
 // ============================
