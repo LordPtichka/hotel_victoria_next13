@@ -50,7 +50,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   const [popupCategory, setPopupCategory] = useState("")
   const [popupPrice, setPopupPrice] = useState("")
   const [popupActive, setPopupActive] = useState(stylePopup)
-  const [imageNameArr, setImageNameArr] = useState(stylePopup)
+  const [imageNameArr, setImageNameArr] = useState([])
 
   const handleClickAbout = async (data) => {
     if (data.category != undefined) {
@@ -64,31 +64,33 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
     setPopupPrice(data.price)
 
     stylePopup.display = "flex"
-    // const stylePopup = {
-    //   transform: "translateY(0px)",
-    //   transition: "600ms",
-    //   zIndex: "6",
-    //   display: "flex",
-    // }
     setPopupActive(stylePopup)
 
-    // console.log(data)
+    // для попапа номера
+    // парсинг адресов картинок
+    console.log(data)
     if (data.category) {
       console.log(data.imageName)
       setImageNameArr(data.imageName.split(" &&%&& "))
-      // console.log(imageNameArr)
+      console.log(imageNameArr)
     }
 
   }
   function replaceNewlinesWithBreaks(text) {
     return text.replace(/\n/g, '<br />');
   }
-  // =============================================
-  // =============================================
+  // ============================================================
+  // ========> Close Popup <===============> Close Popup <=======
   const handleClickClosePopup = (event) => {
     if (event.target.id == "PopupWrap" || event.target.id == "BtnPopupClose") {
       stylePopup.display = "none"
+      setPopupImg("")
+      setPopupTitle("")
+      setPopupDescription("")
+      setPopupCategory("")
+      setPopupPrice("")
       setPopupActive(stylePopup)
+      setImageNameArr([])
     } 
   }
 
@@ -313,9 +315,15 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
             <div dangerouslySetInnerHTML={{ __html: popupPrice }} ></div>: ""
             }
           </div>
-          {imageNameArr != null && imageNameArr.map(element => {
-              <div style={{height: "100px", width: "100px", backgroundImage: `url(http://${process.env.HOST}/room/${element})`}}></div>
-          })}
+
+
+
+
+          {imageNameArr.length ? imageNameArr.map((element, index) => (
+              <div key={index} style={{ height: "100px", width: "100px", backgroundImage: `url(http://${process.env.HOST}/room/${element})` }}></div>
+          )) : null}
+
+
 
         </div>
       </div>
