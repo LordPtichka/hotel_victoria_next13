@@ -303,19 +303,22 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 
 
           {popupCategory ? 
-            <div className={style.slideVisibleBlock}>
-              <div className={style.slideImgWrap}>
-                {imageNameArr.length ? imageNameArr.map((element, index) => (
-                    <div className={style.imageSlideRoom} key={index} style={{ backgroundImage: `url(http://${process.env.HOST}/room/${element})` }}></div>
-                )) : null}
+            <div>
+              <div className={style.slideVisibleBlock}>
+                <div className={style.slideImgWrap}>
+                  {imageNameArr.length ? imageNameArr.map((element, index) => (
+                      <div className={style.imageSlideRoom} key={index} style={{ backgroundImage: `url(http://${process.env.HOST}/room/${element})` }}></div>
+                  )) : null}
+                </div>
               </div>
+              <div className={style.btnNext} onClick={handleNextSlide}></div>
             </div>
             :
             <div className={style.popupImg} style={{ backgroundImage: `url(http://${process.env.HOST}/${popupImg})` }}>
               <button className={style.popupClose} id="BtnPopupClose" onClick={handleClickClosePopup}></button>
             </div>
           }
-
+          
           <div className={style.popupData}>
             <div className={`${style.textareaPopup} ${style.popupTitle}`}>{popupTitle}</div>
             {popupDescription != null ?
