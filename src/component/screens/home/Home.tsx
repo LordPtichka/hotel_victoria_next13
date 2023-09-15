@@ -31,10 +31,13 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
     if (transformValue >= 0) return console.log(transformValue)
     setTransformValue((prevSlide) => prevSlide + indexWidth)
   }
+
+  // ================================================================
   const handleNextSlide = () => {
     if (transformValue <= indexWidth * (stocksAll.length - 2) * -1) return console.log(`${transformValue}, ${stocksAll.length}`)
     setTransformValue((prevSlide) => prevSlide - indexWidth)
-  }
+}
+// ================================================================
 
   // =====> POPUP <======> POPUP <=======> POPUP <======
   // =====> POPUP <======> POPUP <=======> POPUP <======
@@ -44,6 +47,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
     zIndex: "6",
     display: "none",
   }
+  // ==========================================================
   const [popupImg, setPopupImg] = useState("")
   const [popupTitle, setPopupTitle] = useState("")
   const [popupDescription, setPopupDescription] = useState("")
@@ -51,7 +55,9 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   const [popupPrice, setPopupPrice] = useState("")
   const [popupActive, setPopupActive] = useState(stylePopup)
   const [imageNameArr, setImageNameArr] = useState([])
-
+  // ==========================================================
+  // ==========================================================
+  // ==========================================================
   const handleClickAbout = async (data) => {
     if (data.category != undefined) {
       setPopupImg(`room/${data.imageName}`)
@@ -79,8 +85,30 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   function replaceNewlinesWithBreaks(text) {
     return text.replace(/\n/g, '<br />');
   }
-  // ============================================================
-  // ========> Close Popup <===============> Close Popup <=======
+  // ==========================================================
+  // ==========================================================
+  // ==========================================================
+  const [slideTransformPopup, setSlideTransformPopup] = useState(0)
+  const [slideBtnPrevSlide, setSlideBtnPrevSlide] = useState("block")
+  const [slideBtnNextSlide, setSlideBtnNextSlide] = useState("block")
+  // ==========================================================
+  
+    const popupHandlePrevSlide = () => {
+      if (slideTransformPopup != 0) setSlideTransformPopup(slideTransformPopup + 400)
+      console.log(slideTransformPopup)
+    }
+  
+    const popupHandleNextSlide = () => {
+      if (slideTransformPopup*(-1) < (imageNameArr.length - 1) * 400) setSlideTransformPopup(slideTransformPopup - 400)
+      console.log(slideTransformPopup)
+
+    }
+  
+  // ==========================================================
+  // ==========================================================
+  // =========================================================================
+  // =========================================================================
+  // ========> Close Popup <===============> Close Popup <====================
   const handleClickClosePopup = (event) => {
     if (event.target.id == "PopupWrap" || event.target.id == "BtnPopupClose") {
       stylePopup.display = "none"
@@ -91,6 +119,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
       setPopupPrice("")
       setPopupActive(stylePopup)
       setImageNameArr([])
+      setSlideTransformPopup(0)
     } 
   }
 
@@ -297,21 +326,27 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
           </Link>
         </section>
       </Layout>
-
+{/* ======================================== */}
+{/* ======================================== */}
+{/* ======================================== */}
       <div className={style.popupWrap} id="PopupWrap" style={popupActive} onClick={handleClickClosePopup}>
         <div className={style.popup}>
 
 
           {popupCategory ? 
-            <div>
+            <div className={style.popupSlide}>
+              <div className={style.btnWrap}>
+                <div className={style.btnPrev} style={{display: `${slideBtnPrevSlide}`}} onClick={popupHandlePrevSlide}></div>
+                <div className={style.btnNext} style={{display: `${slideBtnNextSlide}`}} onClick={popupHandleNextSlide}></div>
+              </div>
+
               <div className={style.slideVisibleBlock}>
-                <div className={style.slideImgWrap}>
+                <div className={style.slideImgWrap} style={{transform: `translateX(${slideTransformPopup}px)`}}>
                   {imageNameArr.length ? imageNameArr.map((element, index) => (
                       <div className={style.imageSlideRoom} key={index} style={{ backgroundImage: `url(http://${process.env.HOST}/room/${element})` }}></div>
                   )) : null}
                 </div>
               </div>
-              <div className={style.btnNext} onClick={handleNextSlide}></div>
             </div>
             :
             <div className={style.popupImg} style={{ backgroundImage: `url(http://${process.env.HOST}/${popupImg})` }}>
