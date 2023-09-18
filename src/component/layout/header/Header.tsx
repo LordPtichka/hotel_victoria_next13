@@ -11,7 +11,7 @@ const Header: FC = () => {
         <Link className={style.nav_link} href="/restaurant/vkus">Рестораны</Link>
         <Link className={style.nav_link} href="/">Услуги</Link>
         <Link className={style.nav_link} href="/News">Новости</Link>
-        <Link className={`${style.nav_link} ${style.btn_border}`} href="/Booking">Онлайн-бронирование</Link>
+        <Link className={`${style.nav_link} ${style.btn_border}`} href="/booking">Онлайн-бронирование</Link>
       </nav>
     </div>
   )

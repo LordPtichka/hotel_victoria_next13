@@ -28,15 +28,13 @@ const RoomCard: FC<block> = ({ roomAll, handleClickAbout }) => {
           Номера с видом на замок и набережную.
         </div>
         <div className={style.wrap_btn}>
-          <button className={style.btn}>Все номера</button>
-            {/* <Link href={"/Booking"}> */}
-          <button className={style.btn}>Забронировать</button>
+          <Link className={style.btn} rel="stylesheet" href="/rooms" >Все номера</Link>
+          <Link className={style.btn} rel="stylesheet" href="/booking" >Забронировать</Link>
           {/* </Link> */}
         </div>
-        {/* </div> */}
       </div>
 
-      <div className={style.block_right}>
+      {/* <div className={style.block_right}>
         <div className={style.slide_wrap}>
           {roomAll.map((room) => ( 
 
@@ -56,7 +54,7 @@ const RoomCard: FC<block> = ({ roomAll, handleClickAbout }) => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
 
 

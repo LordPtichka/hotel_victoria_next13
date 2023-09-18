@@ -367,18 +367,6 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
           </div>
 
 
-
-
-          {/* <div className={style.slideVisibleBlock}>
-            <div className={style.slideImgWrap}>
-              {imageNameArr.length ? imageNameArr.map((element, index) => (
-                  <div className={style.imageSlideRoom} key={index} style={{ backgroundImage: `url(http://${process.env.HOST}/room/${element})` }}></div>
-              )) : null}
-            </div>
-          </div> */}
-
-
-
         </div>
       </div> 
 
