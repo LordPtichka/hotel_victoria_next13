@@ -4,7 +4,7 @@ import { IRoomData } from "@/interface/room.interface"
 import { FC, MouseEvent, useState } from "react"
 // import Room from "../home/rooms/Room"
 import style from "./CreateRoom.module.scss"
-import Rooms from "../home/rooms/Room"
+import Rooms from "../../rooms_block/RoomCard"
 import { useRouter } from "next/router"
 
 const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {

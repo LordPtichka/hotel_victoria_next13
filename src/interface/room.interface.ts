@@ -4,6 +4,7 @@ export interface IRoom {
   image: string
   price: number
   category: string
+  imageName: string
 }
 
 export interface IRoomData {

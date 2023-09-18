@@ -1,5 +1,5 @@
-import { FC, useEffect } from "react"
-import style from "./Room.module.scss"
+import { FC, useEffect, useState } from "react"
+import style from "./RoomCard.module.scss"
 import { IRoom, IRoomData } from "@/interface/room.interface"
 import Link from "next/link"
 
@@ -8,14 +8,14 @@ interface block {
   handleClickAbout: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
  
-const Rooms: FC<block> = ({ roomAll, handleClickAbout }) => {
+const RoomCard: FC<block> = ({ roomAll, handleClickAbout }) => {
 
 
-  // const imageArr = (imageName: any) => {
-  //   const imageNameArr = imageName.split(" &&%&& ")
-  //   console.log(imageName)
-  //   console.log(imageNameArr)
-  // }
+
+  const imagePars = (room) => {
+    const imagePreview = room.imageName.split(" &&%&& ")[0]
+    return imagePreview
+  }
 
 
   return (
@@ -38,13 +38,14 @@ const Rooms: FC<block> = ({ roomAll, handleClickAbout }) => {
 
       <div className={style.block_right}>
         <div className={style.slide_wrap}>
-          {roomAll.map((room) => (
+          {roomAll.map((room) => ( 
+
             <div key={room.id} className={style.card_room} onClick={() => handleClickAbout(room) }>
               
               <div
                 className={`${style.gradient_bg}`}
                 style={{
-                  backgroundImage: `url(http://${process.env.HOST}/room/${room.image})`,
+                  backgroundImage: `url(http://${process.env.HOST}/room/${imagePars(room)})`,
                 }}
                 >
                 <div className={style.info_block}>
@@ -58,23 +59,9 @@ const Rooms: FC<block> = ({ roomAll, handleClickAbout }) => {
       </div>
 
 
-      {/* <div className={style.slide_wrap}>
-        {roomAll.map((room) => (
-          <div key={room.id} className={style.card_room} onClick={() => handleClickAbout(room)}>
-            <div className={`${style.gradient_bg}`} style={{ backgroundImage: `url(http://${process.env.HOST}/room/${room.image})` }}>
-              <div className={style.info_block}>
-                <div className={style.card_title} dangerouslySetInnerHTML={{ __html: room.category }}></div>
-                <div className={style.card_price} dangerouslySetInnerHTML={{ __html: room.price }}></div>
-              </div>
-            </div>
-            {imageArr(room.imageName)}
-          </div>
-        ))}
-      </div> */}
-
 
     </section>
   )
 }
 
-export default Rooms
+export default RoomCard

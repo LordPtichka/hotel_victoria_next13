@@ -11,6 +11,7 @@ interface HomePageProps {
 }
 
 const HomePage: NextPage<HomePageProps> = ({ stocksAll, roomAll }) => {
+  console.log(roomAll)
   return <Home stocksAll={stocksAll} roomAll={roomAll} />
 }
 

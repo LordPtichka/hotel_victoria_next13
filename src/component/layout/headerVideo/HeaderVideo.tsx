@@ -23,7 +23,7 @@ const HeaderVideo: FC = () => {
                 </Link>
               </li>
               <li>
-                <Link className={`${style.nav_link}`} href="/">
+                <Link className={`${style.nav_link}`} href="/rooms">
                   Номера
                 </Link>
               </li>

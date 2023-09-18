@@ -3,7 +3,7 @@ import Layout from "../../layout/Layout"
 import style from "./Home.module.scss"
 import Stocks from "./stocks/Stock"
 import { IStockData } from "@/interface/stock.interface"
-import Rooms from "./rooms/Room"
+import RoomCard from "../../rooms_block/RoomCard"
 import { IRoomData } from "@/interface/room.interface"
 import React from "react"
 import Header from "@/component/layout/header/Header"
@@ -38,7 +38,6 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
     setTransformValue((prevSlide) => prevSlide - indexWidth)
 }
 // ================================================================
-
   // =====> POPUP <======> POPUP <=======> POPUP <======
   // =====> POPUP <======> POPUP <=======> POPUP <======
   const stylePopup = {
@@ -206,7 +205,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
           </div>
         </section>
 
-        <Rooms roomAll={roomAll} handleClickAbout={handleClickAbout} />
+        <RoomCard roomAll={roomAll} handleClickAbout={handleClickAbout} />
 
         <section className={`${style.restaurant} ${style.section}`}>
           <div className={style.left_block} style={{ backgroundImage: `url(http://${process.env.HOST}/Vkys_bar.webp)` }}></div>
@@ -382,7 +381,7 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 
         </div>
       </div> 
-      {/* скб контр */}
+
     </>
   )
 }

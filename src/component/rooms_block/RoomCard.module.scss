@@ -81,12 +81,13 @@
         background: linear-gradient(180deg, #ffffff00 20%, #00000099 80%), #d3d3d3;
         background-position: center;
         cursor: pointer;
-        background-size: 100%;
+        background-size: auto 100%;
         border-radius: 10px;
         transition: 400ms;
+        
 
         &:hover {
-          background-size: 112%;
+          background-size: auto 112%;
           background-color: #000;
           transition: 400ms;
         }
