@@ -124,6 +124,7 @@ const CreateRooms: FC<IRoomData> = ({ roomsAll }) => {
             <div className={style.info_block}>
               <textarea className={style.card_title} placeholder="ЗАГОЛОВОК" type="text"  onChange={(e) => setCategory(e.target.value)} />
               <textarea className={style.card_price} placeholder="Описание" type="text"  onChange={(e) => setPrice(e.target.value)} />
+              <textarea className={style.card_description} placeholder="Описание" type="text"  onChange={(e) => setDescription(e.target.value)} />
             </div>
           </div>
 

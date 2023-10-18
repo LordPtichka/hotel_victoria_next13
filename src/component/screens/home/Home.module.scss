@@ -328,11 +328,22 @@
     box-shadow: 1px 1px 11px 5px #00000020;
     overflow: hidden;
     display: flex;
+    .popupData {
+      padding: 30px;
+      .popupRoomPrice {
+        margin-top: 20px;
+        font-size: 30px;
+        font-weight: 600;
+      }
+    }
 
     .popupImg {
-      height: 400px;
+      min-height: 480px;
       width: 50%;
       background-size: cover;
+      background-position: center;
+      // display: flex;
+      // height: 100%;
       .popupClose {
         height: 50px;
         width: 50px;
@@ -344,61 +355,82 @@
           transition: 400ms;
         }
       }
+      
     }
-    .popupSlide {
-      .popupData {
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-  
-        .textareaPopup {
-          user-select: none;
-          resize: none;
-          width: 100%;
-        }
-        .popupTitle {
-          margin-bottom: 10px;
-        }
-      }
-      .slideVisibleBlock {
-        height: 350px;
-        width: 400px;
-        position: relative;
+    .popupData {
+      .popupTitle {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+  }
+    
+  }
+
+  .popupRoom {
+    flex-direction: column;
+    align-items: center;
+    width: 900px;
+    overflow: visible;
+    position: relative;
+    transform: translateY(300px);
+
+
+      .popupSlide {
+        position: absolute;
+        border-radius: 20px 20px 0px 0px;
         overflow: hidden;
-        
-        .slideImgWrap {
-          position: absolute;
-          display: flex;
-          transition: 500ms;
-    
-    
-          .imageSlideRoom {
-            background-size: cover;
-            height: 350px; 
-            width: 400px;
+        transform: translateY(-550px);
+        .slideVisibleBlock {
+          height: 550px;
+          width: 800px;
+          position: relative;
+          overflow: hidden;
+          
+          .slideImgWrap {
+            position: absolute;
+            display: flex;
+            transition: 500ms;
+      
+      
+            .imageSlideRoom {
+              background-size: cover;
+              height: 550px; 
+              width: 800px;
+            }
           }
         }
-      }
 
       .btnWrap {
         display: flex;
         justify-content: space-between;
-        width: 400px;
+        width: 800px;
+        height: 650px;
         position: absolute;
         
         .btnPrev {
+          border-radius: 50%;
           width: 100px;
-          height: 350px;
-          background-color: #cfcfcf60;  
+          height: 100px;
+          margin: auto;
+          margin-left: 0;
+          background-color: #cfcfcf99;  
+          background-image: url(../../../../public/prev.svg);
+          background-repeat: no-repeat;
+          background-position: center;
           z-index: 2;
   
         }
         .btnNext {
+          border-radius: 50%;
+
           width: 100px;
-          height: 350px;
-          background-color: #cfcfcf60;
+          height: 100px;
+          margin: auto;
+          margin-right: 0;
+          background-color: #cfcfcf99;
+          background-image: url(../../../../public/next.svg);
+          background-repeat: no-repeat;
+          background-position: center;
           z-index: 2;
         }
       }

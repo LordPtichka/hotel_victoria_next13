@@ -34,7 +34,7 @@ const RoomCard: FC<block> = ({ roomAll, handleClickAbout }) => {
         </div>
       </div>
 
-      {/* <div className={style.block_right}>
+      <div className={style.block_right}>
         <div className={style.slide_wrap}>
           {roomAll.map((room) => ( 
 
@@ -54,7 +54,7 @@ const RoomCard: FC<block> = ({ roomAll, handleClickAbout }) => {
             </div>
           ))}
         </div>
-      </div> */}
+      </div>
 
 
 

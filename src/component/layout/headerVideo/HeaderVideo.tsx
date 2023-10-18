@@ -9,7 +9,7 @@ const HeaderVideo: FC = () => {
     <>
       <link rel="stylesheet" href="/header.css" />
       <header className="header-main">
-        <video className={style.video_wallpaper} src={`http://${process.env.HOST}/video/video_promo.mp4`} loop muted playsInline></video>
+        <video className={style.video_wallpaper} src={`http://${process.env.HOST}/video/video_promo.mp4`} loop muted playsInline autoPlay></video>
         {/* autoPlay */}
         <div className="gradient">
           <nav className={`content ${style.nav}`}>

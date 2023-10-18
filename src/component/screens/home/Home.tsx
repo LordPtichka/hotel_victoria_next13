@@ -17,6 +17,7 @@ interface HomePageProps {
 }
 
 const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
+  // console.log(roomAll)
   const [transformValue, setTransformValue] = useState(0)
 
   const indexWidth = 360
@@ -73,11 +74,11 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 
     // для попапа номера
     // парсинг адресов картинок
-    console.log(data)
+    // console.log(data)
     if (data.category) {
-      console.log(data.imageName)
+      // console.log(data.imageName)
       setImageNameArr(data.imageName.split(" &&%&& "))
-      console.log(imageNameArr)
+      // console.log(imageNameArr)
     }
 
   }
@@ -93,14 +94,13 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
   // ==========================================================
   
     const popupHandlePrevSlide = () => {
-      if (slideTransformPopup != 0) setSlideTransformPopup(slideTransformPopup + 400)
-      console.log(slideTransformPopup)
+      if (slideTransformPopup != 0) setSlideTransformPopup(slideTransformPopup + 800)
+      // console.log(slideTransformPopup)
     }
   
     const popupHandleNextSlide = () => {
-      if (slideTransformPopup*(-1) < (imageNameArr.length - 1) * 400) setSlideTransformPopup(slideTransformPopup - 400)
-      console.log(slideTransformPopup)
-
+      if (slideTransformPopup*(-1) < (imageNameArr.length - 1) * 800) setSlideTransformPopup(slideTransformPopup - 800)
+      // console.log(slideTransformPopup)
     }
   
   // ==========================================================
@@ -329,10 +329,9 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
 {/* ======================================== */}
 {/* ======================================== */}
       <div className={style.popupWrap} id="PopupWrap" style={popupActive} onClick={handleClickClosePopup}>
-        <div className={style.popup}>
-
 
           {popupCategory ? 
+          <div className={`${style.popup} ${style.popupRoom}` }>
             <div className={style.popupSlide}>
               <div className={style.btnWrap}>
                 <div className={style.btnPrev} style={{display: `${slideBtnPrevSlide}`}} onClick={popupHandlePrevSlide}></div>
@@ -347,27 +346,39 @@ const Home: FC<HomePageProps> = ({ stocksAll, roomAll }) => {
                 </div>
               </div>
             </div>
+
+            <div className={style.popupData}>
+              <div className={`${style.textareaPopup} ${style.popupTitle}`}>{popupTitle}</div>
+              {popupDescription != null ?
+              <div dangerouslySetInnerHTML={{ __html: popupDescription }} ></div> : ""
+              }
+              {popupCategory != null ?
+              <div dangerouslySetInnerHTML={{ __html: popupCategory }} ></div>: ""
+              }
+              {popupPrice != null ?
+              <div className={style.popupRoomPrice} dangerouslySetInnerHTML={{ __html: popupPrice + " ₽"}} ></div>: ""
+              }
+              </div>
+          </div>
             :
+          <div className={style.popup}>
             <div className={style.popupImg} style={{ backgroundImage: `url(http://${process.env.HOST}/${popupImg})` }}>
               <button className={style.popupClose} id="BtnPopupClose" onClick={handleClickClosePopup}></button>
             </div>
-          }
           
-          <div className={style.popupData}>
-            <div className={`${style.textareaPopup} ${style.popupTitle}`}>{popupTitle}</div>
-            {popupDescription != null ?
-            <div dangerouslySetInnerHTML={{ __html: popupDescription }} ></div> : ""
-            }
-            {popupCategory != null ?
-            <div dangerouslySetInnerHTML={{ __html: popupCategory }} ></div>: ""
-            }
-            {popupPrice != null ?
-            <div dangerouslySetInnerHTML={{ __html: popupPrice }} ></div>: ""
-            }
-          </div>
-
-
-        </div>
+            <div className={style.popupData}>
+              <div className={`${style.textareaPopup} ${style.popupTitle}`}>{popupTitle}</div>
+              {popupDescription != null ?
+              <div dangerouslySetInnerHTML={{ __html: popupDescription }} ></div> : ""
+              }
+              {popupCategory != null ?
+              <div dangerouslySetInnerHTML={{ __html: popupCategory }} ></div>: ""
+              }
+              {popupPrice != null ?
+              <div dangerouslySetInnerHTML={{ __html: popupPrice }} ></div>: ""
+              }
+            </div>
+          </div>}
       </div> 
 
     </>

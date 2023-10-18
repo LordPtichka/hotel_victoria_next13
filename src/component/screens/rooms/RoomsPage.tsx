@@ -5,8 +5,14 @@ import { FC, useState } from 'react'
 import style from './RoomsPage.module.scss' 
 
 
-const Rooms: FC<IRoomData> = ({roomAll}) => {
+interface block {
+  roomAll: IRoomData
+}
 
+
+const Rooms: FC<block> = ({roomAll}) => {
+
+  console.log(roomAll)
   const stylePopup = {
     transform: "translateY(0px)",
     transition: "600ms",
@@ -76,7 +82,7 @@ const Rooms: FC<IRoomData> = ({roomAll}) => {
     <>
       <Layout title="Наши номера">
         <section style={{paddingTop: "150px"}}>
-          <RoomCard roomAll={roomAll} handleClickAbout={handleClickAbout} />
+          {/* <RoomCard roomAll={roomAll} handleClickAbout={handleClickAbout} /> */}
         </section>
       </Layout>
 
